@@ -1,0 +1,92 @@
+MONTHLY SEO REPORT,,,,,,
+Website,yoursite.com,,,,,
+Report Period,March 2026,,,,,
+Prepared By,Your Name,,,,,
+Date,2026-04-01,,,,,
+
+EXECUTIVE SUMMARY,,,,,,
+Metric,This Month,Last Month,Change,% Change,Status
+Organic Sessions,1250,980,+270,+27.6%,↑ Good
+Organic Users,1050,850,+200,+23.5%,↑ Good
+Pageviews,3200,2650,+550,+20.8%,↑ Good
+Avg Session Duration,2:35,2:20,+0:15,+10.7%,↑ Good
+Bounce Rate,52%,58%,-6%,-10.3%,↑ Good
+Goal Conversions,28,22,+6,+27.3%,↑ Good
+Conversion Rate,2.24%,2.24%,0%,0%,→ Stable
+
+TOP 10 KEYWORD RANKINGS,,,,,,
+Keyword,Current Position,Last Month Position,Change,Search Volume,Landing Page
+keyword example 1,3,5,+2,1200,/page1
+keyword example 2,7,12,+5,800,/page2
+keyword example 3,15,18,+3,500,/page3
+
+TOP PERFORMING PAGES,,,,,,
+Page URL,Sessions,Pageviews,Avg Time,Bounce Rate,Conversions
+/blog/post-1,450,520,3:15,45%,8
+/services/service-1,320,380,2:40,50%,12
+/about,180,200,1:55,60%,2
+
+BACKLINK GROWTH,,,,,,
+Metric,This Month,Last Month,Change,,
+Total Backlinks,1250,1180,+70,,
+Referring Domains,145,138,+7,,
+New Quality Links,12,8,+4,,
+Lost Links,5,3,+2,,
+
+TECHNICAL SEO HEALTH,,,,,,
+Issue Type,Issues Found,Issues Fixed,Remaining Issues,Priority,
+Crawl Errors,5,3,2,High,
+Mobile Usability,2,2,0,High,
+Page Speed Issues,8,5,3,Medium,
+Broken Links,4,4,0,Medium,
+Missing Alt Text,15,10,5,Low,
+
+CONTENT PUBLISHED THIS MONTH,,,,,,
+Post Title,Publish Date,Target Keyword,Current Ranking,Sessions,
+Blog Post 1,2026-03-05,keyword example,12,85,
+Blog Post 2,2026-03-15,another keyword,18,42,
+Blog Post 3,2026-03-25,third keyword,Not ranked yet,0,
+
+GOALS ACHIEVED THIS MONTH,,,,,,
+✓,Published 4 new blog posts (target: 4),,,,,
+✓,Acquired 12 new backlinks (target: 10),,,,,
+✓,Improved 8 pages to page 1 (target: 5),,,,,
+✓,Fixed all high-priority technical issues,,,,,
+✗,Reached 1500 organic sessions (actual: 1250),,,,,
+
+ISSUES & BLOCKERS,,,,,,
+Issue,Priority,Impact,Status,Assigned To,
+Page speed on mobile still slow,High,Hurting mobile rankings,In Progress,Developer,
+Need more local citations,Medium,Local SEO improvement,Not Started,Marketing,
+Blog content calendar behind,Low,Content gap,In Progress,Writer,
+
+RECOMMENDATIONS FOR NEXT MONTH,,,,,,
+Priority,Recommendation,Expected Impact,Effort Required,Assigned To,
+High,Fix mobile page speed issues,+10-15% mobile traffic,High,Developer,
+High,Build 5 local citations,Better local rankings,Low,Marketing,
+Medium,Update top 10 pages with fresh content,+5-10% organic traffic,Medium,Content Team,
+Medium,Create 2 new pillar posts,Rank for new keywords,High,Writer,
+Low,Add schema markup to service pages,Enhanced SERP features,Low,Developer,
+
+COMPETITIVE ANALYSIS,,,,,,
+Competitor,Organic Traffic (Est),Top Keyword Position,Backlinks,Domain Authority,
+Competitor 1,5200,2,2800,58,
+Competitor 2,3100,5,1200,48,
+Your Site,1250,7,1250,42,
+Gap Analysis,Need to close traffic gap,Target position 3-5,Need 500+ more links,Building authority,
+
+KEY WINS THIS MONTH,,,,,,
+"🎯 Keyword ""example keyword"" jumped from position 12 to position 3",,,,,
+🔗 Earned high-quality backlink from industry-leading blog (DA 65),,,,,
+📈 Organic traffic grew 27.6% month-over-month,,,,,
+⚡ Fixed 8 technical SEO issues affecting crawlability,,,,,
+📝 Published best-performing blog post of the year (450 sessions),,,,,
+
+NEXT MONTH GOALS,,,,,,
+Goal,Target,Measurement,,,,
+Reach 1500 organic sessions,1500 sessions,Google Analytics,,,,
+Improve avg keyword position,Move from 15 to 12,Rank tracking tool,,,,
+Publish 4 blog posts,4 posts,Content calendar,,,,
+Build 15 backlinks,15 links,Backlink tracker,,,,
+Fix remaining page speed issues,3 issues resolved,PageSpeed Insights,,,,
+Improve conversion rate,2.5%,Google Analytics Goals,,,,
