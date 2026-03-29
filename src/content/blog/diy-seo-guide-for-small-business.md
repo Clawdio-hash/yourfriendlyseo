@@ -2,9 +2,9 @@
 title: 'Complete DIY SEO Guide for Small Business Owners (2026)'
 description: 'Learn how to do SEO yourself with this comprehensive DIY SEO guide. Step-by-step instructions for small business owners to rank higher on Google without hiring an agency.'
 pubDate: 2026-04-03
-heroImage: '/blog-placeholder-1.jpg'
 author: 'YourFriendlySEO'
 tags: ['DIY SEO', 'Small Business SEO', 'SEO Guide', 'Beginner SEO']
+gradient: 'from-blue-900 via-blue-800 to-emerald-700'
 ---
 
 # Complete DIY SEO Guide for Small Business Owners (2026)

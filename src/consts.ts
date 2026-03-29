@@ -1,5 +1,30 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+// YourFriendlySEO - Site Configuration
 
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_TITLE = 'YourFriendlySEO';
+export const SITE_DESCRIPTION = 'Practical, beginner-friendly SEO guides and resources for small business owners. Learn DIY SEO, boost your rankings, and grow your business organically.';
+export const SITE_URL = 'https://www.yourfriendlyseo.com';
+export const SITE_AUTHOR = 'YourFriendlySEO';
+
+// Brand Colors
+export const BRAND_COLORS = {
+	primary: '#0F172A',      // Deep Navy
+	primaryLight: '#1E293B',
+	primaryDark: '#020617',
+	accent: '#F59E0B',       // Warm Amber
+	accentLight: '#FCD34D',
+	accentDark: '#D97706',
+};
+
+// Social Links (update with your actual social media URLs)
+export const SOCIAL_LINKS = {
+	twitter: '#',
+	linkedin: '#',
+	email: 'hello@yourfriendlyseo.com',
+};
+
+// Navigation
+export const NAV_LINKS = [
+	{ label: 'Blog', href: '/blog' },
+	{ label: 'Free Resources', href: '/resources' },
+	{ label: 'About', href: '/about' },
+];

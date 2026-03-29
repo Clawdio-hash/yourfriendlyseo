@@ -2,9 +2,9 @@
 title: 'How to Conduct an SEO Audit for Your Small Business (2026 Guide)'
 description: 'Step-by-step guide to conducting a comprehensive SEO audit for small businesses. Includes free checklist and templates to identify issues hurting your rankings.'
 pubDate: 2026-04-10
-heroImage: '/blog-placeholder-2.jpg'
 author: 'YourFriendlySEO'
 tags: ['SEO Audit', 'Technical SEO', 'Small Business SEO', 'SEO Tools']
+gradient: 'from-slate-900 via-blue-900 to-teal-700'
 ---
 
 # How to Conduct an SEO Audit for Your Small Business (2026 Guide)
