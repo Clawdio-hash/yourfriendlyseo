@@ -1,8 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+// Get the 2 most recent blog posts
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 2);
 ---
 
 <!doctype html>
@@ -12,38 +19,632 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+		
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-headline">
+					SEO That Actually Makes Sense for Small Business Owners
+				</h1>
+				<p class="hero-subheadline">
+					Stop paying agencies thousands per month. Learn practical DIY SEO strategies that bring real customers to your door — no technical jargon, just results.
+				</p>
+				<div class="hero-ctas">
+					<a href="/blog" class="btn btn-primary btn-large">
+						Start Learning Free
+					</a>
+					<a href="#email-capture" class="btn btn-outline btn-large">
+						Get the SEO Checklist
+					</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Social Proof Bar -->
+		<section class="social-proof">
+			<div class="social-proof-content">
+				<p class="social-proof-text">
+					<span class="social-proof-badge">✓</span> Trusted by 1,000+ small business owners
+				</p>
+			</div>
+		</section>
+		
+		<!-- Featured Blog Posts -->
+		<section class="featured-posts">
+			<div class="container">
+				<div class="section-header">
+					<h2>Start Here: Our Most Popular Guides</h2>
+					<p>Step-by-step SEO strategies you can implement today</p>
+				</div>
+				
+				<div class="posts-grid">
+					{posts.map((post) => (
+						<article class="post-card">
+							<div class="post-card-content">
+								<time class="post-date">
+									<FormattedDate date={post.data.pubDate} />
+								</time>
+								<h3 class="post-title">
+									<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								</h3>
+								<p class="post-description">{post.data.description}</p>
+								<div class="post-tags">
+									{post.data.tags?.slice(0, 3).map((tag: string) => (
+										<span class="tag">{tag}</span>
+									))}
+								</div>
+								<a href={`/blog/${post.slug}/`} class="post-link">
+									Read Guide →
+								</a>
+							</div>
+						</article>
+					))}
+				</div>
+				
+				<div class="section-cta">
+					<a href="/blog" class="btn btn-secondary">View All Guides</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Digital Product Showcase -->
+		<section class="product-showcase">
+			<div class="container">
+				<div class="product-content">
+					<div class="product-image">
+						<div class="product-icon">📋</div>
+					</div>
+					<div class="product-details">
+						<span class="product-label">Professional Templates</span>
+						<h2 class="product-title">SEO Audit Template Bundle</h2>
+						<p class="product-description">
+							Stop guessing what's wrong with your SEO. Get professional audit templates used by agencies — now available for DIY business owners.
+						</p>
+						<ul class="product-features">
+							<li>✓ Technical SEO Audit Checklist (60+ checkpoints)</li>
+							<li>✓ On-Page SEO Audit Template</li>
+							<li>✓ Local SEO Audit Template</li>
+							<li>✓ Backlink Audit Tracker</li>
+							<li>✓ Monthly SEO Report Template</li>
+						</ul>
+						<div class="product-cta">
+							<div class="product-pricing">
+								<span class="product-price">$27</span>
+								<span class="product-price-label">One-time payment</span>
+							</div>
+							<a href="#" class="btn btn-accent btn-large">
+								Get Templates Now →
+							</a>
+						</div>
+						<p class="product-guarantee">
+							✓ Instant download • Google Sheets + Excel • 30-day money-back guarantee
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Email Capture Section -->
+		<section class="email-capture" id="email-capture">
+			<div class="container">
+				<div class="email-capture-content">
+					<div class="email-capture-text">
+						<h2>📥 Free DIY SEO Checklist</h2>
+						<p>
+							Get our comprehensive SEO checklist used by 1,000+ small business owners. Everything you need to optimize your website, step-by-step.
+						</p>
+						<ul class="checklist-features">
+							<li>✓ 90-day action plan</li>
+							<li>✓ Technical SEO checklist</li>
+							<li>✓ On-page optimization guide</li>
+							<li>✓ Local SEO tasks</li>
+						</ul>
+					</div>
+					<div class="email-capture-form">
+						<form action="#" method="post" class="email-form">
+							<div class="form-group">
+								<label for="email" class="sr-only">Email address</label>
+								<input 
+									type="email" 
+									id="email" 
+									name="email" 
+									placeholder="Enter your email address" 
+									required 
+									class="email-input"
+								/>
+							</div>
+							<button type="submit" class="btn btn-primary btn-large btn-full">
+								Download Free Checklist
+							</button>
+							<p class="form-privacy">
+								We respect your privacy. Unsubscribe anytime.
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		
 		<Footer />
 	</body>
 </html>
+
+<style>
+	/* Hero Section */
+	.hero {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-accent-dark) 100%);
+		padding: var(--space-20) var(--space-4) var(--space-24);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+		pointer-events: none;
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.hero-headline {
+		font-size: var(--font-size-6xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+		color: var(--color-white);
+		margin-bottom: var(--space-6);
+		letter-spacing: -0.03em;
+		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	}
+	
+	.hero-subheadline {
+		font-size: var(--font-size-xl);
+		line-height: var(--line-height-relaxed);
+		color: var(--color-gray-200);
+		margin-bottom: var(--space-10);
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.hero-ctas {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.btn-large {
+		padding: var(--space-5) var(--space-10);
+		font-size: var(--font-size-xl);
+	}
+	
+	.btn-full {
+		width: 100%;
+	}
+	
+	.btn-accent {
+		background-color: var(--color-accent);
+		color: var(--color-white);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.btn-accent:hover {
+		background-color: var(--color-accent-light);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-xl);
+		text-decoration: none;
+	}
+	
+	/* Social Proof Bar */
+	.social-proof {
+		background-color: var(--color-gray-100);
+		padding: var(--space-6) var(--space-4);
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	
+	.social-proof-content {
+		max-width: var(--container-xl);
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	.social-proof-text {
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-600);
+		font-weight: var(--font-weight-medium);
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-3);
+	}
+	
+	.social-proof-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--space-6);
+		height: var(--space-6);
+		background-color: var(--color-accent);
+		color: var(--color-white);
+		border-radius: var(--radius-full);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+	}
+	
+	/* Featured Posts */
+	.featured-posts {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.section-header {
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto var(--space-12);
+	}
+	
+	.section-header h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.section-header p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+		margin: 0;
+	}
+	
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-8);
+		margin-bottom: var(--space-12);
+	}
+	
+	.post-card {
+		background-color: var(--color-white);
+		border: 2px solid var(--color-gray-200);
+		border-radius: var(--radius-xl);
+		padding: var(--space-8);
+		transition: all 0.3s ease;
+		position: relative;
+	}
+	
+	.post-card:hover {
+		border-color: var(--color-accent);
+		box-shadow: var(--shadow-xl);
+		transform: translateY(-4px);
+	}
+	
+	.post-date {
+		display: inline-block;
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		font-weight: var(--font-weight-medium);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: var(--space-4);
+	}
+	
+	.post-title {
+		font-size: var(--font-size-2xl);
+		margin-bottom: var(--space-4);
+	}
+	
+	.post-title a {
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	
+	.post-title a:hover {
+		color: var(--color-accent-dark);
+	}
+	
+	.post-description {
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-6);
+	}
+	
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin-bottom: var(--space-6);
+	}
+	
+	.tag {
+		display: inline-block;
+		padding: var(--space-1) var(--space-3);
+		background-color: var(--color-gray-100);
+		color: var(--color-gray-700);
+		font-size: var(--font-size-xs);
+		font-weight: var(--font-weight-medium);
+		border-radius: var(--radius-full);
+	}
+	
+	.post-link {
+		color: var(--color-accent-dark);
+		font-weight: var(--font-weight-semibold);
+		text-decoration: none;
+		transition: all 0.2s ease;
+		display: inline-flex;
+		align-items: center;
+	}
+	
+	.post-link:hover {
+		color: var(--color-accent);
+		gap: var(--space-2);
+	}
+	
+	.section-cta {
+		text-align: center;
+	}
+	
+	/* Product Showcase */
+	.product-showcase {
+		background-color: var(--color-gray-50);
+		padding: var(--space-20) var(--space-4);
+	}
+	
+	.product-content {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		gap: var(--space-12);
+		align-items: center;
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.product-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.product-icon {
+		font-size: 150px;
+		filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+	}
+	
+	.product-label {
+		display: inline-block;
+		padding: var(--space-2) var(--space-4);
+		background-color: var(--color-accent-light);
+		color: var(--color-primary);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-radius: var(--radius-full);
+		margin-bottom: var(--space-4);
+	}
+	
+	.product-title {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.product-description {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-6);
+	}
+	
+	.product-features {
+		list-style: none;
+		padding: 0;
+		margin-bottom: var(--space-8);
+	}
+	
+	.product-features li {
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-700);
+		margin-bottom: var(--space-3);
+		padding-left: 0;
+	}
+	
+	.product-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--space-6);
+		flex-wrap: wrap;
+		margin-bottom: var(--space-4);
+	}
+	
+	.product-pricing {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.product-price {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-primary);
+	}
+	
+	.product-price-label {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+	}
+	
+	.product-guarantee {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		margin: 0;
+	}
+	
+	/* Email Capture */
+	.email-capture {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		padding: var(--space-20) var(--space-4);
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.email-capture::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+			radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+		pointer-events: none;
+	}
+	
+	.email-capture-content {
+		max-width: var(--container-md);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-12);
+		align-items: center;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.email-capture-text h2 {
+		color: var(--color-white);
+		font-size: var(--font-size-4xl);
+		margin-bottom: var(--space-4);
+	}
+	
+	.email-capture-text p {
+		color: var(--color-gray-200);
+		font-size: var(--font-size-lg);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-6);
+	}
+	
+	.checklist-features {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.checklist-features li {
+		color: var(--color-gray-200);
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--space-3);
+		padding-left: 0;
+	}
+	
+	.email-form {
+		background-color: var(--color-white);
+		padding: var(--space-8);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-2xl);
+	}
+	
+	.form-group {
+		margin-bottom: var(--space-4);
+	}
+	
+	.email-input {
+		width: 100%;
+		padding: var(--space-4);
+		font-size: var(--font-size-lg);
+		border: 2px solid var(--color-gray-300);
+		border-radius: var(--radius-lg);
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+	
+	.email-input:focus {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+	}
+	
+	.form-privacy {
+		text-align: center;
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		margin-top: var(--space-4);
+		margin-bottom: 0;
+	}
+	
+	/* Responsive */
+	@media (max-width: 968px) {
+		.hero-headline {
+			font-size: var(--font-size-4xl);
+		}
+		
+		.hero-subheadline {
+			font-size: var(--font-size-lg);
+		}
+		
+		.product-content,
+		.email-capture-content {
+			grid-template-columns: 1fr;
+			gap: var(--space-8);
+		}
+		
+		.product-icon {
+			font-size: 100px;
+		}
+		
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	
+	@media (max-width: 640px) {
+		.hero {
+			padding: var(--space-12) var(--space-4) var(--space-16);
+		}
+		
+		.hero-headline {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.hero-ctas {
+			flex-direction: column;
+		}
+		
+		.hero-ctas .btn {
+			width: 100%;
+		}
+		
+		.featured-posts,
+		.product-showcase,
+		.email-capture {
+			padding: var(--space-12) var(--space-4);
+		}
+		
+		.section-header h2,
+		.product-title,
+		.email-capture-text h2 {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.product-cta {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.product-cta .btn {
+			width: 100%;
+		}
+	}
+</style>
