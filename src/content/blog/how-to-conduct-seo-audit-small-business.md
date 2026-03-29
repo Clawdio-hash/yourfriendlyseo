@@ -914,7 +914,7 @@ I've created a comprehensive **SEO Audit Template Bundle** that includes:
 **Formats:** Google Sheets + Excel  
 **Includes:** Video walkthrough + usage guide
 
-**[Get the SEO Audit Template Bundle →](#stripe-link-placeholder)**
+**[Get the SEO Audit Template Bundle →](https://buy.stripe.com/aFa7sK8Zc4cd4Rxa7G8ww01)**
 
 ---
 

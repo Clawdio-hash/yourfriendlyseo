@@ -1,0 +1,199 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Thank You | ${SITE_TITLE}`} description="Thank you for your purchase!" />
+	</head>
+	<body>
+		<Header />
+		
+		<main class="thank-you-page">
+			<div class="container">
+				<div class="thank-you-content">
+					<div class="success-icon">✅</div>
+					<h1>Thank You for Your Purchase!</h1>
+					<p class="subtitle">Your payment was successful. Here's what happens next:</p>
+					
+					<div class="next-steps">
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>Check Your Email</h3>
+								<p>You'll receive a confirmation email with your receipt within the next few minutes.</p>
+							</div>
+						</div>
+						
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>Schedule Your Session</h3>
+								<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
+								<a href="#" class="btn btn-primary btn-large">Schedule Your Session</a>
+								<p class="note">Calendly scheduling link will be added here</p>
+							</div>
+						</div>
+						
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h3>Prepare for the Call</h3>
+								<p>Have your website URL ready and any specific questions you want answered. I'll do the rest!</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cta-section">
+						<h2>While You Wait...</h2>
+						<p>Check out our free SEO resources to start making improvements today.</p>
+						<a href="/blog" class="btn btn-secondary">Browse Free Guides</a>
+					</div>
+					
+					<div class="contact-section">
+						<p>Questions? Email me at <a href="mailto:hello@yourfriendlyseo.com">hello@yourfriendlyseo.com</a> or connect on <a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.thank-you-page {
+		min-height: 60vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-16) var(--space-4);
+	}
+	
+	.thank-you-content {
+		max-width: 700px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	.success-icon {
+		font-size: 80px;
+		margin-bottom: var(--space-6);
+	}
+	
+	.thank-you-content h1 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.subtitle {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+		margin-bottom: var(--space-12);
+	}
+	
+	.next-steps {
+		text-align: left;
+		margin-bottom: var(--space-16);
+	}
+	
+	.step {
+		display: flex;
+		gap: var(--space-6);
+		margin-bottom: var(--space-10);
+		padding: var(--space-8);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		border: 2px solid var(--color-gray-200);
+	}
+	
+	.step-number {
+		flex-shrink: 0;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--color-accent);
+		color: var(--color-white);
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-bold);
+		border-radius: var(--radius-full);
+	}
+	
+	.step-content h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.step-content p {
+		color: var(--color-gray-700);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-4);
+	}
+	
+	.step-content p:last-child {
+		margin-bottom: 0;
+	}
+	
+	.step-content .note {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		font-style: italic;
+		margin-top: var(--space-3);
+	}
+	
+	.cta-section {
+		padding: var(--space-10);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		margin-bottom: var(--space-12);
+	}
+	
+	.cta-section h2 {
+		font-size: var(--font-size-2xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.cta-section p {
+		color: var(--color-gray-600);
+		margin-bottom: var(--space-6);
+	}
+	
+	.contact-section {
+		padding-top: var(--space-8);
+		border-top: 1px solid var(--color-gray-200);
+	}
+	
+	.contact-section p {
+		color: var(--color-gray-600);
+		margin: 0;
+	}
+	
+	.contact-section a {
+		color: var(--color-accent-dark);
+		font-weight: var(--font-weight-semibold);
+	}
+	
+	@media (max-width: 640px) {
+		.thank-you-content h1 {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.step {
+			flex-direction: column;
+			text-align: center;
+		}
+		
+		.step-number {
+			margin: 0 auto;
+		}
+	}
+</style>

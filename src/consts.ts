@@ -15,16 +15,23 @@ export const BRAND_COLORS = {
 	accentDark: '#D97706',
 };
 
-// Social Links (update with your actual social media URLs)
+// Social Links
 export const SOCIAL_LINKS = {
-	twitter: '#',
-	linkedin: '#',
+	linkedin: 'https://www.linkedin.com/in/emil-mequita/',
 	email: 'hello@yourfriendlyseo.com',
 };
 
 // Navigation
 export const NAV_LINKS = [
 	{ label: 'Blog', href: '/blog' },
-	{ label: 'Free Resources', href: '/resources' },
+	{ label: 'Book a Call', href: '/consultation' },
 	{ label: 'About', href: '/about' },
 ];
+
+// Author Info
+export const AUTHOR = {
+	name: 'Emil Mequita',
+	title: 'SEO Strategist & Consultant',
+	linkedin: 'https://www.linkedin.com/in/emil-mequita/',
+	email: 'hello@yourfriendlyseo.com',
+};
