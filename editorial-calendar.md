@@ -18,8 +18,8 @@
 ### Week 1 (March 30 - April 5)
 | Title | Type | Target Keywords | Status | Publish Date |
 |-------|------|----------------|--------|--------------|
-| Complete DIY SEO Guide for Small Business Owners | Pillar (5,000+ words) | `DIY SEO guide`, `DIY SEO for beginners` | 🔴 | April 3 |
-| Free SEO Checklist (Lead Magnet) | Download | N/A | 🔴 | April 3 |
+| Complete DIY SEO Guide for Small Business Owners | Pillar (5,800 words) | `DIY SEO guide`, `DIY SEO for beginners` | 🟡 **IN REVIEW** | April 3 |
+| Free SEO Checklist (Lead Magnet) | Download | N/A | 🟡 **IN REVIEW** | April 3 |
 
 ### Week 2 (April 6-12)
 | Title | Type | Target Keywords | Status | Publish Date |
