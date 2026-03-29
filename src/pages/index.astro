@@ -112,13 +112,44 @@ const posts = (await getCollection('blog'))
 								<span class="product-price">$27</span>
 								<span class="product-price-label">One-time payment</span>
 							</div>
-							<a href="#" class="btn btn-accent btn-large">
+							<a href="https://buy.stripe.com/aFa7sK8Zc4cd4Rxa7G8ww01" class="btn btn-accent btn-large">
 								Get Templates Now →
 							</a>
 						</div>
 						<p class="product-guarantee">
 							✓ Instant download • Google Sheets + Excel • 30-day money-back guarantee
 						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Consultation CTA Section -->
+		<section class="consultation-cta">
+			<div class="container">
+				<div class="consultation-cta-content">
+					<div class="consultation-text">
+						<span class="consultation-label">1-on-1 Strategy Session</span>
+						<h2>Need Personalized Help?</h2>
+						<p>
+							Book a 60-minute consultation with Emil and get a custom SEO strategy tailored to your business. Walk away with a clear 30-day action plan.
+						</p>
+						<ul class="consultation-benefits">
+							<li>✓ Personalized SEO audit</li>
+							<li>✓ Custom keyword strategy</li>
+							<li>✓ Content roadmap</li>
+							<li>✓ 30-day action plan</li>
+						</ul>
+					</div>
+					<div class="consultation-cta-card">
+						<div class="consultation-price">
+							<span class="price-amount">$197</span>
+							<span class="price-label">60-minute session</span>
+						</div>
+						<a href="/consultation" class="btn btn-accent btn-large btn-full">
+							Book Your Session
+						</a>
+						<p class="consultation-guarantee">100% satisfaction guarantee</p>
 					</div>
 				</div>
 			</div>
@@ -492,6 +523,95 @@ const posts = (await getCollection('blog'))
 		margin: 0;
 	}
 	
+	/* Consultation CTA */
+	.consultation-cta {
+		background-color: var(--color-white);
+		padding: var(--space-20) var(--space-4);
+		border-top: 1px solid var(--color-gray-200);
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	
+	.consultation-cta-content {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		gap: var(--space-12);
+		align-items: center;
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.consultation-label {
+		display: inline-block;
+		padding: var(--space-2) var(--space-4);
+		background-color: var(--color-primary);
+		color: var(--color-white);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-radius: var(--radius-full);
+		margin-bottom: var(--space-4);
+	}
+	
+	.consultation-text h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.consultation-text p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-6);
+	}
+	
+	.consultation-benefits {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.consultation-benefits li {
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-700);
+		margin-bottom: var(--space-3);
+		padding-left: 0;
+	}
+	
+	.consultation-cta-card {
+		background-color: var(--color-gray-50);
+		padding: var(--space-10);
+		border-radius: var(--radius-xl);
+		border: 2px solid var(--color-gray-200);
+		text-align: center;
+	}
+	
+	.consultation-price {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: var(--space-8);
+	}
+	
+	.consultation-price .price-amount {
+		font-size: var(--font-size-5xl);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-primary);
+	}
+	
+	.consultation-price .price-label {
+		font-size: var(--font-size-base);
+		color: var(--color-gray-500);
+	}
+	
+	.consultation-guarantee {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		margin-top: var(--space-4);
+		margin-bottom: 0;
+	}
+	
 	/* Email Capture */
 	.email-capture {
 		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
@@ -595,6 +715,7 @@ const posts = (await getCollection('blog'))
 		}
 		
 		.product-content,
+		.consultation-cta-content,
 		.email-capture-content {
 			grid-template-columns: 1fr;
 			gap: var(--space-8);

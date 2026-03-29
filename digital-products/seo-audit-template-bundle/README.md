@@ -172,7 +172,7 @@ Perfect for:
 
 **Ready to audit your site like a pro?**
 
-[Buy SEO Audit Template Bundle – $27 →](#stripe-link)
+[Buy SEO Audit Template Bundle – $27 →](https://buy.stripe.com/aFa7sK8Zc4cd4Rxa7G8ww01)
 
 ---
 
