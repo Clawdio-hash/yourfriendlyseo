@@ -24,8 +24,8 @@
 ### Week 2 (April 6-12)
 | Title | Type | Target Keywords | Status | Publish Date |
 |-------|------|----------------|--------|--------------|
-| How to Conduct an SEO Audit for Your Small Business | Pillar (4,000+ words) | `SEO audit template small business` | 🔴 | April 10 |
-| **SEO Audit Template Bundle** 📦 | Product | N/A | 🔴 | April 10 |
+| How to Conduct an SEO Audit for Your Small Business | Pillar (6,000 words) | `SEO audit template small business` | 🟡 **IN REVIEW** | April 10 |
+| **SEO Audit Template Bundle** 📦 | Product ($27) | N/A | 🟡 **IN REVIEW** | April 10 |
 
 ### Week 3 (April 13-19)
 | Title | Type | Target Keywords | Status | Publish Date |
