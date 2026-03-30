@@ -4,10 +4,15 @@ import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+	return posts.map((post) => {
+		// In Astro v5 with glob loader, post.id is the file path
+		// Convert "diy-seo-guide-for-small-business.md" to "diy-seo-guide-for-small-business"
+		const slug = post.id.replace(/\.mdx?$/, '');
+		return {
+			params: { slug },
+			props: post,
+		};
+	});
 }
 type Props = CollectionEntry<'blog'>;
 
