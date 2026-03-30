@@ -22,10 +22,17 @@ const pageDescription = "Get a personalized SEO audit, keyword strategy, content
 					<!-- Headline Section -->
 					<section class="consultation-header">
 						<div class="author-badge">
-							<div class="author-image">👨‍💼</div>
+							<img 
+								src="https://roastbrief.us/wp-content/uploads/2025/04/0014_Emil.jpeg" 
+								alt="Emil Mequita" 
+								class="author-image"
+							/>
 							<div class="author-info">
 								<p class="author-name">Emil Mequita</p>
-								<p class="author-title">SEO Strategist & Consultant</p>
+								<p class="author-title">SEO Strategist • 10+ Years Experience</p>
+								<p class="author-bio-short">
+									I've delivered 90-140% organic traffic increases for enterprise clients. Now I bring that same expertise to small businesses through focused 1-on-1 strategy sessions.
+								</p>
 								<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="author-linkedin">
 									Connect on LinkedIn →
 								</a>
@@ -235,7 +242,19 @@ const pageDescription = "Get a personalized SEO audit, keyword strategy, content
 	}
 	
 	.author-image {
-		font-size: 60px;
+		width: 120px;
+		height: 120px;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		border: 4px solid var(--color-accent);
+		flex-shrink: 0;
+	}
+	
+	.author-bio-short {
+		font-size: var(--font-size-base);
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin: var(--space-3) 0;
 	}
 	
 	.author-info {
