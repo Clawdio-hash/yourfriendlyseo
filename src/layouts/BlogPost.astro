@@ -66,12 +66,15 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 			{author && (
 				<aside class="author-bio">
 					<div class="author-bio-content">
-						<div class="author-avatar">👨‍💼</div>
+						<img 
+							src="https://roastbrief.us/wp-content/uploads/2025/04/0014_Emil.jpeg" 
+							alt="Emil Mequita" 
+							class="author-avatar"
+						/>
 						<div class="author-details">
 							<h3>About {author}</h3>
 							<p>
-								SEO strategist helping small business owners rank higher on Google without expensive agencies. 
-								Connect for personalized SEO guidance.
+								I've spent 10+ years helping businesses—from enterprise tech companies to premium e-commerce brands—rank higher on Google. I bring enterprise-level SEO strategy to small business owners at accessible prices. Based in Los Angeles.
 							</p>
 							<div class="author-links">
 								<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="author-link">
@@ -328,7 +331,11 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 	}
 	
 	.author-avatar {
-		font-size: 60px;
+		width: 80px;
+		height: 80px;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		border: 3px solid var(--color-accent);
 		flex-shrink: 0;
 	}
 	

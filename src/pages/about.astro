@@ -1,63 +1,359 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = "About Emil Mequita";
+const pageDescription = "SEO strategist with 10+ years of experience helping businesses rank higher on Google. Enterprise expertise at small business prices.";
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${pageTitle} | ${SITE_TITLE}`} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		
+		<main class="about-page">
+			<div class="container">
+				<div class="about-content">
+					<div class="about-header">
+						<img 
+							src="https://roastbrief.us/wp-content/uploads/2025/04/0014_Emil.jpeg" 
+							alt="Emil Mequita" 
+							class="author-photo"
+						/>
+						<div class="header-text">
+							<h1>Hi, I'm Emil Mequita</h1>
+							<p class="subtitle">SEO Strategist • 10+ Years Experience • Based in Los Angeles</p>
+							<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="linkedin-link">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+								Connect on LinkedIn
+							</a>
+						</div>
+					</div>
+					
+					<div class="about-story">
+						<h2>My Story</h2>
+						<p>
+							I've spent the last decade helping businesses—from enterprise technology companies to premium e-commerce brands—rank higher on Google and attract more customers organically.
+						</p>
+						<p>
+							My journey started at a digital marketing agency where I cut my teeth on the fundamentals: keyword research, technical SEO, content strategy. Three years later, I moved into healthcare and pharmaceutical marketing, managing SEO for major brands across New York and Los Angeles. That's where I learned to drive real results: I increased keyword indexing by 50% and boosted organic traffic by an average of 30% for every client I touched.
+						</p>
+						<p>
+							From there, I led organic growth for a premium e-commerce brand, building their entire SEO and content strategy from the ground up. Then I ran a client portfolio at a digital agency, where I helped businesses achieve 90% and 140% increases in organic traffic and revenue. Today, I'm directing SEO strategy for a global industrial technology company—but I haven't forgotten where I started.
+						</p>
+						<p>
+							Here's what I've learned after 10+ years and working across healthcare, e-commerce, industrial, and agency environments: <strong>SEO doesn't have to be complicated or expensive.</strong>
+						</p>
+						<p>
+							Small business owners are constantly told they need to hire an agency for $5,000+ per month to see results. That's not true. The strategies that work for Fortune 500 companies work just as well for local businesses—you just need someone to translate enterprise-level tactics into actionable steps you can actually implement.
+						</p>
+						<p>
+							That's why I started YourFriendlySEO. I wanted to give small business owners the same caliber of SEO guidance I provide to global brands, but without the enterprise price tag.
+						</p>
+					</div>
+					
+					<div class="about-expertise">
+						<h2>What I Do</h2>
+						<div class="expertise-grid">
+							<div class="expertise-card">
+								<div class="expertise-icon">🔍</div>
+								<h3>Technical SEO</h3>
+								<p>I dig into site architecture, page speed, indexing issues, and Core Web Vitals to make sure Google can crawl and rank your site properly.</p>
+							</div>
+							
+							<div class="expertise-card">
+								<div class="expertise-icon">📊</div>
+								<h3>GA4 & Analytics</h3>
+								<p>I help you track what actually matters—not vanity metrics. Know exactly which pages drive revenue and which need work.</p>
+							</div>
+							
+							<div class="expertise-card">
+								<div class="expertise-icon">📝</div>
+								<h3>Content Strategy</h3>
+								<p>I create content roadmaps that attract your ideal customers and convert them into paying clients—not just traffic for traffic's sake.</p>
+							</div>
+							
+							<div class="expertise-card">
+								<div class="expertise-icon">🎯</div>
+								<h3>Keyword Research</h3>
+								<p>I find the keywords your competitors are missing—the ones with high buyer intent and lower competition.</p>
+							</div>
+							
+							<div class="expertise-card">
+								<div class="expertise-icon">🛒</div>
+								<h3>E-commerce SEO</h3>
+								<p>From product pages to category optimization, I've helped e-commerce brands scale organic revenue by triple digits.</p>
+							</div>
+							
+							<div class="expertise-card">
+								<div class="expertise-icon">🤖</div>
+								<h3>AI + Search</h3>
+								<p>I stay ahead of how AI is changing search—from ChatGPT to Google's AI Overviews—so your strategy stays relevant.</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="about-philosophy">
+						<h2>My Philosophy</h2>
+						<p>
+							I believe SEO should be <strong>practical, transparent, and results-focused.</strong> No jargon. No vague promises. Just clear strategies that work.
+						</p>
+						<p>
+							When you work with me—whether through my guides, templates, or 1-on-1 consultations—you get the same level of strategic thinking I bring to enterprise clients. The difference is I package it in a way that makes sense for small businesses with limited time and budget.
+						</p>
+						<p>
+							You'll walk away knowing exactly what to do, why it matters, and how to measure success. No confusion. No fluff. Just actionable SEO.
+						</p>
+					</div>
+					
+					<div class="about-cta">
+						<h2>Let's Work Together</h2>
+						<p>
+							If you're serious about ranking higher and attracting more customers organically, I can help.
+						</p>
+						<div class="cta-buttons">
+							<a href="/consultation" class="btn btn-primary btn-large">Book a Strategy Session</a>
+							<a href="/blog" class="btn btn-secondary btn-large">Read Free Guides</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		
+		<Footer />
+	</body>
+</html>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
-
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
-
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+<style>
+	.about-page {
+		background-color: var(--color-white);
+	}
+	
+	.about-content {
+		max-width: var(--container-md);
+		margin: 0 auto;
+		padding: var(--space-12) var(--space-4) var(--space-20);
+	}
+	
+	/* Header Section */
+	.about-header {
+		display: flex;
+		gap: var(--space-8);
+		align-items: center;
+		margin-bottom: var(--space-16);
+		padding-bottom: var(--space-12);
+		border-bottom: 2px solid var(--color-gray-200);
+	}
+	
+	.author-photo {
+		width: 200px;
+		height: 200px;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		border: 4px solid var(--color-accent);
+		box-shadow: var(--shadow-xl);
+		flex-shrink: 0;
+	}
+	
+	.header-text h1 {
+		font-size: var(--font-size-5xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.subtitle {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+		margin-bottom: var(--space-6);
+	}
+	
+	.linkedin-link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		background-color: var(--color-primary);
+		color: var(--color-white);
+		text-decoration: none;
+		font-weight: var(--font-weight-semibold);
+		border-radius: var(--radius-lg);
+		transition: all 0.2s ease;
+	}
+	
+	.linkedin-link:hover {
+		background-color: var(--color-primary-light);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+		text-decoration: none;
+	}
+	
+	.linkedin-link svg {
+		flex-shrink: 0;
+	}
+	
+	/* Story Section */
+	.about-story {
+		margin-bottom: var(--space-16);
+	}
+	
+	.about-story h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-story p {
+		font-size: var(--font-size-lg);
+		line-height: var(--line-height-relaxed);
+		color: var(--color-gray-700);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-story p strong {
+		color: var(--color-primary);
+	}
+	
+	/* Expertise Section */
+	.about-expertise {
+		margin-bottom: var(--space-16);
+		padding: var(--space-12);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-2xl);
+	}
+	
+	.about-expertise h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-10);
+		text-align: center;
+	}
+	
+	.expertise-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-8);
+	}
+	
+	.expertise-card {
+		background-color: var(--color-white);
+		padding: var(--space-6);
+		border-radius: var(--radius-xl);
+		border: 2px solid var(--color-gray-200);
+		transition: all 0.2s ease;
+	}
+	
+	.expertise-card:hover {
+		border-color: var(--color-accent);
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-2px);
+	}
+	
+	.expertise-icon {
+		font-size: 40px;
+		margin-bottom: var(--space-4);
+	}
+	
+	.expertise-card h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.expertise-card p {
+		font-size: var(--font-size-base);
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin: 0;
+	}
+	
+	/* Philosophy Section */
+	.about-philosophy {
+		margin-bottom: var(--space-16);
+	}
+	
+	.about-philosophy h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-philosophy p {
+		font-size: var(--font-size-lg);
+		line-height: var(--line-height-relaxed);
+		color: var(--color-gray-700);
+		margin-bottom: var(--space-6);
+	}
+	
+	.about-philosophy p strong {
+		color: var(--color-primary);
+	}
+	
+	/* CTA Section */
+	.about-cta {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		padding: var(--space-12);
+		border-radius: var(--radius-2xl);
+		text-align: center;
+		color: var(--color-white);
+	}
+	
+	.about-cta h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.about-cta p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-200);
+		margin-bottom: var(--space-8);
+	}
+	
+	.cta-buttons {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.about-header {
+			flex-direction: column;
+			text-align: center;
+		}
+		
+		.author-photo {
+			width: 150px;
+			height: 150px;
+		}
+		
+		.header-text h1 {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.expertise-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.about-story h2,
+		.about-expertise h2,
+		.about-philosophy h2,
+		.about-cta h2 {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.cta-buttons {
+			flex-direction: column;
+		}
+		
+		.cta-buttons .btn {
+			width: 100%;
+		}
+	}
+</style>
