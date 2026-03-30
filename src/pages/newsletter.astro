@@ -1,0 +1,297 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BeehiivEmbed from '../components/BeehiivEmbed.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead 
+			title={`Newsletter | ${SITE_TITLE}`} 
+			description="Get weekly SEO tips that actually work. Join 1,000+ small business owners getting actionable strategies delivered to their inbox every week." 
+		/>
+	</head>
+	<body>
+		<Header />
+		
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<span class="hero-badge">📬 Weekly Newsletter</span>
+				<h1 class="hero-headline">
+					Get Weekly SEO Tips That Actually Work
+				</h1>
+				<p class="hero-subheadline">
+					Join 1,000+ small business owners getting actionable SEO strategies, free resources, and real-world case studies delivered to their inbox every week. No fluff, no jargon—just practical advice you can implement immediately.
+				</p>
+			</div>
+		</section>
+		
+		<!-- Benefits Section -->
+		<section class="benefits">
+			<div class="container">
+				<h2 class="benefits-title">What You'll Get</h2>
+				<div class="benefits-grid">
+					<div class="benefit-card">
+						<div class="benefit-icon">📊</div>
+						<h3>Weekly SEO Strategies</h3>
+						<p>One actionable SEO tactic every week that you can implement right away to improve your rankings.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">🎁</div>
+						<h3>Free Resources</h3>
+						<p>Exclusive templates, checklists, and guides to help you execute your SEO strategy like a pro.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">💡</div>
+						<h3>Real Case Studies</h3>
+						<p>Behind-the-scenes looks at SEO wins and lessons learned from real small business campaigns.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">⚡</div>
+						<h3>Industry Updates</h3>
+						<p>Stay ahead of Google algorithm changes and SEO trends that actually matter for your business.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Newsletter Embed -->
+		<section class="newsletter-signup">
+			<div class="container-narrow">
+				<BeehiivEmbed 
+					title="Ready to Level Up Your SEO?" 
+					description="Join the community and start getting weekly insights delivered to your inbox. Unsubscribe anytime."
+				/>
+			</div>
+		</section>
+		
+		<!-- Social Proof -->
+		<section class="social-proof">
+			<div class="container">
+				<h2 class="social-proof-title">What Readers Are Saying</h2>
+				<div class="testimonials-grid">
+					<div class="testimonial">
+						<p class="testimonial-quote">"Finally, SEO advice that makes sense for small businesses. I've seen real results in just 2 months."</p>
+						<p class="testimonial-author">— Sarah K., E-commerce Owner</p>
+					</div>
+					<div class="testimonial">
+						<p class="testimonial-quote">"The weekly tips are always practical and easy to implement. No corporate jargon, just real help."</p>
+						<p class="testimonial-author">— Mike T., Local Service Business</p>
+					</div>
+					<div class="testimonial">
+						<p class="testimonial-quote">"I love the case studies. It's great to see what works for other small businesses in the real world."</p>
+						<p class="testimonial-author">— Jessica L., SaaS Founder</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* Hero Section */
+	.hero {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-accent-dark) 100%);
+		padding: var(--space-20) var(--space-4) var(--space-24);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+		pointer-events: none;
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		padding: var(--space-2) var(--space-5);
+		background-color: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(10px);
+		color: var(--color-accent-light);
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-bold);
+		border-radius: var(--radius-full);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		margin-bottom: var(--space-6);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.hero-headline {
+		font-size: var(--font-size-6xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+		color: var(--color-white);
+		margin-bottom: var(--space-6);
+		letter-spacing: -0.03em;
+		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	}
+	
+	.hero-subheadline {
+		font-size: var(--font-size-xl);
+		line-height: var(--line-height-relaxed);
+		color: var(--color-gray-200);
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	
+	/* Benefits Section */
+	.benefits {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.benefits-title {
+		text-align: center;
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-12);
+	}
+	
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: var(--space-8);
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.benefit-card {
+		text-align: center;
+		padding: var(--space-8);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		border: 2px solid var(--color-gray-200);
+		transition: all 0.3s ease;
+	}
+	
+	.benefit-card:hover {
+		border-color: var(--color-accent);
+		box-shadow: var(--shadow-xl);
+		transform: translateY(-4px);
+	}
+	
+	.benefit-icon {
+		font-size: 3rem;
+		margin-bottom: var(--space-4);
+	}
+	
+	.benefit-card h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.benefit-card p {
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin: 0;
+	}
+	
+	/* Newsletter Signup */
+	.newsletter-signup {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-gray-50);
+	}
+	
+	.container-narrow {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	/* Social Proof */
+	.social-proof {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.social-proof-title {
+		text-align: center;
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-12);
+	}
+	
+	.testimonials-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--space-8);
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.testimonial {
+		padding: var(--space-8);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		border-left: 4px solid var(--color-accent);
+	}
+	
+	.testimonial-quote {
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-700);
+		line-height: var(--line-height-relaxed);
+		margin-bottom: var(--space-4);
+		font-style: italic;
+	}
+	
+	.testimonial-author {
+		font-size: var(--font-size-base);
+		color: var(--color-gray-600);
+		font-weight: var(--font-weight-semibold);
+		margin: 0;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero {
+			padding: var(--space-16) var(--space-4) var(--space-20);
+		}
+		
+		.hero-headline {
+			font-size: var(--font-size-4xl);
+		}
+		
+		.hero-subheadline {
+			font-size: var(--font-size-lg);
+		}
+		
+		.benefits,
+		.newsletter-signup,
+		.social-proof {
+			padding: var(--space-12) var(--space-4);
+		}
+		
+		.benefits-title,
+		.social-proof-title {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.benefits-grid,
+		.testimonials-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

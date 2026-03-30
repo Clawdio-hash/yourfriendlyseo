@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import BeehiivEmbed from '../components/BeehiivEmbed.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
@@ -33,7 +34,7 @@ const posts = (await getCollection('blog'))
 					<a href="/blog" class="btn btn-primary btn-large">
 						Start Learning Free
 					</a>
-					<a href="#email-capture" class="btn btn-outline btn-large">
+					<a href="/free-checklist" class="btn btn-outline btn-large">
 						Get the SEO Checklist
 					</a>
 				</div>
@@ -155,44 +156,13 @@ const posts = (await getCollection('blog'))
 			</div>
 		</section>
 		
-		<!-- Email Capture Section -->
-		<section class="email-capture" id="email-capture">
+		<!-- Newsletter Signup Section -->
+		<section class="newsletter-section" id="email-capture">
 			<div class="container">
-				<div class="email-capture-content">
-					<div class="email-capture-text">
-						<h2>📥 Free DIY SEO Checklist</h2>
-						<p>
-							Get our comprehensive SEO checklist used by 1,000+ small business owners. Everything you need to optimize your website, step-by-step.
-						</p>
-						<ul class="checklist-features">
-							<li>✓ 90-day action plan</li>
-							<li>✓ Technical SEO checklist</li>
-							<li>✓ On-page optimization guide</li>
-							<li>✓ Local SEO tasks</li>
-						</ul>
-					</div>
-					<div class="email-capture-form">
-						<form action="#" method="post" class="email-form">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email address</label>
-								<input 
-									type="email" 
-									id="email" 
-									name="email" 
-									placeholder="Enter your email address" 
-									required 
-									class="email-input"
-								/>
-							</div>
-							<button type="submit" class="btn btn-primary btn-large btn-full">
-								Download Free Checklist
-							</button>
-							<p class="form-privacy">
-								We respect your privacy. Unsubscribe anytime.
-							</p>
-						</form>
-					</div>
-				</div>
+				<BeehiivEmbed 
+					title="📥 Get Weekly SEO Tips That Actually Work" 
+					description="Join 1,000+ small business owners getting actionable SEO strategies and free resources delivered to their inbox every week. No fluff, just results."
+				/>
 			</div>
 		</section>
 		
@@ -612,96 +582,10 @@ const posts = (await getCollection('blog'))
 		margin-bottom: 0;
 	}
 	
-	/* Email Capture */
-	.email-capture {
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+	/* Newsletter Section */
+	.newsletter-section {
 		padding: var(--space-20) var(--space-4);
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.email-capture::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: 
-			radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-			radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-		pointer-events: none;
-	}
-	
-	.email-capture-content {
-		max-width: var(--container-md);
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-12);
-		align-items: center;
-		position: relative;
-		z-index: 1;
-	}
-	
-	.email-capture-text h2 {
-		color: var(--color-white);
-		font-size: var(--font-size-4xl);
-		margin-bottom: var(--space-4);
-	}
-	
-	.email-capture-text p {
-		color: var(--color-gray-200);
-		font-size: var(--font-size-lg);
-		line-height: var(--line-height-relaxed);
-		margin-bottom: var(--space-6);
-	}
-	
-	.checklist-features {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	
-	.checklist-features li {
-		color: var(--color-gray-200);
-		font-size: var(--font-size-lg);
-		margin-bottom: var(--space-3);
-		padding-left: 0;
-	}
-	
-	.email-form {
-		background-color: var(--color-white);
-		padding: var(--space-8);
-		border-radius: var(--radius-xl);
-		box-shadow: var(--shadow-2xl);
-	}
-	
-	.form-group {
-		margin-bottom: var(--space-4);
-	}
-	
-	.email-input {
-		width: 100%;
-		padding: var(--space-4);
-		font-size: var(--font-size-lg);
-		border: 2px solid var(--color-gray-300);
-		border-radius: var(--radius-lg);
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
-	}
-	
-	.email-input:focus {
-		outline: none;
-		border-color: var(--color-accent);
-		box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
-	}
-	
-	.form-privacy {
-		text-align: center;
-		font-size: var(--font-size-sm);
-		color: var(--color-gray-500);
-		margin-top: var(--space-4);
-		margin-bottom: 0;
+		background-color: var(--color-gray-50);
 	}
 	
 	/* Responsive */
@@ -715,8 +599,7 @@ const posts = (await getCollection('blog'))
 		}
 		
 		.product-content,
-		.consultation-cta-content,
-		.email-capture-content {
+		.consultation-cta-content {
 			grid-template-columns: 1fr;
 			gap: var(--space-8);
 		}
@@ -749,7 +632,7 @@ const posts = (await getCollection('blog'))
 		
 		.featured-posts,
 		.product-showcase,
-		.email-capture {
+		.newsletter-section {
 			padding: var(--space-12) var(--space-4);
 		}
 		
