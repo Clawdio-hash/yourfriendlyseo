@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import BeehiivEmbed from '../components/BeehiivEmbed.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
@@ -62,6 +63,15 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 				<slot />
 			</article>
 			
+			<!-- Newsletter Signup -->
+			<aside class="article-newsletter">
+				<BeehiivEmbed 
+					title="Enjoyed this? Get weekly SEO tips delivered to your inbox" 
+					description="Join 1,000+ small business owners learning SEO strategies that actually work."
+					variant="compact"
+				/>
+			</aside>
+			
 			<!-- Author Bio -->
 			{author && (
 				<aside class="author-bio">
@@ -89,15 +99,6 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 					</div>
 				</aside>
 			)}
-			
-			<!-- Article Footer / CTA -->
-			<aside class="article-cta">
-				<div class="cta-box">
-					<h3>📥 Free SEO Checklist</h3>
-					<p>Get our comprehensive DIY SEO checklist. Everything you need to optimize your website, step-by-step.</p>
-					<a href="#" class="btn btn-primary">Download Free Checklist</a>
-				</div>
-			</aside>
 		</main>
 
 		<Footer />
@@ -380,70 +381,10 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 		flex-shrink: 0;
 	}
 	
-	/* CTA Box */
-	.article-cta {
+	/* Newsletter Signup */
+	.article-newsletter {
 		margin-top: var(--space-12);
-	}
-	
-	.cta-box {
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-		padding: var(--space-10) var(--space-8);
-		border-radius: var(--radius-xl);
-		text-align: center;
-		box-shadow: var(--shadow-2xl);
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.cta-box::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: 
-			radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-			radial-gradient(circle at 80% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
-		pointer-events: none;
-	}
-	
-	.cta-box > * {
-		position: relative;
-		z-index: 1;
-	}
-	
-	.cta-box h3 {
-		color: var(--color-white);
-		font-size: var(--font-size-3xl);
-		margin-bottom: var(--space-4);
-	}
-	
-	.cta-box p {
-		color: var(--color-gray-200);
-		font-size: var(--font-size-lg);
-		margin-bottom: var(--space-6);
-		max-width: 100%;
-	}
-	
-	.cta-box .btn {
-		background-color: var(--color-accent);
-		color: var(--color-white);
-		font-size: var(--font-size-lg);
-		padding: var(--space-4) var(--space-10);
-		border-radius: var(--radius-lg);
-		font-weight: var(--font-weight-bold);
-		text-decoration: none;
-		display: inline-block;
-		transition: all 0.2s ease;
-		box-shadow: var(--shadow-lg);
-	}
-	
-	.cta-box .btn:hover {
-		background-color: var(--color-accent-light);
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-xl);
-		text-decoration: none;
+		margin-bottom: var(--space-8);
 	}
 	
 	/* Responsive Design */
@@ -478,14 +419,6 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 			padding: var(--space-6) var(--space-4);
 		}
 		
-		.cta-box {
-			padding: var(--space-8) var(--space-6);
-		}
-		
-		.cta-box h3 {
-			font-size: var(--font-size-2xl);
-		}
-		
 		.author-bio-content {
 			flex-direction: column;
 			text-align: center;
@@ -500,10 +433,6 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 	@media (max-width: 480px) {
 		.hero-title {
 			font-size: var(--font-size-3xl);
-		}
-		
-		.cta-box .btn {
-			width: 100%;
 		}
 	}
 </style>

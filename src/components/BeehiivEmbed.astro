@@ -1,0 +1,126 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	variant?: 'default' | 'compact';
+}
+
+const { 
+	title = "Get Weekly SEO Tips", 
+	description = "Join 1,000+ small business owners getting actionable SEO strategies delivered to their inbox every week.",
+	variant = 'default'
+} = Astro.props;
+---
+
+<div class={`beehiiv-container beehiiv-${variant}`}>
+	<div class="beehiiv-content">
+		<h3 class="beehiiv-title">{title}</h3>
+		<p class="beehiiv-description">{description}</p>
+	</div>
+	<div class="beehiiv-embed-wrapper">
+		<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+		<iframe 
+			src="https://subscribe-forms.beehiiv.com/d59bd939-a7ad-43a4-88d8-324b1619fd27" 
+			class="beehiiv-embed" 
+			data-test-id="beehiiv-embed" 
+			frameborder="0" 
+			scrolling="no" 
+			style="width: 560px; height: 315px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;">
+		</iframe>
+	</div>
+</div>
+
+<style>
+	.beehiiv-container {
+		padding: var(--space-10) var(--space-8);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		border-radius: var(--radius-xl);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+		box-shadow: var(--shadow-2xl);
+	}
+	
+	.beehiiv-container::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+			radial-gradient(circle at 80% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+		pointer-events: none;
+	}
+	
+	.beehiiv-content {
+		position: relative;
+		z-index: 1;
+		margin-bottom: var(--space-8);
+	}
+	
+	.beehiiv-title {
+		color: var(--color-white);
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-bold);
+		margin-bottom: var(--space-4);
+		letter-spacing: -0.02em;
+	}
+	
+	.beehiiv-description {
+		color: var(--color-gray-200);
+		font-size: var(--font-size-lg);
+		line-height: var(--line-height-relaxed);
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.beehiiv-embed-wrapper {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.beehiiv-embed {
+		max-width: 100%;
+		background-color: var(--color-white);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	/* Compact variant for blog posts */
+	.beehiiv-compact {
+		padding: var(--space-8) var(--space-6);
+	}
+	
+	.beehiiv-compact .beehiiv-title {
+		font-size: var(--font-size-2xl);
+	}
+	
+	.beehiiv-compact .beehiiv-description {
+		font-size: var(--font-size-base);
+		margin-bottom: 0;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.beehiiv-container {
+			padding: var(--space-8) var(--space-6);
+		}
+		
+		.beehiiv-title {
+			font-size: var(--font-size-2xl);
+		}
+		
+		.beehiiv-description {
+			font-size: var(--font-size-base);
+		}
+		
+		.beehiiv-compact .beehiiv-title {
+			font-size: var(--font-size-xl);
+		}
+	}
+</style>

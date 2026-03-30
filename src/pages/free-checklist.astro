@@ -1,0 +1,368 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BeehiivEmbed from '../components/BeehiivEmbed.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead 
+			title={`Free SEO Checklist | ${SITE_TITLE}`} 
+			description="Get our comprehensive DIY SEO checklist. Everything you need to optimize your website and rank higher on Google, step-by-step." 
+		/>
+	</head>
+	<body>
+		<Header />
+		
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<span class="hero-badge">🎁 Free Resource</span>
+				<h1 class="hero-headline">
+					Free DIY SEO Checklist
+				</h1>
+				<p class="hero-subheadline">
+					Get our comprehensive SEO checklist used by 1,000+ small business owners. Everything you need to optimize your website and rank higher on Google—broken down into simple, actionable steps.
+				</p>
+			</div>
+		</section>
+		
+		<!-- What's Included -->
+		<section class="whats-included">
+			<div class="container">
+				<h2 class="section-title">What's Inside the Checklist</h2>
+				<div class="features-grid">
+					<div class="feature">
+						<div class="feature-icon">📋</div>
+						<h3>90-Day Action Plan</h3>
+						<p>A structured timeline showing exactly what to do each month to improve your SEO results.</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">🔧</div>
+						<h3>Technical SEO Checklist</h3>
+						<p>Step-by-step guide to fix the technical issues holding your website back from ranking.</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">📝</div>
+						<h3>On-Page Optimization Guide</h3>
+						<p>Proven tactics for optimizing your content, titles, headings, and meta descriptions.</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">📍</div>
+						<h3>Local SEO Tasks</h3>
+						<p>Complete checklist for local businesses to dominate Google Maps and local search.</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">🔗</div>
+						<h3>Link Building Strategy</h3>
+						<p>Ethical, effective tactics for earning high-quality backlinks that boost your rankings.</p>
+					</div>
+					<div class="feature">
+						<div class="feature-icon">📊</div>
+						<h3>Tracking & Analytics Setup</h3>
+						<p>How to properly track your SEO progress using Google Analytics and Search Console.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- CTA Section -->
+		<section class="cta-section">
+			<div class="container-narrow">
+				<BeehiivEmbed 
+					title="📥 Get Your Free SEO Checklist" 
+					description="Enter your email below to get instant access to the complete DIY SEO checklist + join our weekly newsletter with actionable SEO tips."
+				/>
+			</div>
+		</section>
+		
+		<!-- Why This Works -->
+		<section class="why-works">
+			<div class="container">
+				<h2 class="section-title">Why This Checklist Works</h2>
+				<div class="reasons">
+					<div class="reason">
+						<h3>✓ No Overwhelm</h3>
+						<p>We've broken down complex SEO strategies into simple, bite-sized tasks anyone can follow.</p>
+					</div>
+					<div class="reason">
+						<h3>✓ Proven Results</h3>
+						<p>This is the exact checklist I use with consulting clients who pay $197/hour for my expertise.</p>
+					</div>
+					<div class="reason">
+						<h3>✓ No Fluff</h3>
+						<p>Every item on this checklist is something that actually moves the needle for small business SEO.</p>
+					</div>
+					<div class="reason">
+						<h3>✓ DIY Friendly</h3>
+						<p>You don't need to hire an agency. This checklist empowers you to do it yourself and save thousands.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Final CTA -->
+		<section class="final-cta">
+			<div class="container">
+				<div class="cta-card">
+					<h2>Ready to Take Control of Your SEO?</h2>
+					<p>Get the free checklist and start ranking higher on Google today.</p>
+					<a href="#cta-section" class="btn btn-accent btn-large">Get Your Free Checklist</a>
+				</div>
+			</div>
+		</section>
+		
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* Hero Section */
+	.hero {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-accent-dark) 100%);
+		padding: var(--space-20) var(--space-4) var(--space-24);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+			radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+		pointer-events: none;
+	}
+	
+	.hero-content {
+		max-width: 800px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		padding: var(--space-2) var(--space-5);
+		background-color: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(10px);
+		color: var(--color-accent-light);
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-bold);
+		border-radius: var(--radius-full);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		margin-bottom: var(--space-6);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	
+	.hero-headline {
+		font-size: var(--font-size-6xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-tight);
+		color: var(--color-white);
+		margin-bottom: var(--space-6);
+		letter-spacing: -0.03em;
+		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	}
+	
+	.hero-subheadline {
+		font-size: var(--font-size-xl);
+		line-height: var(--line-height-relaxed);
+		color: var(--color-gray-200);
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	
+	/* What's Included */
+	.whats-included {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.section-title {
+		text-align: center;
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-12);
+	}
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-8);
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.feature {
+		padding: var(--space-8);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		border: 2px solid var(--color-gray-200);
+		transition: all 0.3s ease;
+	}
+	
+	.feature:hover {
+		border-color: var(--color-accent);
+		box-shadow: var(--shadow-xl);
+		transform: translateY(-4px);
+	}
+	
+	.feature-icon {
+		font-size: 3rem;
+		margin-bottom: var(--space-4);
+	}
+	
+	.feature h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.feature p {
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin: 0;
+	}
+	
+	/* CTA Section */
+	.cta-section {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-gray-50);
+	}
+	
+	.container-narrow {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	/* Why Works */
+	.why-works {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.reasons {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: var(--space-8);
+		max-width: var(--container-lg);
+		margin: 0 auto;
+	}
+	
+	.reason {
+		text-align: center;
+		padding: var(--space-6);
+	}
+	
+	.reason h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-3);
+	}
+	
+	.reason p {
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+		margin: 0;
+	}
+	
+	/* Final CTA */
+	.final-cta {
+		padding: var(--space-20) var(--space-4);
+		background-color: var(--color-gray-50);
+	}
+	
+	.cta-card {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--space-12);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-2xl);
+	}
+	
+	.cta-card h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.cta-card p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-200);
+		margin-bottom: var(--space-8);
+	}
+	
+	.btn-large {
+		padding: var(--space-5) var(--space-10);
+		font-size: var(--font-size-xl);
+	}
+	
+	.btn-accent {
+		background-color: var(--color-accent);
+		color: var(--color-white);
+		box-shadow: var(--shadow-lg);
+		text-decoration: none;
+		display: inline-block;
+		border-radius: var(--radius-lg);
+		font-weight: var(--font-weight-bold);
+		transition: all 0.2s ease;
+	}
+	
+	.btn-accent:hover {
+		background-color: var(--color-accent-light);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-xl);
+		text-decoration: none;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero {
+			padding: var(--space-16) var(--space-4) var(--space-20);
+		}
+		
+		.hero-headline {
+			font-size: var(--font-size-4xl);
+		}
+		
+		.hero-subheadline {
+			font-size: var(--font-size-lg);
+		}
+		
+		.whats-included,
+		.cta-section,
+		.why-works,
+		.final-cta {
+			padding: var(--space-12) var(--space-4);
+		}
+		
+		.section-title {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.features-grid,
+		.reasons {
+			grid-template-columns: 1fr;
+		}
+		
+		.cta-card h2 {
+			font-size: var(--font-size-3xl);
+		}
+		
+		.cta-card p {
+			font-size: var(--font-size-lg);
+		}
+	}
+</style>
