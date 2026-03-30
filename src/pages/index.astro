@@ -59,27 +59,30 @@ const posts = (await getCollection('blog'))
 				</div>
 				
 				<div class="posts-grid">
-					{posts.map((post) => (
-						<article class="post-card">
-							<div class="post-card-content">
-								<time class="post-date">
-									<FormattedDate date={post.data.pubDate} />
-								</time>
-								<h3 class="post-title">
-									<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-								</h3>
-								<p class="post-description">{post.data.description}</p>
-								<div class="post-tags">
-									{post.data.tags?.slice(0, 3).map((tag: string) => (
-										<span class="tag">{tag}</span>
-									))}
+					{posts.map((post) => {
+						const slug = post.id.replace(/\.mdx?$/, '');
+						return (
+							<article class="post-card">
+								<div class="post-card-content">
+									<time class="post-date">
+										<FormattedDate date={post.data.pubDate} />
+									</time>
+									<h3 class="post-title">
+										<a href={`/blog/${slug}/`}>{post.data.title}</a>
+									</h3>
+									<p class="post-description">{post.data.description}</p>
+									<div class="post-tags">
+										{post.data.tags?.slice(0, 3).map((tag: string) => (
+											<span class="tag">{tag}</span>
+										))}
+									</div>
+									<a href={`/blog/${slug}/`} class="post-link">
+										Read Guide →
+									</a>
 								</div>
-								<a href={`/blog/${post.slug}/`} class="post-link">
-									Read Guide →
-								</a>
-							</div>
-						</article>
-					))}
+							</article>
+						);
+					})}
 				</div>
 				
 				<div class="section-cta">
