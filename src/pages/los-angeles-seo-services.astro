@@ -1,0 +1,1287 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Los Angeles SEO Services | Local SEO Consultant | Your Friendly SEO";
+const description = "Expert SEO services for Los Angeles businesses. Get found by local customers with proven local SEO strategies. Free SEO cost calculator included. Serving LA, Hollywood, Santa Monica, Pasadena & beyond.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		
+		<!-- Local SEO Meta Tags -->
+		<meta name="geo.region" content="US-CA" />
+		<meta name="geo.placename" content="Los Angeles" />
+		<meta name="geo.position" content="34.0522;-118.2437" />
+		<meta name="ICBM" content="34.0522, -118.2437" />
+		
+		<!-- LocalBusiness Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"@id": "https://yourfriendlyseo.com/#localbusiness",
+			"name": "Your Friendly SEO",
+			"description": "Expert SEO services for Los Angeles small businesses. Local SEO, technical SEO, and content strategy.",
+			"url": "https://yourfriendlyseo.com",
+			"telephone": "",
+			"email": "hello@yourfriendlyseo.com",
+			"areaServed": [
+				{
+					"@type": "City",
+					"name": "Los Angeles",
+					"sameAs": "https://en.wikipedia.org/wiki/Los_Angeles"
+				},
+				{
+					"@type": "City",
+					"name": "Santa Monica"
+				},
+				{
+					"@type": "City",
+					"name": "Pasadena"
+				},
+				{
+					"@type": "City",
+					"name": "Glendale"
+				},
+				{
+					"@type": "City",
+					"name": "Burbank"
+				},
+				{
+					"@type": "City",
+					"name": "Long Beach"
+				}
+			],
+			"priceRange": "$$",
+			"openingHoursSpecification": {
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+				"opens": "09:00",
+				"closes": "17:00"
+			}
+		}
+		</script>
+		
+		<!-- Service Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Service",
+			"serviceType": "SEO Services",
+			"provider": {
+				"@type": "LocalBusiness",
+				"name": "Your Friendly SEO"
+			},
+			"areaServed": {
+				"@type": "City",
+				"name": "Los Angeles",
+				"addressRegion": "CA",
+				"addressCountry": "US"
+			},
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "SEO Services",
+				"itemListElement": [
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Local SEO",
+							"description": "Optimize your Google Business Profile and local search presence"
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Technical SEO",
+							"description": "Site speed, mobile optimization, and technical audits"
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Content Strategy",
+							"description": "Keyword research and content optimization"
+						}
+					}
+				]
+			}
+		}
+		</script>
+		
+		<!-- FAQ Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "How much do SEO services cost in Los Angeles?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "SEO services in Los Angeles typically range from $500 to $5,000+ per month depending on your business size, competition level, and goals. Small local businesses usually invest $500-$1,500/month, while competitive industries may require $2,000-$5,000+/month. Use our free calculator above for a personalized estimate."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "How long does SEO take to show results in LA?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Most Los Angeles businesses see initial improvements within 3-6 months, with significant results typically appearing at 6-12 months. Local SEO for less competitive niches can show faster results (2-4 months), while competitive industries like law, real estate, or medical may take 9-12+ months."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "What areas of Los Angeles do you serve?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "We serve businesses throughout Los Angeles County including Downtown LA, Hollywood, Santa Monica, Pasadena, Glendale, Burbank, Long Beach, Beverly Hills, West Hollywood, Culver City, Venice, Marina del Rey, and surrounding areas."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Do I need local SEO for my Los Angeles business?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "If you serve customers in a specific geographic area (like LA or nearby cities), local SEO is essential. It helps you appear in Google Maps, local pack results, and 'near me' searches. For LA businesses, local SEO typically delivers the fastest ROI."
+					}
+				}
+			]
+		}
+		</script>
+	</head>
+	<body>
+		<Header />
+		
+		<!-- Hero Section -->
+		<section class="hero-local">
+			<div class="hero-content">
+				<span class="hero-badge">📍 Serving Los Angeles & Surrounding Areas</span>
+				<h1>Los Angeles SEO Services</h1>
+				<p class="hero-subtitle">
+					Help local customers find your business on Google. Expert SEO strategies tailored for LA small businesses — from Hollywood to Long Beach.
+				</p>
+				<div class="hero-ctas">
+					<a href="#calculator" class="btn btn-primary btn-large">Calculate Your SEO Cost</a>
+					<a href="/consultation" class="btn btn-outline btn-large">Book Free Consultation</a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Trust Bar -->
+		<section class="trust-bar">
+			<div class="container">
+				<div class="trust-items">
+					<div class="trust-item">
+						<span class="trust-icon">✓</span>
+						<span>10+ Years Experience</span>
+					</div>
+					<div class="trust-item">
+						<span class="trust-icon">✓</span>
+						<span>100+ LA Businesses Helped</span>
+					</div>
+					<div class="trust-item">
+						<span class="trust-icon">✓</span>
+						<span>Transparent Pricing</span>
+					</div>
+					<div class="trust-item">
+						<span class="trust-icon">✓</span>
+						<span>No Long-Term Contracts</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- SEO Calculator Section -->
+		<section class="calculator-section" id="calculator">
+			<div class="container">
+				<div class="section-header">
+					<h2>SEO Cost Calculator</h2>
+					<p>Get an instant estimate for your Los Angeles business. No email required.</p>
+				</div>
+				
+				<form class="calculator-form" id="seo-calculator">
+					<!-- Business Type -->
+					<fieldset class="calc-fieldset">
+						<legend>What type of business do you have?</legend>
+						<div class="radio-grid">
+							<label class="radio-card">
+								<input type="radio" name="business_type" value="local_service" checked>
+								<span class="radio-content">
+									<span class="radio-icon">🔧</span>
+									<span class="radio-label">Local Service</span>
+									<span class="radio-desc">Plumber, HVAC, Landscaping, etc.</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="business_type" value="retail">
+								<span class="radio-content">
+									<span class="radio-icon">🏪</span>
+									<span class="radio-label">Retail / Restaurant</span>
+									<span class="radio-desc">Physical storefront location</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="business_type" value="professional">
+								<span class="radio-content">
+									<span class="radio-icon">💼</span>
+									<span class="radio-label">Professional Services</span>
+									<span class="radio-desc">Law, Medical, Accounting, etc.</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="business_type" value="ecommerce">
+								<span class="radio-content">
+									<span class="radio-icon">🛒</span>
+									<span class="radio-label">E-commerce</span>
+									<span class="radio-desc">Online store with products</span>
+								</span>
+							</label>
+						</div>
+					</fieldset>
+					
+					<!-- Competition Level -->
+					<fieldset class="calc-fieldset">
+						<legend>How competitive is your industry in LA?</legend>
+						<div class="radio-grid">
+							<label class="radio-card">
+								<input type="radio" name="competition" value="low" checked>
+								<span class="radio-content">
+									<span class="radio-icon">🟢</span>
+									<span class="radio-label">Low Competition</span>
+									<span class="radio-desc">Niche services, few competitors</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="competition" value="medium">
+								<span class="radio-content">
+									<span class="radio-icon">🟡</span>
+									<span class="radio-label">Medium Competition</span>
+									<span class="radio-desc">Some established players</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="competition" value="high">
+								<span class="radio-content">
+									<span class="radio-icon">🔴</span>
+									<span class="radio-label">High Competition</span>
+									<span class="radio-desc">Many competitors, aggressive market</span>
+								</span>
+							</label>
+						</div>
+					</fieldset>
+					
+					<!-- Current Website Status -->
+					<fieldset class="calc-fieldset">
+						<legend>What's the current state of your website?</legend>
+						<div class="radio-grid">
+							<label class="radio-card">
+								<input type="radio" name="website_status" value="none">
+								<span class="radio-content">
+									<span class="radio-icon">🚫</span>
+									<span class="radio-label">No Website</span>
+									<span class="radio-desc">Need to build from scratch</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="website_status" value="basic" checked>
+								<span class="radio-content">
+									<span class="radio-icon">📄</span>
+									<span class="radio-label">Basic Website</span>
+									<span class="radio-desc">Have a site, needs SEO work</span>
+								</span>
+							</label>
+							<label class="radio-card">
+								<input type="radio" name="website_status" value="established">
+								<span class="radio-content">
+									<span class="radio-icon">🏢</span>
+									<span class="radio-label">Established Site</span>
+									<span class="radio-desc">Good foundation, need optimization</span>
+								</span>
+							</label>
+						</div>
+					</fieldset>
+					
+					<!-- Services Needed -->
+					<fieldset class="calc-fieldset">
+						<legend>Which services do you need?</legend>
+						<div class="checkbox-grid">
+							<label class="checkbox-card">
+								<input type="checkbox" name="services" value="local_seo" checked>
+								<span class="checkbox-content">
+									<span class="checkbox-icon">📍</span>
+									<span class="checkbox-label">Local SEO</span>
+									<span class="checkbox-desc">Google Business Profile, local rankings</span>
+								</span>
+							</label>
+							<label class="checkbox-card">
+								<input type="checkbox" name="services" value="technical_seo">
+								<span class="checkbox-content">
+									<span class="checkbox-icon">⚙️</span>
+									<span class="checkbox-label">Technical SEO</span>
+									<span class="checkbox-desc">Site speed, mobile, crawlability</span>
+								</span>
+							</label>
+							<label class="checkbox-card">
+								<input type="checkbox" name="services" value="content">
+								<span class="checkbox-content">
+									<span class="checkbox-icon">✍️</span>
+									<span class="checkbox-label">Content Strategy</span>
+									<span class="checkbox-desc">Blog posts, service pages</span>
+								</span>
+							</label>
+							<label class="checkbox-card">
+								<input type="checkbox" name="services" value="link_building">
+								<span class="checkbox-content">
+									<span class="checkbox-icon">🔗</span>
+									<span class="checkbox-label">Link Building</span>
+									<span class="checkbox-desc">Quality backlinks, citations</span>
+								</span>
+							</label>
+						</div>
+					</fieldset>
+					
+					<!-- Timeline -->
+					<fieldset class="calc-fieldset">
+						<legend>How quickly do you want results?</legend>
+						<div class="range-container">
+							<input type="range" name="timeline" min="1" max="3" value="2" class="range-input" id="timeline-range">
+							<div class="range-labels">
+								<span data-value="1">Aggressive<br><small>3-6 months</small></span>
+								<span data-value="2">Standard<br><small>6-9 months</small></span>
+								<span data-value="3">Budget-Friendly<br><small>9-12 months</small></span>
+							</div>
+						</div>
+					</fieldset>
+					
+					<!-- Results Display -->
+					<div class="calculator-results" id="calc-results">
+						<div class="results-header">
+							<h3>Your Estimated SEO Investment</h3>
+							<p>Based on your Los Angeles business profile</p>
+						</div>
+						
+						<div class="results-grid">
+							<div class="result-card result-primary">
+								<span class="result-label">Monthly Investment</span>
+								<span class="result-value" id="monthly-cost">$750 - $1,500</span>
+								<span class="result-note">Typical range for your profile</span>
+							</div>
+							<div class="result-card">
+								<span class="result-label">Initial Setup</span>
+								<span class="result-value" id="setup-cost">$500 - $1,000</span>
+								<span class="result-note">One-time audit & strategy</span>
+							</div>
+							<div class="result-card">
+								<span class="result-label">Time to Results</span>
+								<span class="result-value" id="time-results">4-6 months</span>
+								<span class="result-note">For measurable improvement</span>
+							</div>
+						</div>
+						
+						<div class="results-breakdown" id="results-breakdown">
+							<h4>What's Included at This Level:</h4>
+							<ul id="included-services">
+								<li>✓ Google Business Profile optimization</li>
+								<li>✓ Local citation building (20+ directories)</li>
+								<li>✓ On-page SEO for top service pages</li>
+								<li>✓ Monthly performance reporting</li>
+							</ul>
+						</div>
+						
+						<div class="results-cta">
+							<a href="/consultation" class="btn btn-primary btn-large">Get Your Custom Quote</a>
+							<p class="results-disclaimer">This is an estimate. Actual pricing depends on your specific situation.</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+		
+		<!-- Services Section -->
+		<section class="services-section">
+			<div class="container">
+				<div class="section-header">
+					<h2>SEO Services for Los Angeles Businesses</h2>
+					<p>Proven strategies to help your business dominate local search results</p>
+				</div>
+				
+				<div class="services-grid">
+					<article class="service-card">
+						<div class="service-icon">📍</div>
+						<h3>Local SEO</h3>
+						<p>Get found in "near me" searches and Google Maps. We optimize your Google Business Profile, build local citations, and help you dominate the local pack.</p>
+						<ul class="service-features">
+							<li>Google Business Profile optimization</li>
+							<li>Local keyword targeting</li>
+							<li>Citation building (50+ directories)</li>
+							<li>Review generation strategy</li>
+							<li>Local link building</li>
+						</ul>
+						<p class="service-price">Starting at <strong>$500/month</strong></p>
+					</article>
+					
+					<article class="service-card">
+						<div class="service-icon">⚙️</div>
+						<h3>Technical SEO</h3>
+						<p>Fix the hidden issues hurting your rankings. Site speed, mobile optimization, indexing problems — we handle the technical stuff so you don't have to.</p>
+						<ul class="service-features">
+							<li>Comprehensive site audit</li>
+							<li>Page speed optimization</li>
+							<li>Mobile-first optimization</li>
+							<li>Schema markup implementation</li>
+							<li>Crawl error resolution</li>
+						</ul>
+						<p class="service-price">Starting at <strong>$750/month</strong></p>
+					</article>
+					
+					<article class="service-card">
+						<div class="service-icon">✍️</div>
+						<h3>Content Strategy</h3>
+						<p>Rank for the keywords your customers are searching. We research, plan, and create content that attracts qualified traffic and converts visitors.</p>
+						<ul class="service-features">
+							<li>Keyword research & mapping</li>
+							<li>Content calendar planning</li>
+							<li>Service page optimization</li>
+							<li>Blog content strategy</li>
+							<li>On-page optimization</li>
+						</ul>
+						<p class="service-price">Starting at <strong>$1,000/month</strong></p>
+					</article>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Areas Served Section -->
+		<section class="areas-section">
+			<div class="container">
+				<h2>SEO Services Throughout Los Angeles County</h2>
+				<p class="areas-intro">We help businesses across the greater Los Angeles area improve their online visibility and attract more local customers.</p>
+				
+				<div class="areas-grid">
+					<div class="area-group">
+						<h3>Central LA</h3>
+						<ul>
+							<li>Downtown Los Angeles</li>
+							<li>Hollywood</li>
+							<li>Koreatown</li>
+							<li>Silver Lake</li>
+							<li>Echo Park</li>
+							<li>Los Feliz</li>
+						</ul>
+					</div>
+					<div class="area-group">
+						<h3>Westside</h3>
+						<ul>
+							<li>Santa Monica</li>
+							<li>Venice</li>
+							<li>Culver City</li>
+							<li>Marina del Rey</li>
+							<li>Beverly Hills</li>
+							<li>West Hollywood</li>
+						</ul>
+					</div>
+					<div class="area-group">
+						<h3>San Fernando Valley</h3>
+						<ul>
+							<li>Burbank</li>
+							<li>Glendale</li>
+							<li>Pasadena</li>
+							<li>North Hollywood</li>
+							<li>Sherman Oaks</li>
+							<li>Encino</li>
+						</ul>
+					</div>
+					<div class="area-group">
+						<h3>South Bay & Beyond</h3>
+						<ul>
+							<li>Long Beach</li>
+							<li>Torrance</li>
+							<li>Redondo Beach</li>
+							<li>Manhattan Beach</li>
+							<li>El Segundo</li>
+							<li>Inglewood</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- FAQ Section -->
+		<section class="faq-section">
+			<div class="container">
+				<div class="section-header">
+					<h2>Frequently Asked Questions</h2>
+					<p>Common questions about SEO services in Los Angeles</p>
+				</div>
+				
+				<div class="faq-grid">
+					<details class="faq-item">
+						<summary>How much do SEO services cost in Los Angeles?</summary>
+						<div class="faq-answer">
+							<p>SEO services in Los Angeles typically range from <strong>$500 to $5,000+ per month</strong> depending on your business size, competition level, and goals.</p>
+							<ul>
+								<li><strong>Small local businesses:</strong> $500-$1,500/month</li>
+								<li><strong>Medium businesses:</strong> $1,500-$3,000/month</li>
+								<li><strong>Competitive industries:</strong> $3,000-$5,000+/month</li>
+							</ul>
+							<p>Use our <a href="#calculator">free calculator above</a> for a personalized estimate.</p>
+						</div>
+					</details>
+					
+					<details class="faq-item">
+						<summary>How long does SEO take to show results in LA?</summary>
+						<div class="faq-answer">
+							<p>Most Los Angeles businesses see:</p>
+							<ul>
+								<li><strong>Initial improvements:</strong> 3-6 months</li>
+								<li><strong>Significant results:</strong> 6-12 months</li>
+								<li><strong>Competitive industries:</strong> 9-12+ months</li>
+							</ul>
+							<p>Local SEO typically shows faster results than organic SEO for competitive keywords. Factors like your current website health, competition level, and budget all affect timeline.</p>
+						</div>
+					</details>
+					
+					<details class="faq-item">
+						<summary>What areas of Los Angeles do you serve?</summary>
+						<div class="faq-answer">
+							<p>We serve businesses throughout <strong>Los Angeles County</strong> including:</p>
+							<p>Downtown LA, Hollywood, Santa Monica, Pasadena, Glendale, Burbank, Long Beach, Beverly Hills, West Hollywood, Culver City, Venice, Marina del Rey, Sherman Oaks, Encino, and all surrounding areas.</p>
+							<p>We work with clients both in-person and remotely.</p>
+						</div>
+					</details>
+					
+					<details class="faq-item">
+						<summary>Do I need local SEO for my Los Angeles business?</summary>
+						<div class="faq-answer">
+							<p>If you serve customers in a specific geographic area, <strong>local SEO is essential</strong>. It helps you appear in:</p>
+							<ul>
+								<li>Google Maps results</li>
+								<li>Local pack (top 3 map listings)</li>
+								<li>"Near me" searches</li>
+								<li>Location-based queries</li>
+							</ul>
+							<p>For LA businesses, local SEO typically delivers the fastest ROI because you're targeting customers actively looking for services in your area.</p>
+						</div>
+					</details>
+					
+					<details class="faq-item">
+						<summary>What makes LA SEO different from other markets?</summary>
+						<div class="faq-answer">
+							<p>Los Angeles has unique SEO challenges:</p>
+							<ul>
+								<li><strong>High competition:</strong> LA is one of the most competitive markets in the US</li>
+								<li><strong>Diverse neighborhoods:</strong> Each area (DTLA, Westside, Valley) has different search patterns</li>
+								<li><strong>Multiple service areas:</strong> Many businesses serve several cities/neighborhoods</li>
+								<li><strong>Traffic patterns:</strong> "Near me" searches are huge because LA is so spread out</li>
+							</ul>
+							<p>We tailor our strategies specifically for the LA market.</p>
+						</div>
+					</details>
+					
+					<details class="faq-item">
+						<summary>Do you require long-term contracts?</summary>
+						<div class="faq-answer">
+							<p><strong>No long-term contracts required.</strong> We offer month-to-month SEO services because we believe in earning your business every month.</p>
+							<p>That said, SEO is a long-term investment. We recommend committing to at least 6 months to see meaningful results, but you're never locked in.</p>
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		
+		<!-- CTA Section -->
+		<section class="cta-section">
+			<div class="container">
+				<div class="cta-content">
+					<h2>Ready to Grow Your Los Angeles Business?</h2>
+					<p>Get a free SEO consultation and discover how we can help you rank higher, attract more customers, and grow your revenue.</p>
+					<div class="cta-buttons">
+						<a href="/consultation" class="btn btn-primary btn-large">Book Free Consultation</a>
+						<a href="/free-checklist" class="btn btn-outline btn-large">Download Free SEO Checklist</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<Footer />
+		
+		<!-- Calculator JavaScript (minimal, progressive enhancement) -->
+		<script>
+			const calculator = document.getElementById('seo-calculator');
+			const monthlyCost = document.getElementById('monthly-cost');
+			const setupCost = document.getElementById('setup-cost');
+			const timeResults = document.getElementById('time-results');
+			const includedServices = document.getElementById('included-services');
+			
+			// Pricing matrix
+			const pricing = {
+				business_type: {
+					local_service: { base: 600, multiplier: 1 },
+					retail: { base: 500, multiplier: 0.9 },
+					professional: { base: 1000, multiplier: 1.3 },
+					ecommerce: { base: 800, multiplier: 1.2 }
+				},
+				competition: {
+					low: { multiplier: 0.8, time: '3-5' },
+					medium: { multiplier: 1, time: '4-7' },
+					high: { multiplier: 1.5, time: '6-10' }
+				},
+				website_status: {
+					none: { setup: 1500, modifier: 1.2 },
+					basic: { setup: 750, modifier: 1 },
+					established: { setup: 500, modifier: 0.9 }
+				},
+				services: {
+					local_seo: 400,
+					technical_seo: 350,
+					content: 500,
+					link_building: 400
+				},
+				timeline: {
+					1: { multiplier: 1.4, label: '3-5 months' },
+					2: { multiplier: 1, label: '5-8 months' },
+					3: { multiplier: 0.7, label: '8-12 months' }
+				}
+			};
+			
+			function calculateCost() {
+				const formData = new FormData(calculator);
+				
+				// Get selections
+				const businessType = formData.get('business_type') || 'local_service';
+				const competition = formData.get('competition') || 'low';
+				const websiteStatus = formData.get('website_status') || 'basic';
+				const timeline = formData.get('timeline') || '2';
+				const selectedServices = formData.getAll('services');
+				
+				// Calculate base from business type
+				let base = pricing.business_type[businessType].base;
+				
+				// Add service costs
+				let serviceCost = 0;
+				selectedServices.forEach(service => {
+					serviceCost += pricing.services[service] || 0;
+				});
+				
+				// If no services selected, use base
+				if (serviceCost === 0) serviceCost = 400;
+				
+				// Apply multipliers
+				let monthly = (base + serviceCost) 
+					* pricing.competition[competition].multiplier 
+					* pricing.website_status[websiteStatus].modifier
+					* pricing.timeline[timeline].multiplier;
+				
+				// Calculate range
+				let monthlyLow = Math.round(monthly * 0.8 / 50) * 50;
+				let monthlyHigh = Math.round(monthly * 1.3 / 50) * 50;
+				
+				// Setup cost
+				let setup = pricing.website_status[websiteStatus].setup;
+				let setupLow = Math.round(setup * 0.8 / 100) * 100;
+				let setupHigh = Math.round(setup * 1.3 / 100) * 100;
+				
+				// Time to results
+				let timeBase = pricing.competition[competition].time;
+				
+				// Update display
+				monthlyCost.textContent = `$${monthlyLow.toLocaleString()} - $${monthlyHigh.toLocaleString()}`;
+				setupCost.textContent = `$${setupLow.toLocaleString()} - $${setupHigh.toLocaleString()}`;
+				timeResults.textContent = `${timeBase} months`;
+				
+				// Update included services
+				let servicesList = [];
+				if (selectedServices.includes('local_seo')) {
+					servicesList.push('<li>✓ Google Business Profile optimization</li>');
+					servicesList.push('<li>✓ Local citation building (20+ directories)</li>');
+				}
+				if (selectedServices.includes('technical_seo')) {
+					servicesList.push('<li>✓ Technical site audit & fixes</li>');
+					servicesList.push('<li>✓ Page speed optimization</li>');
+				}
+				if (selectedServices.includes('content')) {
+					servicesList.push('<li>✓ Keyword research & strategy</li>');
+					servicesList.push('<li>✓ Content optimization</li>');
+				}
+				if (selectedServices.includes('link_building')) {
+					servicesList.push('<li>✓ Quality backlink acquisition</li>');
+					servicesList.push('<li>✓ Local link building</li>');
+				}
+				servicesList.push('<li>✓ Monthly performance reporting</li>');
+				
+				includedServices.innerHTML = servicesList.join('');
+			}
+			
+			// Listen for changes
+			calculator.addEventListener('change', calculateCost);
+			calculator.addEventListener('input', calculateCost);
+			
+			// Initial calculation
+			calculateCost();
+		</script>
+	</body>
+</html>
+
+<style>
+	/* Hero Section */
+	.hero-local {
+		background: linear-gradient(135deg, var(--color-primary) 0%, #1a365d 50%, var(--color-accent-dark) 100%);
+		padding: var(--space-16) var(--space-4) var(--space-20);
+		text-align: center;
+	}
+	
+	.hero-badge {
+		display: inline-block;
+		padding: var(--space-2) var(--space-4);
+		background-color: rgba(255, 255, 255, 0.15);
+		color: var(--color-white);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+		border-radius: var(--radius-full);
+		margin-bottom: var(--space-6);
+		backdrop-filter: blur(10px);
+	}
+	
+	.hero-local h1 {
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		color: var(--color-white);
+		margin-bottom: var(--space-6);
+		line-height: var(--line-height-tight);
+	}
+	
+	.hero-subtitle {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-200);
+		max-width: 700px;
+		margin: 0 auto var(--space-8);
+		line-height: var(--line-height-relaxed);
+	}
+	
+	.hero-ctas {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.btn-large {
+		padding: var(--space-4) var(--space-8);
+		font-size: var(--font-size-lg);
+	}
+	
+	/* Trust Bar */
+	.trust-bar {
+		background-color: var(--color-gray-900);
+		padding: var(--space-4);
+	}
+	
+	.trust-items {
+		display: flex;
+		justify-content: center;
+		gap: var(--space-8);
+		flex-wrap: wrap;
+	}
+	
+	.trust-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		color: var(--color-gray-300);
+		font-size: var(--font-size-sm);
+	}
+	
+	.trust-icon {
+		color: var(--color-accent);
+	}
+	
+	/* Calculator Section */
+	.calculator-section {
+		padding: var(--space-16) var(--space-4);
+		background-color: var(--color-gray-50);
+	}
+	
+	.container {
+		max-width: var(--container-xl);
+		margin: 0 auto;
+	}
+	
+	.section-header {
+		text-align: center;
+		margin-bottom: var(--space-12);
+	}
+	
+	.section-header h2 {
+		font-size: var(--font-size-4xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.section-header p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-600);
+	}
+	
+	.calculator-form {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	
+	.calc-fieldset {
+		border: none;
+		padding: 0;
+		margin: 0 0 var(--space-10);
+	}
+	
+	.calc-fieldset legend {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+		display: block;
+	}
+	
+	/* Radio/Checkbox Cards */
+	.radio-grid,
+	.checkbox-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: var(--space-4);
+	}
+	
+	.radio-card,
+	.checkbox-card {
+		display: block;
+		cursor: pointer;
+	}
+	
+	.radio-card input,
+	.checkbox-card input {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+	
+	.radio-content,
+	.checkbox-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: var(--space-6);
+		background-color: var(--color-white);
+		border: 2px solid var(--color-gray-200);
+		border-radius: var(--radius-lg);
+		transition: all 0.2s ease;
+	}
+	
+	.radio-card input:checked + .radio-content,
+	.checkbox-card input:checked + .checkbox-content {
+		border-color: var(--color-accent);
+		background-color: var(--color-accent-light);
+	}
+	
+	.radio-content:hover,
+	.checkbox-content:hover {
+		border-color: var(--color-accent);
+	}
+	
+	.radio-icon,
+	.checkbox-icon {
+		font-size: var(--font-size-3xl);
+		margin-bottom: var(--space-2);
+	}
+	
+	.radio-label,
+	.checkbox-label {
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-primary);
+		margin-bottom: var(--space-1);
+	}
+	
+	.radio-desc,
+	.checkbox-desc {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+	}
+	
+	/* Range Slider */
+	.range-container {
+		padding: var(--space-4) 0;
+	}
+	
+	.range-input {
+		width: 100%;
+		height: 8px;
+		border-radius: var(--radius-full);
+		background: var(--color-gray-200);
+		outline: none;
+		-webkit-appearance: none;
+	}
+	
+	.range-input::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background: var(--color-accent);
+		cursor: pointer;
+		box-shadow: var(--shadow-md);
+	}
+	
+	.range-labels {
+		display: flex;
+		justify-content: space-between;
+		margin-top: var(--space-4);
+	}
+	
+	.range-labels span {
+		text-align: center;
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+	}
+	
+	.range-labels small {
+		color: var(--color-gray-400);
+	}
+	
+	/* Calculator Results */
+	.calculator-results {
+		background-color: var(--color-white);
+		border: 2px solid var(--color-accent);
+		border-radius: var(--radius-xl);
+		padding: var(--space-8);
+		margin-top: var(--space-8);
+	}
+	
+	.results-header {
+		text-align: center;
+		margin-bottom: var(--space-8);
+	}
+	
+	.results-header h3 {
+		font-size: var(--font-size-2xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-2);
+	}
+	
+	.results-header p {
+		color: var(--color-gray-500);
+	}
+	
+	.results-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: var(--space-4);
+		margin-bottom: var(--space-8);
+	}
+	
+	.result-card {
+		text-align: center;
+		padding: var(--space-6);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-lg);
+	}
+	
+	.result-card.result-primary {
+		background-color: var(--color-accent-light);
+	}
+	
+	.result-label {
+		display: block;
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-500);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: var(--space-2);
+	}
+	
+	.result-value {
+		display: block;
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-primary);
+		margin-bottom: var(--space-1);
+	}
+	
+	.result-note {
+		font-size: var(--font-size-xs);
+		color: var(--color-gray-400);
+	}
+	
+	.results-breakdown {
+		padding: var(--space-6);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-lg);
+		margin-bottom: var(--space-6);
+	}
+	
+	.results-breakdown h4 {
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--space-4);
+	}
+	
+	.results-breakdown ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		columns: 2;
+	}
+	
+	.results-breakdown li {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+		margin-bottom: var(--space-2);
+	}
+	
+	.results-cta {
+		text-align: center;
+	}
+	
+	.results-disclaimer {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-400);
+		margin-top: var(--space-4);
+	}
+	
+	/* Services Section */
+	.services-section {
+		padding: var(--space-16) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-6);
+	}
+	
+	.service-card {
+		padding: var(--space-8);
+		background-color: var(--color-gray-50);
+		border-radius: var(--radius-xl);
+		border: 1px solid var(--color-gray-200);
+	}
+	
+	.service-icon {
+		font-size: var(--font-size-4xl);
+		margin-bottom: var(--space-4);
+	}
+	
+	.service-card h3 {
+		font-size: var(--font-size-2xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.service-card > p {
+		color: var(--color-gray-600);
+		margin-bottom: var(--space-6);
+	}
+	
+	.service-features {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 var(--space-6);
+	}
+	
+	.service-features li {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+		padding: var(--space-2) 0;
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	
+	.service-price {
+		font-size: var(--font-size-lg);
+		color: var(--color-primary);
+	}
+	
+	/* Areas Section */
+	.areas-section {
+		padding: var(--space-16) var(--space-4);
+		background-color: var(--color-gray-100);
+	}
+	
+	.areas-section h2 {
+		text-align: center;
+		font-size: var(--font-size-3xl);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+	}
+	
+	.areas-intro {
+		text-align: center;
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-600);
+		max-width: 700px;
+		margin: 0 auto var(--space-12);
+	}
+	
+	.areas-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: var(--space-8);
+	}
+	
+	.area-group h3 {
+		font-size: var(--font-size-lg);
+		color: var(--color-primary);
+		margin-bottom: var(--space-4);
+		padding-bottom: var(--space-2);
+		border-bottom: 2px solid var(--color-accent);
+	}
+	
+	.area-group ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.area-group li {
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+		padding: var(--space-2) 0;
+	}
+	
+	/* FAQ Section */
+	.faq-section {
+		padding: var(--space-16) var(--space-4);
+		background-color: var(--color-white);
+	}
+	
+	.faq-grid {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	.faq-item {
+		border-bottom: 1px solid var(--color-gray-200);
+	}
+	
+	.faq-item summary {
+		padding: var(--space-6) 0;
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-primary);
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+	
+	.faq-item summary::after {
+		content: '+';
+		font-size: var(--font-size-2xl);
+		color: var(--color-accent);
+	}
+	
+	.faq-item[open] summary::after {
+		content: '−';
+	}
+	
+	.faq-answer {
+		padding: 0 0 var(--space-6);
+		color: var(--color-gray-600);
+		line-height: var(--line-height-relaxed);
+	}
+	
+	.faq-answer ul {
+		margin: var(--space-4) 0;
+		padding-left: var(--space-6);
+	}
+	
+	.faq-answer li {
+		margin-bottom: var(--space-2);
+	}
+	
+	/* CTA Section */
+	.cta-section {
+		padding: var(--space-16) var(--space-4);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-dark) 100%);
+	}
+	
+	.cta-content {
+		text-align: center;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	
+	.cta-content h2 {
+		font-size: var(--font-size-3xl);
+		color: var(--color-white);
+		margin-bottom: var(--space-4);
+	}
+	
+	.cta-content p {
+		font-size: var(--font-size-xl);
+		color: var(--color-gray-200);
+		margin-bottom: var(--space-8);
+	}
+	
+	.cta-buttons {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero-local {
+			padding: var(--space-12) var(--space-4);
+		}
+		
+		.hero-ctas,
+		.cta-buttons {
+			flex-direction: column;
+		}
+		
+		.hero-ctas .btn,
+		.cta-buttons .btn {
+			width: 100%;
+		}
+		
+		.trust-items {
+			flex-direction: column;
+			gap: var(--space-4);
+			align-items: center;
+		}
+		
+		.radio-grid,
+		.checkbox-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+		
+		.results-breakdown ul {
+			columns: 1;
+		}
+		
+		.areas-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.radio-grid,
+		.checkbox-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.areas-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
