@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free DIY SEO Checklist - YourFriendlySEO.com</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #0F172A;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    @media print {
+      body { padding: 20px; font-size: 10px; }
+      .page-break { page-break-before: always; }
+      .no-print { display: none; }
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #F59E0B;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    
+    .logo span {
+      color: #F59E0B;
+    }
+    
+    .header-info {
+      text-align: right;
+      font-size: 10px;
+      color: #64748B;
+    }
+    
+    h1 {
+      font-size: 22px;
+      color: #0F172A;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #64748B;
+      margin-bottom: 25px;
+      font-size: 12px;
+    }
+    
+    h2 {
+      font-size: 14px;
+      color: #0F172A;
+      background: #F59E0B;
+      padding: 8px 12px;
+      margin: 20px 0 12px 0;
+      border-radius: 4px;
+    }
+    
+    h3 {
+      font-size: 12px;
+      color: #0F172A;
+      margin: 15px 0 8px 0;
+      padding-left: 8px;
+      border-left: 3px solid #F59E0B;
+    }
+    
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      padding: 4px 0;
+    }
+    
+    .checkbox {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #0F172A;
+      border-radius: 3px;
+      margin-right: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    
+    .section {
+      margin-bottom: 20px;
+    }
+    
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .highlight-box {
+      background: #FEF3C7;
+      border: 1px solid #F59E0B;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 15px 0;
+    }
+    
+    .highlight-box h3 {
+      border: none;
+      padding-left: 0;
+      margin-top: 0;
+    }
+    
+    .timeline {
+      background: #F1F5F9;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 15px 0;
+    }
+    
+    .timeline-item {
+      margin-bottom: 8px;
+      padding-left: 12px;
+      border-left: 2px solid #F59E0B;
+    }
+    
+    .timeline-item strong {
+      color: #F59E0B;
+    }
+    
+    .avoid-list li {
+      color: #DC2626;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    .tool-category {
+      background: #F8FAFC;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .tool-category h4 {
+      font-size: 11px;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    
+    .tool-category ul {
+      list-style: disc;
+      padding-left: 16px;
+      font-size: 10px;
+    }
+    
+    footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 2px solid #E2E8F0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #64748B;
+    }
+    
+    footer a {
+      color: #F59E0B;
+      text-decoration: none;
+    }
+    
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .cta-box {
+      background: #0F172A;
+      color: white;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .cta-box a {
+      color: #F59E0B;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Your<span>Friendly</span>SEO</div>
+    <div class="header-info">
+      <strong>Created by Emil Mequita</strong><br>
+      <a href="https://www.linkedin.com/in/emil-mequita/">linkedin.com/in/emil-mequita</a>
+    </div>
+  </header>
+
+  <h1>📋 Free DIY SEO Checklist</h1>
+  <p class="subtitle">Your complete step-by-step guide to optimizing your website for search engines</p>
+
+  <h2>✅ SETUP & FOUNDATION (Week 1)</h2>
+  
+  <div class="two-column">
+    <div class="section">
+      <h3>Google Tools Setup</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Create/claim Google Search Console account</li>
+        <li><div class="checkbox"></div>Verify website ownership in Search Console</li>
+        <li><div class="checkbox"></div>Set up Google Analytics (GA4)</li>
+        <li><div class="checkbox"></div>Link Google Analytics to Search Console</li>
+        <li><div class="checkbox"></div>Create/claim Google Business Profile</li>
+        <li><div class="checkbox"></div>Verify Google Business Profile</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Technical SEO Audit</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Test mobile-friendliness (Google Mobile Test)</li>
+        <li><div class="checkbox"></div>Check page speed (aim for 80+ on PageSpeed)</li>
+        <li><div class="checkbox"></div>Verify HTTPS is active</li>
+        <li><div class="checkbox"></div>Create/verify XML sitemap exists</li>
+        <li><div class="checkbox"></div>Submit sitemap to Search Console</li>
+        <li><div class="checkbox"></div>Create robots.txt file</li>
+        <li><div class="checkbox"></div>Check for crawl errors</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>🔍 KEYWORD RESEARCH (Week 2)</h2>
+  
+  <div class="two-column">
+    <div class="section">
+      <h3>Find Keywords</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Brainstorm 5-10 seed keywords</li>
+        <li><div class="checkbox"></div>Use Google autocomplete for long-tail ideas</li>
+        <li><div class="checkbox"></div>Check "People also ask" boxes</li>
+        <li><div class="checkbox"></div>Use AnswerThePublic for questions</li>
+        <li><div class="checkbox"></div>Review Search Console Performance report</li>
+        <li><div class="checkbox"></div>Identify 10-20 target keywords</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Analyze Competition</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Google your target keywords</li>
+        <li><div class="checkbox"></div>Analyze top 10 results</li>
+        <li><div class="checkbox"></div>Identify content gaps</li>
+        <li><div class="checkbox"></div>Note search intent for each keyword</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>📝 ON-PAGE SEO (Week 3)</h2>
+  
+  <div class="section">
+    <h3>Homepage Optimization</h3>
+    <ul class="checklist">
+      <li><div class="checkbox"></div>Title tag includes primary keyword (50-60 chars)</li>
+      <li><div class="checkbox"></div>Meta description is compelling (150-160 chars)</li>
+      <li><div class="checkbox"></div>URL is clean and descriptive</li>
+      <li><div class="checkbox"></div>H1 tag includes primary keyword</li>
+      <li><div class="checkbox"></div>Keyword appears in first 100 words</li>
+      <li><div class="checkbox"></div>Images have descriptive alt text</li>
+      <li><div class="checkbox"></div>Internal links to important pages</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Service/Product Pages (Repeat for Each)</h3>
+    <ul class="checklist">
+      <li><div class="checkbox"></div>Unique title tag with target keyword</li>
+      <li><div class="checkbox"></div>Unique meta description</li>
+      <li><div class="checkbox"></div>Content is 500+ words</li>
+      <li><div class="checkbox"></div>Images optimized with alt text</li>
+      <li><div class="checkbox"></div>Clear call-to-action (CTA)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Blog Posts</h3>
+    <ul class="checklist">
+      <li><div class="checkbox"></div>Title includes target keyword</li>
+      <li><div class="checkbox"></div>Use H2/H3 subheadings throughout</li>
+      <li><div class="checkbox"></div>1,500+ words for competitive topics</li>
+      <li><div class="checkbox"></div>2-5 internal links to related content</li>
+      <li><div class="checkbox"></div>1-3 external links to authoritative sources</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>🏠 LOCAL SEO (For Local Businesses)</h2>
+  
+  <div class="two-column">
+    <div class="section">
+      <h3>Google Business Profile</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Profile is 100% complete</li>
+        <li><div class="checkbox"></div>NAP (Name, Address, Phone) accurate</li>
+        <li><div class="checkbox"></div>Primary category selected</li>
+        <li><div class="checkbox"></div>10+ high-quality photos uploaded</li>
+        <li><div class="checkbox"></div>Services list is complete</li>
+        <li><div class="checkbox"></div>Respond to all reviews</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Local Citations & Reviews</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>NAP consistent across all platforms</li>
+        <li><div class="checkbox"></div>Listed on Yelp, Bing Places, Apple Maps</li>
+        <li><div class="checkbox"></div>Listed in industry directories</li>
+        <li><div class="checkbox"></div>Ask 5-10 customers for Google reviews</li>
+        <li><div class="checkbox"></div>Respond to reviews within 24-48 hours</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>📊 TECHNICAL SEO (Week 4)</h2>
+  
+  <div class="two-column">
+    <div class="section">
+      <h3>Site Speed Optimization</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Compress images (TinyPNG)</li>
+        <li><div class="checkbox"></div>Enable browser caching</li>
+        <li><div class="checkbox"></div>Minimize CSS/JavaScript</li>
+        <li><div class="checkbox"></div>Use CDN if needed</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Mobile & Structure</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Site is responsive on all devices</li>
+        <li><div class="checkbox"></div>Text readable without zooming</li>
+        <li><div class="checkbox"></div>Important pages within 3 clicks</li>
+        <li><div class="checkbox"></div>Fix broken links (404 errors)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>✍️ CONTENT STRATEGY (Month 2+)</h2>
+  
+  <ul class="checklist">
+    <li><div class="checkbox"></div>Create content calendar (1-2 posts/week)</li>
+    <li><div class="checkbox"></div>Plan 3-5 pillar posts (2,000+ words)</li>
+    <li><div class="checkbox"></div>Plan 10+ supporting posts (cluster content)</li>
+    <li><div class="checkbox"></div>Write for humans first, search engines second</li>
+    <li><div class="checkbox"></div>Answer the searcher's question completely</li>
+    <li><div class="checkbox"></div>Target one primary keyword per page</li>
+  </ul>
+
+  <h2>🔗 LINK BUILDING (Month 2+)</h2>
+  
+  <ul class="checklist">
+    <li><div class="checkbox"></div>Create link-worthy resources (guides, tools)</li>
+    <li><div class="checkbox"></div>Build citations in 10-20 directories</li>
+    <li><div class="checkbox"></div>Reach out for 5 guest post opportunities</li>
+    <li><div class="checkbox"></div>Partner with complementary businesses</li>
+    <li><div class="checkbox"></div>Check backlinks monthly in Search Console</li>
+  </ul>
+
+  <h2>📈 TRACKING & REPORTING</h2>
+  
+  <div class="two-column">
+    <div class="section">
+      <h3>Weekly Check-In</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Review organic traffic in Analytics</li>
+        <li><div class="checkbox"></div>Check Search Console for new keywords</li>
+        <li><div class="checkbox"></div>Monitor top-performing pages</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Monthly Review</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Track keyword rankings</li>
+        <li><div class="checkbox"></div>Review backlink growth</li>
+        <li><div class="checkbox"></div>Identify optimization opportunities</li>
+        <li><div class="checkbox"></div>Update old content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h3>🎯 90-DAY QUICK START PLAN</h3>
+    <div class="timeline">
+      <div class="timeline-item"><strong>Month 1:</strong> Setup tools → Keyword research → Optimize top pages → Publish 2 pillar posts</div>
+      <div class="timeline-item"><strong>Month 2:</strong> Publish 8 blog posts → Build 10+ citations → Request reviews → Guest post outreach</div>
+      <div class="timeline-item"><strong>Month 3:</strong> Continue 2 posts/week → Update old content → Build 5-10 backlinks → Monitor & adjust</div>
+    </div>
+  </div>
+
+  <div class="highlight-box avoid-list">
+    <h3>🚫 AVOID THESE MISTAKES</h3>
+    <ul class="checklist">
+      <li><div class="checkbox"></div>❌ Don't keyword stuff — use keywords naturally</li>
+      <li><div class="checkbox"></div>❌ Don't publish thin content (<300 words)</li>
+      <li><div class="checkbox"></div>❌ Don't ignore mobile users</li>
+      <li><div class="checkbox"></div>❌ Don't buy backlinks — earn them</li>
+      <li><div class="checkbox"></div>❌ Don't expect overnight results (SEO takes 3-6 months)</li>
+    </ul>
+  </div>
+
+  <h2>🛠️ RECOMMENDED FREE TOOLS</h2>
+  
+  <div class="tools-grid">
+    <div class="tool-category">
+      <h4>SEO Research</h4>
+      <ul>
+        <li>Google Search Console</li>
+        <li>Google Analytics (GA4)</li>
+        <li>Google Keyword Planner</li>
+        <li>AnswerThePublic</li>
+      </ul>
+    </div>
+    <div class="tool-category">
+      <h4>Technical SEO</h4>
+      <ul>
+        <li>Google Mobile-Friendly Test</li>
+        <li>PageSpeed Insights</li>
+        <li>Screaming Frog (free 500 URLs)</li>
+      </ul>
+    </div>
+    <div class="tool-category">
+      <h4>Content</h4>
+      <ul>
+        <li>Grammarly (free)</li>
+        <li>Hemingway Editor</li>
+        <li>Canva</li>
+      </ul>
+    </div>
+    <div class="tool-category">
+      <h4>Backlinks</h4>
+      <ul>
+        <li>Search Console (backlinks)</li>
+        <li>Google Alerts (mentions)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <p><strong>📥 NEED MORE HELP?</strong></p>
+    <p>Read our complete guide: <a href="https://www.yourfriendlyseo.com/blog/diy-seo-guide-for-small-business">DIY SEO Guide for Small Business Owners</a></p>
+    <p>Get our templates: <a href="https://www.yourfriendlyseo.com/products/seo-audit-template-bundle">SEO Audit Template Bundle ($27)</a></p>
+  </div>
+
+  <footer>
+    <div>
+      <strong>© 2026 YourFriendlySEO.com</strong> | Free to use and share<br>
+      <a href="https://www.yourfriendlyseo.com">www.yourfriendlyseo.com</a>
+    </div>
+    <div class="author-info">
+      <div>
+        <strong>Created by Emil Mequita</strong><br>
+        <a href="https://www.linkedin.com/in/emil-mequita/">LinkedIn Profile</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
