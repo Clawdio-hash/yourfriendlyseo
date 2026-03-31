@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "yourfriendlyseo.com"
+        }
+      ],
+      "destination": "https://www.yourfriendlyseo.com/:path*",
+      "permanent": true
+    }
+  ]
+}
