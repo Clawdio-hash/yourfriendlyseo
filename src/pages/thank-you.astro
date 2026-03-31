@@ -3,6 +3,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+
+const product = Astro.url.searchParams.get('product') || 'consultation';
+const isConsultation = product === 'consultation';
+const isBundle = product === 'bundle';
 ---
 
 <!doctype html>
@@ -20,38 +24,78 @@ import { SITE_TITLE } from '../consts';
 					<h1>Thank You for Your Purchase!</h1>
 					<p class="subtitle">Your payment was successful. Here's what happens next:</p>
 					
-					<div class="next-steps">
-						<div class="step">
-							<div class="step-number">1</div>
-							<div class="step-content">
-								<h3>Check Your Email</h3>
-								<p>You'll receive a confirmation email with your receipt within the next few minutes.</p>
+					{isConsultation && (
+						<div class="next-steps">
+							<div class="step">
+								<div class="step-number">1</div>
+								<div class="step-content">
+									<h3>Check Your Email</h3>
+									<p>You'll receive a confirmation email with your receipt within the next few minutes.</p>
+								</div>
+							</div>
+							
+							<div class="step">
+								<div class="step-number">2</div>
+								<div class="step-content">
+									<h3>Schedule Your Session</h3>
+									<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
+									<a href="https://calendly.com/yourfriendlyseo/strategy-session" class="btn btn-primary btn-large" target="_blank">Schedule Your Session</a>
+									<p class="note">You'll receive a Zoom link after scheduling</p>
+								</div>
+							</div>
+							
+							<div class="step">
+								<div class="step-number">3</div>
+								<div class="step-content">
+									<h3>Prepare for the Call</h3>
+									<p>Have your website URL ready and any specific questions you want answered. I'll do the rest!</p>
+								</div>
 							</div>
 						</div>
-						
-						<div class="step">
-							<div class="step-number">2</div>
-							<div class="step-content">
-								<h3>Schedule Your Session</h3>
-								<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
-								<a href="#" class="btn btn-primary btn-large">Schedule Your Session</a>
-								<p class="note">Calendly scheduling link will be added here</p>
+					)}
+					
+					{isBundle && (
+						<div class="next-steps">
+							<div class="step">
+								<div class="step-number">1</div>
+								<div class="step-content">
+									<h3>Check Your Email</h3>
+									<p>You'll receive an email with your download link within the next few minutes. Check spam if you don't see it!</p>
+								</div>
+							</div>
+							
+							<div class="step">
+								<div class="step-number">2</div>
+								<div class="step-content">
+									<h3>Access Your Templates</h3>
+									<p>Click the Google Drive link in your email to access all 5 templates plus the PDF guide.</p>
+									<a href="https://drive.google.com/drive/folders/yourfriendlyseo-audit-bundle" class="btn btn-primary btn-large" target="_blank">Access Templates</a>
+									<p class="note">Make a copy of each template to your own Google Drive</p>
+								</div>
+							</div>
+							
+							<div class="step">
+								<div class="step-number">3</div>
+								<div class="step-content">
+									<h3>Start Your Audit</h3>
+									<p>Read the PDF guide first, then work through each template. Most people complete their audit in 2-4 hours.</p>
+								</div>
 							</div>
 						</div>
-						
-						<div class="step">
-							<div class="step-number">3</div>
-							<div class="step-content">
-								<h3>Prepare for the Call</h3>
-								<p>Have your website URL ready and any specific questions you want answered. I'll do the rest!</p>
-							</div>
-						</div>
-					</div>
+					)}
 					
 					<div class="cta-section">
 						<h2>While You Wait...</h2>
 						<p>Check out our free SEO resources to start making improvements today.</p>
-						<a href="/blog" class="btn btn-secondary">Browse Free Guides</a>
+						<div class="cta-buttons">
+							<a href="/blog" class="btn btn-secondary">Browse Free Guides</a>
+							{isBundle && (
+								<a href="/consultation" class="btn btn-outline">Book a Strategy Session</a>
+							)}
+							{isConsultation && (
+								<a href="/products/seo-audit-template-bundle" class="btn btn-outline">Get the Template Bundle</a>
+							)}
+						</div>
 					</div>
 					
 					<div class="contact-section">
@@ -167,6 +211,13 @@ import { SITE_TITLE } from '../consts';
 		margin-bottom: var(--space-6);
 	}
 	
+	.cta-buttons {
+		display: flex;
+		gap: var(--space-4);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
 	.contact-section {
 		padding-top: var(--space-8);
 		border-top: 1px solid var(--color-gray-200);
@@ -194,6 +245,10 @@ import { SITE_TITLE } from '../consts';
 		
 		.step-number {
 			margin: 0 auto;
+		}
+		
+		.cta-buttons {
+			flex-direction: column;
 		}
 	}
 </style>
