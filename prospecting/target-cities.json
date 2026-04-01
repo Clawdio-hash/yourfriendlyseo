@@ -1,0 +1,25 @@
+{
+  "description": "Rotation of major US cities for cold email prospecting",
+  "cities": [
+    {"city": "New York", "state": "NY", "lastProspected": null},
+    {"city": "Chicago", "state": "IL", "lastProspected": null},
+    {"city": "Houston", "state": "TX", "lastProspected": null},
+    {"city": "Phoenix", "state": "AZ", "lastProspected": null},
+    {"city": "San Diego", "state": "CA", "lastProspected": null},
+    {"city": "Dallas", "state": "TX", "lastProspected": null},
+    {"city": "San Francisco", "state": "CA", "lastProspected": null},
+    {"city": "Austin", "state": "TX", "lastProspected": null},
+    {"city": "Denver", "state": "CO", "lastProspected": null},
+    {"city": "Seattle", "state": "WA", "lastProspected": null},
+    {"city": "Miami", "state": "FL", "lastProspected": null},
+    {"city": "Atlanta", "state": "GA", "lastProspected": null},
+    {"city": "Boston", "state": "MA", "lastProspected": null},
+    {"city": "Las Vegas", "state": "NV", "lastProspected": null},
+    {"city": "Portland", "state": "OR", "lastProspected": null},
+    {"city": "Nashville", "state": "TN", "lastProspected": null},
+    {"city": "Charlotte", "state": "NC", "lastProspected": null},
+    {"city": "San Antonio", "state": "TX", "lastProspected": null},
+    {"city": "Minneapolis", "state": "MN", "lastProspected": null},
+    {"city": "Tampa", "state": "FL", "lastProspected": null}
+  ]
+}

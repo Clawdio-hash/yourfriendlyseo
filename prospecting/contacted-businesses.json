@@ -1,0 +1,63 @@
+{
+  "lastUpdated": "2026-04-01",
+  "businesses": [
+    {
+      "name": "LA Auto Center",
+      "email": "laautocenter01@gmail.com",
+      "city": "Los Angeles",
+      "contactedDate": "2026-03-31",
+      "status": "sent"
+    },
+    {
+      "name": "Crown Cap Roofing",
+      "email": "info@crowncaproofing.net",
+      "city": "Los Angeles",
+      "contactedDate": "2026-03-31",
+      "status": "sent"
+    },
+    {
+      "name": "Pinky's Automotive",
+      "email": "info@pinkysautomotive.com",
+      "city": "Los Angeles",
+      "contactedDate": "2026-03-31",
+      "status": "sent"
+    },
+    {
+      "name": "We Clean LA",
+      "email": "info@wecleanlapro.com",
+      "city": "Los Angeles",
+      "contactedDate": "2026-03-31",
+      "status": "sent"
+    },
+    {
+      "name": "Fred's Wrigleyville Garage",
+      "email": "fred@fredswrigleyvillegarage.com",
+      "city": "Chicago",
+      "contactedDate": "2026-04-01",
+      "status": "sent"
+    },
+    {
+      "name": "Chicago Flat Roofing Contractors",
+      "email": "sunnyross78@gmail.com",
+      "city": "Chicago",
+      "contactedDate": "2026-04-01",
+      "status": "sent"
+    },
+    {
+      "name": "Avondale Auto Repair",
+      "email": null,
+      "website": "avondaleautorepair.com",
+      "city": "Chicago",
+      "contactedDate": null,
+      "status": "pending - no email found, contact form only"
+    },
+    {
+      "name": "On The Ledge Landscaping",
+      "email": null,
+      "website": "ontheledgelandscaping.com",
+      "city": "Chicago",
+      "contactedDate": null,
+      "status": "pending - no email found, contact form only"
+    }
+  ]
+}
