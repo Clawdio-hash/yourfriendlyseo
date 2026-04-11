@@ -1,0 +1,460 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Website Migration Toolkit | SEO Migration Checklist & Tools";
+const description = "A complete toolkit for planning and executing SEO-safe website migrations. Pre-migration audit, redirect mapping, URL inventory, and post-launch monitoring — all in one place.";
+const price = 97;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} />
+</head>
+<body>
+  <Header />
+
+  <!-- Hero -->
+  <section class="hero-migration">
+    <div class="hero-inner">
+      <div class="hero-badge">🚀 Professional Toolkit</div>
+      <h1>Website Migration Toolkit</h1>
+      <p class="hero-sub">Stop guessing. Execute your next site migration with confidence — without losing your rankings.</p>
+      <div class="hero-price">
+        <span class="price-label">One-time purchase</span>
+        <span class="price-amount">${price}</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="/consultation" class="btn-primary-tool">Get Early Access — Book a Call</a>
+        <a href="#whats-inside" class="btn-ghost">See What's Included ↓</a>
+      </div>
+      <p class="hero-note">🔒 Built by an SEO with 10+ years of enterprise migration experience</p>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem-section">
+    <div class="container">
+      <h2>Website Migrations Are the #1 Cause of Unexpected Traffic Drops</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Traffic Lost Overnight</h3>
+          <p>A single missing redirect or broken canonical can wipe out months of SEO work in 24 hours.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🗺️</div>
+          <h3>Spreadsheet Chaos</h3>
+          <p>Managing URL inventories, redirect maps, and checklists across multiple docs is error-prone and exhausting.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📡</div>
+          <h3>No Monitoring Plan</h3>
+          <p>Most teams celebrate go-live then panic 30 days later when rankings tank and no one knows why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside -->
+  <section class="inside-section" id="whats-inside">
+    <div class="container">
+      <div class="section-header">
+        <h2>What's Inside the Migration Toolkit</h2>
+        <p>Everything you need to plan, execute, and monitor a migration — without losing your search visibility.</p>
+      </div>
+      <div class="modules-grid">
+
+        <div class="module-card module-featured">
+          <div class="module-header">
+            <span class="module-num">01</span>
+            <h3>Pre-Migration Audit Checklist</h3>
+          </div>
+          <p>A 50-point checklist covering every technical SEO factor to document before you move a single URL. Know exactly what you're working with before launch day.</p>
+          <ul class="feature-list">
+            <li>Current indexation snapshot</li>
+            <li>Top-performing pages by traffic & conversions</li>
+            <li>Existing redirect inventory</li>
+            <li>Backlink & canonical audit</li>
+            <li>Sitemap & robots.txt review</li>
+            <li>Core Web Vitals baseline</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <span class="module-num">02</span>
+            <h3>URL Inventory Builder</h3>
+          </div>
+          <p>A structured spreadsheet template for cataloguing your full URL inventory — old and new — with priority scoring so you never miss a critical page.</p>
+          <ul class="feature-list">
+            <li>URL mapping template (old → new)</li>
+            <li>Priority scoring by traffic & links</li>
+            <li>Content type classification</li>
+            <li>Status code tracking columns</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <span class="module-num">03</span>
+            <h3>Redirect Map Generator</h3>
+          </div>
+          <p>Use our free <a href="/products/redirect-mapper">Redirect Mapper tool</a> with advanced export templates formatted for Apache, Nginx, and Cloudflare — ready to paste into your config.</p>
+          <ul class="feature-list">
+            <li>Smart URL matching algorithm</li>
+            <li>Apache .htaccess format</li>
+            <li>Nginx rewrite rules</li>
+            <li>Cloudflare redirect rules</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <span class="module-num">04</span>
+            <h3>Launch Day Runbook</h3>
+          </div>
+          <p>A step-by-step launch day playbook with timing, dependencies, and rollback procedures so your team knows exactly who does what and when.</p>
+          <ul class="feature-list">
+            <li>Hour-by-hour launch timeline</li>
+            <li>Team roles & responsibilities</li>
+            <li>Go/no-go checklist</li>
+            <li>Rollback decision tree</li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header">
+            <span class="module-num">05</span>
+            <h3>Post-Launch Monitoring Dashboard</h3>
+          </div>
+          <p>A Google Looker Studio dashboard template pre-configured to track the metrics that matter post-migration. Know within hours if something is wrong.</p>
+          <ul class="feature-list">
+            <li>Organic traffic trend tracker</li>
+            <li>Index coverage monitoring</li>
+            <li>404 error spike alerts</li>
+            <li>Core ranking position tracker</li>
+          </ul>
+        </div>
+
+        <div class="module-card module-bonus">
+          <div class="module-header">
+            <span class="module-num bonus-tag">BONUS</span>
+            <h3>30-Minute Migration Review Call</h3>
+          </div>
+          <p>Get a 30-minute 1:1 call with Emil to review your specific migration plan before launch. Catch issues before they become expensive problems.</p>
+          <ul class="feature-list">
+            <li>Review your redirect map</li>
+            <li>Identify high-risk URL changes</li>
+            <li>Custom advice for your platform</li>
+            <li>Recorded for your team's reference</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="for-section">
+    <div class="container">
+      <h2>Who This Is For</h2>
+      <div class="for-grid">
+        <div class="for-card">
+          <div class="for-icon">💼</div>
+          <h3>In-House SEO Teams</h3>
+          <p>Managing a migration alongside a dev team? This toolkit gives you the documentation and communication structure to keep everyone aligned.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">🏢</div>
+          <h3>Digital Agencies</h3>
+          <p>Productize your migration process. Stop rebuilding your checklist from scratch for every client and deliver consistent, high-quality work.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">🛒</div>
+          <h3>E-commerce Site Owners</h3>
+          <p>Switching platforms (Shopify, WooCommerce, BigCommerce)? This toolkit is built for the complexity of product URL migrations at scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof / About -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <img src="/emil%20headshot.jpeg" alt="Emil Mequita" class="about-avatar" />
+        <div class="about-text">
+          <h2>Built by Someone Who's Done This at Scale</h2>
+          <p>I'm Emil Mequita — I've spent 10+ years running technical SEO at enterprise companies and premium e-commerce brands. I've managed migrations affecting millions of URLs. I built this toolkit from the exact processes I use with my clients.</p>
+          <p>The mistakes I've seen (and made) during migrations are the reason every item in this checklist exists.</p>
+          <a href="/consultation" class="btn-primary-tool" style="display:inline-block; margin-top: var(--space-4);">Talk to Emil Before You Buy →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Pricing -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h2>Get the Full Toolkit</h2>
+          <div class="price-display">
+            <span class="price-amount-lg">${price}</span>
+            <span class="price-note">one-time · instant access</span>
+          </div>
+        </div>
+        <ul class="pricing-features">
+          <li>✓ Pre-Migration Audit Checklist (50 points)</li>
+          <li>✓ URL Inventory Builder Template</li>
+          <li>✓ Redirect Map Generator + Server Config Exports</li>
+          <li>✓ Launch Day Runbook</li>
+          <li>✓ Post-Launch Monitoring Dashboard</li>
+          <li>✓ 30-Minute Migration Review Call with Emil</li>
+        </ul>
+        <a href="/consultation" class="btn-cta-large">Book a Call to Get Access</a>
+        <p class="pricing-sub">Questions? <a href="/consultation">Book a free 15-minute intro call</a> first — no pressure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Common Questions</h2>
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary>What format does the toolkit come in?</summary>
+          <div class="faq-answer">The toolkit includes Google Sheets templates, Google Docs checklists, a Looker Studio dashboard template, and a PDF runbook — all shareable with your team.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is this for any CMS or platform?</summary>
+          <div class="faq-answer">Yes. The checklist and inventory templates are platform-agnostic. Server config exports cover Apache, Nginx, and Cloudflare. Platform-specific guidance is covered in your 1:1 call.</div>
+        </details>
+        <details class="faq-item">
+          <summary>I'm migrating a large e-commerce site. Will this work?</summary>
+          <div class="faq-answer">Absolutely — the URL inventory and priority scoring system is designed for sites with thousands of pages. The 30-minute review call is especially valuable for large e-commerce migrations.</div>
+        </details>
+        <details class="faq-item">
+          <summary>When do I get access?</summary>
+          <div class="faq-answer">Access is delivered within 24 hours of purchase, including your booking link for the 30-minute review call with Emil.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</body>
+</html>
+
+<style>
+  /* Hero */
+  .hero-migration {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 40%, #7C3AED 100%);
+    padding: var(--space-20) var(--space-4);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-migration::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(124,58,237,0.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 740px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block; padding: var(--space-2) var(--space-4);
+    background: rgba(255,255,255,0.15); color: #fff;
+    font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full); margin-bottom: var(--space-5);
+    backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-migration h1 {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    color: #fff; margin-bottom: var(--space-5); line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: var(--font-size-xl); color: rgba(255,255,255,0.85);
+    max-width: 580px; margin: 0 auto var(--space-8); line-height: 1.6;
+  }
+  .hero-price {
+    display: inline-flex; align-items: baseline; gap: var(--space-3);
+    margin-bottom: var(--space-8);
+    background: rgba(255,255,255,0.1); padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-xl); backdrop-filter: blur(8px);
+  }
+  .price-label { font-size: var(--font-size-sm); color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.05em; }
+  .price-amount { font-size: 2.5rem; font-weight: var(--font-weight-bold); color: #FCD34D; }
+  .hero-ctas { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-6); }
+  .btn-primary-tool {
+    padding: var(--space-4) var(--space-8);
+    background: #FCD34D; color: #000;
+    font-weight: var(--font-weight-bold); font-size: var(--font-size-base);
+    border-radius: var(--radius-lg); text-decoration: none;
+    transition: opacity 0.2s; display: inline-block;
+  }
+  .btn-primary-tool:hover { opacity: 0.9; text-decoration: none; }
+  .btn-ghost {
+    padding: var(--space-4) var(--space-6);
+    color: rgba(255,255,255,0.8); font-size: var(--font-size-base);
+    border: 2px solid rgba(255,255,255,0.3); border-radius: var(--radius-lg);
+    text-decoration: none; transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); text-decoration: none; }
+  .hero-note { font-size: var(--font-size-sm); color: rgba(255,255,255,0.6); }
+
+  /* Container */
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Problem */
+  .problem-section {
+    padding: var(--space-16) var(--space-4);
+    background: var(--color-gray-50);
+  }
+  .problem-section h2 {
+    text-align: center; font-size: var(--font-size-3xl);
+    color: var(--color-primary); margin-bottom: var(--space-10);
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+  .problem-card {
+    background: #fff; border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl); padding: var(--space-8);
+    text-align: center;
+  }
+  .problem-icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
+  .problem-card h3 { font-size: var(--font-size-xl); color: var(--color-primary); margin-bottom: var(--space-3); }
+  .problem-card p { color: var(--color-gray-600); line-height: 1.6; }
+
+  /* Modules */
+  .inside-section { padding: var(--space-16) var(--space-4); background: #fff; }
+  .section-header { text-align: center; margin-bottom: var(--space-12); }
+  .section-header h2 { font-size: var(--font-size-3xl); color: var(--color-primary); margin-bottom: var(--space-4); }
+  .section-header p { font-size: var(--font-size-lg); color: var(--color-gray-600); }
+
+  .modules-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+  .module-card {
+    background: var(--color-gray-50); border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+  }
+  .module-card.module-featured {
+    border-color: var(--color-accent); background: #FFFBEB;
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--space-6) var(--space-10);
+  }
+  .module-card.module-featured .module-header { grid-column: 1 / -1; }
+  .module-card.module-bonus {
+    border-color: #7C3AED; background: #F5F3FF;
+  }
+  .module-header { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); }
+  .module-num {
+    background: var(--color-primary); color: #fff;
+    font-size: var(--font-size-sm); font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-3); border-radius: var(--radius-md);
+  }
+  .bonus-tag { background: #7C3AED !important; }
+  .module-header h3 { font-size: var(--font-size-xl); color: var(--color-primary); }
+  .module-card > p { color: var(--color-gray-700); line-height: 1.65; margin-bottom: var(--space-5); }
+  .module-card > p a { color: var(--color-accent-dark); }
+  .feature-list { list-style: none; padding: 0; margin: 0; }
+  .feature-list li {
+    font-size: var(--font-size-sm); color: var(--color-gray-600);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li::before { content: '✓ '; color: var(--color-accent-dark); font-weight: bold; }
+
+  /* Who it's for */
+  .for-section { padding: var(--space-16) var(--space-4); background: var(--color-gray-50); }
+  .for-section h2 { text-align: center; font-size: var(--font-size-3xl); color: var(--color-primary); margin-bottom: var(--space-10); }
+  .for-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); }
+  .for-card {
+    background: #fff; border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl); padding: var(--space-8);
+  }
+  .for-icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
+  .for-card h3 { font-size: var(--font-size-xl); color: var(--color-primary); margin-bottom: var(--space-3); }
+  .for-card p { color: var(--color-gray-600); line-height: 1.6; }
+
+  /* About */
+  .about-section { padding: var(--space-16) var(--space-4); background: #fff; }
+  .about-inner {
+    display: flex; gap: var(--space-10); align-items: flex-start;
+    max-width: 900px; margin: 0 auto;
+  }
+  .about-avatar {
+    width: 120px; height: 120px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--color-accent);
+    flex-shrink: 0;
+  }
+  .about-text h2 { font-size: var(--font-size-2xl); color: var(--color-primary); margin-bottom: var(--space-4); }
+  .about-text p { color: var(--color-gray-700); line-height: 1.7; margin-bottom: var(--space-4); }
+
+  /* Pricing */
+  .pricing-section { padding: var(--space-16) var(--space-4); background: var(--color-gray-50); }
+  .pricing-card {
+    max-width: 600px; margin: 0 auto;
+    background: #fff; border: 2px solid var(--color-accent);
+    border-radius: var(--radius-2xl); padding: var(--space-10);
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .pricing-header { margin-bottom: var(--space-8); }
+  .pricing-header h2 { font-size: var(--font-size-3xl); color: var(--color-primary); margin-bottom: var(--space-4); }
+  .price-display { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); }
+  .price-amount-lg { font-size: 3.5rem; font-weight: var(--font-weight-bold); color: var(--color-primary); line-height: 1; }
+  .price-note { font-size: var(--font-size-sm); color: var(--color-gray-500); }
+  .pricing-features {
+    list-style: none; padding: 0; margin: 0 0 var(--space-8);
+    text-align: left;
+  }
+  .pricing-features li {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-gray-100);
+    color: var(--color-gray-700); font-size: var(--font-size-base);
+  }
+  .btn-cta-large {
+    display: block; padding: var(--space-5) var(--space-8);
+    background: var(--color-accent); color: #000;
+    font-weight: var(--font-weight-bold); font-size: var(--font-size-lg);
+    border-radius: var(--radius-xl); text-decoration: none;
+    transition: opacity 0.2s; margin-bottom: var(--space-4);
+  }
+  .btn-cta-large:hover { opacity: 0.9; text-decoration: none; }
+  .pricing-sub { font-size: var(--font-size-sm); color: var(--color-gray-500); }
+  .pricing-sub a { color: var(--color-accent-dark); }
+
+  /* FAQ */
+  .faq-section { padding: var(--space-16) var(--space-4); background: #fff; }
+  .faq-section h2 { font-size: var(--font-size-3xl); color: var(--color-primary); margin-bottom: var(--space-10); text-align: center; }
+  .faq-grid { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--color-gray-200); }
+  .faq-item summary {
+    padding: var(--space-6) 0; font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold); color: var(--color-primary);
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: var(--font-size-2xl); color: var(--color-accent); }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 0 var(--space-6); color: var(--color-gray-600); line-height: 1.7; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .module-card.module-featured { grid-column: auto; grid-template-columns: 1fr; }
+    .about-inner { flex-direction: column; align-items: center; text-align: center; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas .btn-primary-tool, .hero-ctas .btn-ghost { width: 100%; text-align: center; }
+  }
+</style>
