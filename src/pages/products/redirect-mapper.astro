@@ -1,0 +1,450 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Free Redirect Mapper | Match Old URLs to New with Smart Scoring";
+const description = "Automatically match old URLs to their best new destinations using URL structure, title similarity, and keyword overlap. Free tool for website migrations.";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} />
+</head>
+<body>
+  <Header />
+
+  <section class="tool-hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔠 Free SEO Tool</div>
+      <h1>Redirect Mapper</h1>
+      <p class="hero-sub">Match old URLs to their best new destinations using smart scoring — URL structure, title similarity, and keyword overlap.</p>
+    </div>
+  </section>
+
+  <main class="tool-main">
+    <div class="container">
+
+      <!-- How it works -->
+      <details class="how-it-works" open>
+        <summary>How to Use This Tool</summary>
+        <div class="how-steps">
+          <div class="step"><span class="step-num">1</span><div><strong>Enter Target URLs</strong><p>Paste your new/destination URLs (one per line). These receive the redirects.</p></div></div>
+          <div class="step"><span class="step-num">2</span><div><strong>Enter Old URLs</strong><p>Paste the URLs that need to be redirected (one per line).</p></div></div>
+          <div class="step"><span class="step-num">3</span><div><strong>Add Page Titles (Optional)</strong><p>Titles in the same order as URLs improve matching accuracy.</p></div></div>
+          <div class="step"><span class="step-num">4</span><div><strong>Generate &amp; Download</strong><p>Click "Generate Matches" then download as CSV.</p></div></div>
+        </div>
+        <p class="tip">💡 <strong>Tip:</strong> Match confidence uses URL structure (40%), title similarity (40%), and keyword overlap (20%).</p>
+      </details>
+
+      <!-- Input Grid -->
+      <div class="input-grid">
+        <div class="input-col">
+          <div class="input-group">
+            <label for="target-urls">Target URLs <span class="count" id="target-count">0</span></label>
+            <textarea id="target-urls" placeholder="https://example.com/new-page-1&#10;https://example.com/new-page-2&#10;..." rows="8"></textarea>
+          </div>
+          <div class="input-group">
+            <label for="target-titles">Target Page Titles <span class="count" id="target-title-count">0</span></label>
+            <textarea id="target-titles" placeholder="New Page Title 1&#10;New Page Title 2&#10;..." rows="8"></textarea>
+          </div>
+        </div>
+        <div class="input-col">
+          <div class="input-group">
+            <label for="old-urls">Old URLs <span class="count" id="old-count">0</span></label>
+            <textarea id="old-urls" placeholder="https://example.com/old-page-1&#10;https://example.com/old-page-2&#10;..." rows="8"></textarea>
+          </div>
+          <div class="input-group">
+            <label for="old-titles">Old Page Titles <span class="count" id="old-title-count">0</span></label>
+            <textarea id="old-titles" placeholder="Old Page Title 1&#10;Old Page Title 2&#10;..." rows="8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary-tool" id="generate-btn">Generate Matches</button>
+        <button class="btn-secondary-tool" id="clear-btn">Clear All</button>
+      </div>
+
+      <!-- Results -->
+      <div class="results-section" id="results" style="display:none">
+        <div class="results-header">
+          <h2>Redirect Map <span id="result-count"></span></h2>
+          <button class="btn-download" id="download-btn">⌇ Download CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th>Old URL</th>
+                <th>Old Title</th>
+                <th>Matched URL</th>
+                <th>Matched Title</th>
+                <th>Score</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="error-msg" id="error-msg" style="display:none"></div>
+
+      <!-- SEO Copy -->
+      <section class="seo-copy">
+        <h2>The Best URL Redirect Mapping Tool for Website Migrations</h2>
+        <p>Planning redirects for a website migration is one of the most time-consuming tasks in technical SEO. Whether you're handling a platform change or consolidating domains, manually matching hundreds of old URLs to new destinations is tedious and error-prone.</p>
+        <p>This free redirect mapper automates the process by intelligently analyzing URL structures and page titles to find the best matches. It uses a weighted algorithm combining path similarity, title relevance, and keyword overlap — so users land on the most contextually appropriate pages.</p>
+        <p class="cta-inline">Need help with a migration? <a href="/consultation">Book a consultation ➒</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    // --- Utility functions ---
+    function parseLines(text) {
+      return text.split('\n').map(l => l.trim()).filter(Boolean);
+    }
+
+    function getUrlSegments(url) {
+      try {
+        const path = new URL(url.startsWith('http') ? url : 'https://' + url).pathname;
+        return path.toLowerCase().split('/').filter(Boolean);
+      } catch {
+        return url.toLowerCase().split(/[\/\-_\.\?=&]+/).filter(Boolean);
+      }
+    }
+
+    function jaccardSimilarity(a, b) {
+      if (!a.length && !b.length) return 1;
+      const setA = new Set(a);
+      const setB = new Set(b);
+      const inter = [...setA].filter(x => setB.has(x)).length;
+      const union = new Set([...setA, ...setB]).size;
+      return union === 0 ? 0 : inter / union;
+    }
+
+    function tokenize(str) {
+      return str.toLowerCase().split(/[\W_]+/).filter(s => s.length > 1);
+    }
+
+    function urlSimilarity(u1, u2) {
+      return jaccardSimilarity(getUrlSegments(u1), getUrlSegments(u2));
+    }
+
+    function titleSimilarity(t1, t2) {
+      if (!t1 && !t2) return 0;
+      return jaccardSimilarity(tokenize(t1), tokenize(t2));
+    }
+
+    function keywordOverlap(oldUrl, oldTitle, newUrl, newTitle) {
+      const oldTokens = [...tokenize(oldUrl), ...tokenize(oldTitle)];
+      const newTokens = [...tokenize(newUrl), ...tokenize(newTitle)];
+      return jaccardSimilarity(oldTokens, newTokens);
+    }
+
+    function scoreMatch(oldUrl, oldTitle, newUrl, newTitle) {
+      const urlScore    = urlSimilarity(oldUrl, newUrl) * 0.40;
+      const titleScore  = titleSimilarity(oldTitle, newTitle) * 0.40;
+      const kwScore     = keywordOverlap(oldUrl, oldTitle, newUrl, newTitle) * 0.20;
+      return Math.round((urlScore + titleScore + kwScore) * 100);
+    }
+
+    function confidenceLabel(score) {
+      if (score >= 70) return { label: 'High', cls: 'conf-high' };
+      if (score >= 40) return { label: 'Medium', cls: 'conf-med' };
+      return { label: 'Low', cls: 'conf-low' };
+    }
+
+    // --- Counter updates ---
+    function updateCount(textareaId, countId) {
+      const ta = document.getElementById(textareaId);
+      const counter = document.getElementById(countId);
+      ta.addEventListener('input', () => {
+        counter.textContent = parseLines(ta.value).length;
+      });
+    }
+    updateCount('target-urls', 'target-count');
+    updateCount('target-titles', 'target-title-count');
+    updateCount('old-urls', 'old-count');
+    updateCount('old-titles', 'old-title-count');
+
+    // --- Generate ---
+    let matchResults = [];
+
+    document.getElementById('generate-btn').addEventListener('click', () => {
+      const errorEl = document.getElementById('error-msg');
+      errorEl.style.display = 'none';
+
+      const oldUrls    = parseLines(document.getElementById('old-urls').value);
+      const oldTitles  = parseLines(document.getElementById('old-titles').value);
+      const newUrls    = parseLines(document.getElementById('target-urls').value);
+      const newTitles  = parseLines(document.getElementById('target-titles').value);
+
+      if (!oldUrls.length || !newUrls.length) {
+        errorEl.textContent = 'Please enter at least one Old URL and one Target URL.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      matchResults = oldUrls.map((oldUrl, i) => {
+        const oldTitle = oldTitles[i] || '';
+        let best = { score: -1, url: '', title: '' };
+        newUrls.forEach((newUrl, j) => {
+          const newTitle = newTitles[j] || '';
+          const s = scoreMatch(oldUrl, oldTitle, newUrl, newTitle);
+          if (s > best.score) best = { score: s, url: newUrl, title: newTitle };
+        });
+        return { oldUrl, oldTitle, matchUrl: best.url, matchTitle: best.title, score: best.score };
+      });
+
+      renderResults(matchResults);
+    });
+
+    function renderResults(rows) {
+      const tbody = document.getElementById('results-body');
+      document.getElementById('result-count').textContent = `(${rows.length} redirects)`;
+      tbody.innerHTML = rows.map(r => {
+        const { label, cls } = confidenceLabel(r.score);
+        return `<tr>
+          <td class="url-cell" title="${r.oldUrl}">${r.oldUrl}</td>
+          <td>${r.oldTitle || '—'}</td>
+          <td class="url-cell" title="${r.matchUrl}">${r.matchUrl}</td>
+          <td>${r.matchTitle || '—'}</td>
+          <td><div class="score-bar"><div class="score-fill" style="width:${r.score}%"></div></div>${r.score}%</td>
+          <td><span class="conf-badge ${cls}">${label}</span></td>
+        </tr>`;
+      }).join('');
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // --- Download CSV ---
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const header = ['Old URL', 'Old Title', 'New URL', 'New Title', 'Score', 'Confidence'];
+      const rows = matchResults.map(r => [
+        r.oldUrl, r.oldTitle, r.matchUrl, r.matchTitle, r.score + '%', confidenceLabel(r.score).label
+      ]);
+      const csv = [header, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'redirect-map.csv';
+      a.click();
+    });
+
+    // --- Clear ---
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      ['old-urls','old-titles','target-urls','target-titles'].forEach(id => document.getElementById(id).value = '');
+      ['old-count','old-title-count','target-count','target-title-count'].forEach(id => document.getElementById(id).textContent = '0');
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('error-msg').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .tool-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #D97706 100%);
+    padding: var(--space-16) var(--space-4) var(--space-20);
+    text-align: center;
+  }
+  .hero-inner { max-width: 700px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+    backdrop-filter: blur(8px);
+  }
+  .tool-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    color: #fff;
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: var(--font-size-lg);
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tool-main { padding: var(--space-12) var(--space-4); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* How it works */
+  .how-it-works {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+  .how-it-works summary {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+  }
+  .how-it-works summary::-webkit-details-marker { display: none; }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .step { display: flex; gap: var(--space-3); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--color-accent); color: #000;
+    font-weight: var(--font-weight-bold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: var(--font-size-sm);
+  }
+  .step p { font-size: var(--font-size-sm); color: var(--color-gray-600); margin: var(--space-1) 0 0; }
+  .tip { margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-gray-600); }
+
+  /* Input grid */
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+  .input-col { display: flex; flex-direction: column; gap: var(--space-4); }
+  .input-group { display: flex; flex-direction: column; gap: var(--space-2); }
+  .input-group label {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .count {
+    background: var(--color-accent);
+    color: #000;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    min-width: 24px;
+    text-align: center;
+  }
+  textarea {
+    width: 100%;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono, monospace);
+    resize: vertical;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  textarea:focus { outline: none; border-color: var(--color-accent); }
+
+  /* Actions */
+  .actions { display: flex; gap: var(--space-3); margin-bottom: var(--space-8); flex-wrap: wrap; }
+  .btn-primary-tool {
+    padding: var(--space-3) var(--space-8);
+    background: var(--color-accent);
+    color: #000;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    border: none; border-radius: var(--radius-lg);
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-primary-tool:hover { opacity: 0.85; }
+  .btn-secondary-tool {
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-gray-600);
+    font-size: var(--font-size-base);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-lg);
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .btn-secondary-tool:hover { border-color: var(--color-gray-500); }
+
+  /* Error */
+  .error-msg {
+    background: #FEE2E2; color: #991B1B;
+    border: 1px solid #FCA5A5;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Results */
+  .results-section { margin-bottom: var(--space-16); }
+  .results-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);
+  }
+  .results-header h2 { font-size: var(--font-size-2xl); color: var(--color-primary); }
+  .btn-download {
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-primary);
+    color: #fff; border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer; font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    transition: opacity 0.2s;
+  }
+  .btn-download:hover { opacity: 0.85; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); }
+  table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+  thead { background: var(--color-primary); }
+  thead th { color: #fff; padding: var(--space-3) var(--space-4); text-align: left; font-weight: var(--font-weight-semibold); white-space: nowrap; }
+  tbody tr:nth-child(even) { background: var(--color-gray-50); }
+  tbody td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-gray-100); vertical-align: middle; }
+  .url-cell { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; }
+
+  .score-bar {
+    width: 60px; height: 6px;
+    background: var(--color-gray-200);
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+  }
+  .score-fill { height: 100%; background: var(--color-accent); border-radius: 3px; }
+
+  .conf-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+  }
+  .conf-high { background: #D1FAE5; color: #065F46; }
+  .conf-med  { background: #FEF3C7; color: #92400E; }
+  .conf-low  { background: #FEE2E2; color: #991B1B; }
+
+  /* SEO copy */
+  .seo-copy {
+    background: var(--color-gray-50);
+    border-top: 2px solid var(--color-gray-200);
+    padding: var(--space-10) 0;
+    margin-top: var(--space-8);
+  }
+  .seo-copy h2 { font-size: var(--font-size-2xl); color: var(--color-primary); margin-bottom: var(--space-4); }
+  .seo-copy p { color: var(--color-gray-700); line-height: 1.75; margin-bottom: var(--space-4); }
+  .cta-inline a { color: var(--color-accent-dark); font-weight: var(--font-weight-semibold); }
+
+  @media (max-width: 768px) {
+    .input-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr; }
+  }
+</style>
