@@ -1,0 +1,401 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Free Internal Link Recommender | Find Internal Linking Opportunities";
+const description = "Discover internal linking opportunities by matching your source pages to target keywords and URLs. Free SEO tool to strengthen your site's internal link structure.";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} />
+</head>
+<body>
+  <Header />
+
+  <section class="tool-hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔗 Free SEO Tool</div>
+      <h1>Internal Link Recommender</h1>
+      <p class="hero-sub">Find internal linking opportunities — match your source pages to the keywords and target URLs you want to rank.</p>
+    </div>
+  </section>
+
+  <main class="tool-main">
+    <div class="container">
+
+      <!-- How it works -->
+      <details class="how-it-works" open>
+        <summary>How to Use This Tool</summary>
+        <div class="how-steps">
+          <div class="step"><span class="step-num">1</span><div><strong>Enter Source URLs</strong><p>Paste the URLs of pages you want to link FROM (one per line).</p></div></div>
+          <div class="step"><span class="step-num">2</span><div><strong>Enter Target Keywords</strong><p>Keywords you want to rank for — one per line, matching order with Target URLs.</p></div></div>
+          <div class="step"><span class="step-num">3</span><div><strong>Enter Target URLs</strong><p>The destination pages you want to link TO (one per line).</p></div></div>
+          <div class="step"><span class="step-num">4</span><div><strong>Find Opportunities</strong><p>Click "Find Opportunities" to see scored recommendations with suggested anchor text.</p></div></div>
+        </div>
+        <p class="tip">💡 <strong>Tip:</strong> The tool scores relevance by matching keyword tokens against source URL path segments. Higher scores = stronger topical relevance.</p>
+      </details>
+
+      <!-- Input Grid -->
+      <div class="input-grid">
+        <div class="input-col-full">
+          <div class="input-group">
+            <label for="source-urls">Source URLs <span class="count" id="source-count">0</span></label>
+            <textarea id="source-urls" placeholder="https://example.com/blog/seo-tips&#10;https://example.com/services/technical-seo&#10;..." rows="8"></textarea>
+          </div>
+        </div>
+        <div class="input-col">
+          <div class="input-group">
+            <label for="target-keywords">Target Keywords <span class="count" id="kw-count">0</span></label>
+            <textarea id="target-keywords" placeholder="best seo tools&#10;technical seo audit&#10;..." rows="8"></textarea>
+          </div>
+        </div>
+        <div class="input-col">
+          <div class="input-group">
+            <label for="target-urls">Target URLs <span class="count" id="target-count">0</span></label>
+            <textarea id="target-urls" placeholder="https://example.com/best-seo-tools&#10;https://example.com/technical-seo&#10;..." rows="8"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary-tool" id="find-btn">Find Opportunities</button>
+        <button class="btn-secondary-tool" id="clear-btn">Clear All</button>
+      </div>
+
+      <!-- Results -->
+      <div class="results-section" id="results" style="display:none">
+        <div class="results-header">
+          <h2>Linking Opportunities <span id="result-count"></span></h2>
+          <button class="btn-download" id="download-btn">⌇ Download CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th>Source URL</th>
+                <th>Target Keyword</th>
+                <th>Target URL</th>
+                <th>Suggested Anchor</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="error-msg" id="error-msg" style="display:none"></div>
+
+      <!-- SEO Copy -->
+      <section class="seo-copy">
+        <h2>Why Internal Linking Matters for SEO</h2>
+        <p>Internal links are one of the most underutilized levers in SEO. They help search engines discover and understand your content hierarchy, pass PageRank between pages, and signal topical relevance — all without building a single backlink.</p>
+        <p>This free internal link recommender analyzes your source pages and target URLs, scoring each pairing by topical overlap so you know exactly where to add links for maximum SEO impact. Stop guessing and start linking with data.</p>
+        <p class="cta-inline">Want a full internal link audit? <a href="/consultation">Book a consultation ➒</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    function parseLines(text) {
+      return text.split('\n').map(l => l.trim()).filter(Boolean);
+    }
+
+    function tokenize(str) {
+      return str.toLowerCase().split(/[\W_]+/).filter(s => s.length > 1);
+    }
+
+    function getUrlTokens(url) {
+      try {
+        const path = new URL(url.startsWith('http') ? url : 'https://' + url).pathname;
+        return path.toLowerCase().split(/[\/\-_\.]+/).filter(Boolean);
+      } catch {
+        return url.toLowerCase().split(/[\/\-_\.\?=&]+/).filter(Boolean);
+      }
+    }
+
+    function scoreRelevance(sourceUrl, keywords) {
+      const sourceTokens = new Set(getUrlTokens(sourceUrl));
+      const kwTokens = tokenize(keywords);
+      if (!kwTokens.length || !sourceTokens.size) return 0;
+      const matches = kwTokens.filter(t => sourceTokens.has(t)).length;
+      return Math.round((matches / kwTokens.length) * 100);
+    }
+
+    function suggestAnchor(keyword) {
+      return keyword.split(/\s+/).map((w, i) => i === 0 ? w.charAt(0).toUpperCase() + w.slice(1) : w).join(' ');
+    }
+
+    // Counter updates
+    function updateCount(textareaId, countId) {
+      const ta = document.getElementById(textareaId);
+      const counter = document.getElementById(countId);
+      ta.addEventListener('input', () => {
+        counter.textContent = parseLines(ta.value).length;
+      });
+    }
+    updateCount('source-urls', 'source-count');
+    updateCount('target-keywords', 'kw-count');
+    updateCount('target-urls', 'target-count');
+
+    let results = [];
+
+    document.getElementById('find-btn').addEventListener('click', () => {
+      const errorEl = document.getElementById('error-msg');
+      errorEl.style.display = 'none';
+
+      const sources  = parseLines(document.getElementById('source-urls').value);
+      const keywords = parseLines(document.getElementById('target-keywords').value);
+      const targets  = parseLines(document.getElementById('target-urls').value);
+
+      if (!sources.length || !keywords.length || !targets.length) {
+        errorEl.textContent = 'Please enter Source URLs, Target Keywords, and Target URLs.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      results = [];
+      sources.forEach(source => {
+        keywords.forEach((kw, i) => {
+          const target = targets[i] || targets[targets.length - 1];
+          const score = scoreRelevance(source, kw);
+          if (score > 0) {
+            results.push({ source, keyword: kw, target, anchor: suggestAnchor(kw), score });
+          }
+        });
+      });
+
+      results.sort((a, b) => b.score - a.score);
+      renderResults(results);
+    });
+
+    function renderResults(rows) {
+      const tbody = document.getElementById('results-body');
+      document.getElementById('result-count').textContent = `(${rows.length} opportunities)`;
+      if (!rows.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--color-gray-500)">No strong matches found. Try broader keywords or more source URLs.</td></tr>';
+      } else {
+        tbody.innerHTML = rows.map(r => `<tr>
+          <td class="url-cell" title="${r.source}">${r.source}</td>
+          <td>${r.keyword}</td>
+          <td class="url-cell" title="${r.target}">${r.target}</td>
+          <td class="anchor-cell">${r.anchor}</td>
+          <td><div class="score-bar"><div class="score-fill" style="width:${r.score}%"></div></div>${r.score}%</td>
+        </tr>`).join('');
+      }
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const header = ['Source URL', 'Target Keyword', 'Target URL', 'Suggested Anchor', 'Score'];
+      const rows = results.map(r => [r.source, r.keyword, r.target, r.anchor, r.score + '%']);
+      const csv = [header, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'internal-link-opportunities.csv';
+      a.click();
+    });
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      ['source-urls','target-keywords','target-urls'].forEach(id => document.getElementById(id).value = '');
+      ['source-count','kw-count','target-count'].forEach(id => document.getElementById(id).textContent = '0');
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('error-msg').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .tool-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0D9488 100%);
+    padding: var(--space-16) var(--space-4) var(--space-20);
+    text-align: center;
+  }
+  .hero-inner { max-width: 700px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+    backdrop-filter: blur(8px);
+  }
+  .tool-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    color: #fff;
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: var(--font-size-lg);
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tool-main { padding: var(--space-12) var(--space-4); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .how-it-works {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+  .how-it-works summary {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+  }
+  .how-it-works summary::-webkit-details-marker { display: none; }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .step { display: flex; gap: var(--space-3); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--color-accent); color: #000;
+    font-weight: var(--font-weight-bold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: var(--font-size-sm);
+  }
+  .step p { font-size: var(--font-size-sm); color: var(--color-gray-600); margin: var(--space-1) 0 0; }
+  .tip { margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-gray-600); }
+
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+  .input-col-full { grid-column: 1 / -1; }
+  .input-col { display: flex; flex-direction: column; }
+  .input-group { display: flex; flex-direction: column; gap: var(--space-2); }
+  .input-group label {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .count {
+    background: var(--color-accent);
+    color: #000;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    min-width: 24px;
+    text-align: center;
+  }
+  textarea {
+    width: 100%;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono, monospace);
+    resize: vertical;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  textarea:focus { outline: none; border-color: var(--color-accent); }
+
+  .actions { display: flex; gap: var(--space-3); margin-bottom: var(--space-8); flex-wrap: wrap; }
+  .btn-primary-tool {
+    padding: var(--space-3) var(--space-8);
+    background: var(--color-accent);
+    color: #000;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    border: none; border-radius: var(--radius-lg);
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-primary-tool:hover { opacity: 0.85; }
+  .btn-secondary-tool {
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-gray-600);
+    font-size: var(--font-size-base);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-lg);
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .btn-secondary-tool:hover { border-color: var(--color-gray-500); }
+
+  .error-msg {
+    background: #FEE2E2; color: #991B1B;
+    border: 1px solid #FCA5A5;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--font-size-sm);
+  }
+
+  .results-section { margin-bottom: var(--space-16); }
+  .results-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);
+  }
+  .results-header h2 { font-size: var(--font-size-2xl); color: var(--color-primary); }
+  .btn-download {
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-primary);
+    color: #fff; border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer; font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    transition: opacity 0.2s;
+  }
+  .btn-download:hover { opacity: 0.85; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); }
+  table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+  thead { background: var(--color-primary); }
+  thead th { color: #fff; padding: var(--space-3) var(--space-4); text-align: left; font-weight: var(--font-weight-semibold); white-space: nowrap; }
+  tbody tr:nth-child(even) { background: var(--color-gray-50); }
+  tbody td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-gray-100); vertical-align: middle; }
+  .url-cell { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; }
+  .anchor-cell { font-style: italic; color: var(--color-gray-700); }
+
+  .score-bar {
+    width: 60px; height: 6px;
+    background: var(--color-gray-200);
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+  }
+  .score-fill { height: 100%; background: var(--color-accent); border-radius: 3px; }
+
+  .seo-copy {
+    background: var(--color-gray-50);
+    border-top: 2px solid var(--color-gray-200);
+    padding: var(--space-10) 0;
+    margin-top: var(--space-8);
+  }
+  .seo-copy h2 { font-size: var(--font-size-2xl); color: var(--color-primary); margin-bottom: var(--space-4); }
+  .seo-copy p { color: var(--color-gray-700); line-height: 1.75; margin-bottom: var(--space-4); }
+  .cta-inline a { color: var(--color-accent-dark); font-weight: var(--font-weight-semibold); }
+
+  @media (max-width: 768px) {
+    .input-grid { grid-template-columns: 1fr; }
+    .input-col-full { grid-column: 1; }
+    .how-steps { grid-template-columns: 1fr; }
+  }
+</style>
