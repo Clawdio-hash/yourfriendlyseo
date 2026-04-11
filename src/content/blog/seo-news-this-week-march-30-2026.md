@@ -3,6 +3,7 @@ title: "SEO News This Week: March 30, 2026"
 description: "Google's March 2026 Core Update is rolling out, spam update completed, AI Overviews continue changing search behavior, and more. Here's what small business owners need to know."
 pubDate: 'Mar 30 2026'
 tags: ['SEO News', 'Google Updates', 'Weekly Roundup']
+author: 'Emil Mequita'
 ---
 
 Another big week in SEO. Google dropped TWO algorithm updates, AI Overviews are reshaping how people search, and your Google Business Profile just got more important.
