@@ -2,7 +2,7 @@
 title: 'Google Merchant Center SEO: How AI Caught 469 Image Errors (And What You Should Check in Your Feed)'
 description: 'Discover how AI-powered auditing found 469 image mismatches in a real Google Merchant Center feed — and learn the 5-point checklist every small e-commerce business needs to optimize their GMC feed and stop losing sales to silent errors.'
 pubDate: 2026-04-10
-author: 'YourFriendlySEO'
+author: 'Emil Mequita'
 tags: ['Google Merchant Center', 'E-Commerce SEO', 'GMC Feed Optimization', 'AI SEO', 'Small Business SEO']
 gradient: 'from-slate-900 via-emerald-900 to-teal-700'
 ---
