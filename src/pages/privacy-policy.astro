@@ -1,0 +1,151 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Privacy Policy | YourFriendlySEO";
+const description = "Privacy Policy for YourFriendlySEO — how we collect, use, and protect your information.";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} />
+</head>
+<body>
+  <Header />
+
+  <main class="privacy-page">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: April 2025</p>
+
+      <section>
+        <h2>1. Information We Collect</h2>
+        <p>We collect information you provide directly to us, such as when you sign up for our newsletter, book a consultation, or contact us by email. This may include your name, email address, and any other information you choose to provide.</p>
+        <p>We also collect certain information automatically when you visit our site, including your IP address, browser type, referring URLs, and pages visited. We use standard analytics tools (such as Google Analytics) for this purpose.</p>
+      </section>
+
+      <section>
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Send you newsletters and SEO tips you've subscribed to</li>
+          <li>Schedule and manage consultation sessions</li>
+          <li>Respond to your questions and support requests</li>
+          <li>Improve our website and content</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Email & Newsletter</h2>
+        <p>If you subscribe to our newsletter, we use Beehiiv to manage our email list. Your email address is stored with Beehiiv and subject to their privacy policy. You can unsubscribe at any time using the link at the bottom of any email.</p>
+      </section>
+
+      <section>
+        <h2>4. Payments</h2>
+        <p>Payments for products and consultations are processed by Stripe. We do not store your credit card information. Stripe's privacy policy applies to all payment transactions.</p>
+      </section>
+
+      <section>
+        <h2>5. Cookies</h2>
+        <p>We use cookies for analytics purposes (Google Analytics). You can disable cookies in your browser settings, though this may affect site functionality.</p>
+      </section>
+
+      <section>
+        <h2>6. Third-Party Services</h2>
+        <p>Our site uses the following third-party services, each with their own privacy policies:</p>
+        <ul>
+          <li><strong>Google Analytics</strong> — website analytics</li>
+          <li><strong>Beehiiv</strong> — email newsletter management</li>
+          <li><strong>Stripe</strong> — payment processing</li>
+          <li><strong>Netlify</strong> — website hosting</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Data Retention</h2>
+        <p>We retain your personal information for as long as necessary to provide our services and comply with legal obligations. You may request deletion of your data at any time by contacting us.</p>
+      </section>
+
+      <section>
+        <h2>8. Your Rights</h2>
+        <p>You have the right to access, correct, or delete your personal information. To make a request, contact us at <a href="mailto:hello@yourfriendlyseo.com">hello@yourfriendlyseo.com</a>.</p>
+      </section>
+
+      <section>
+        <h2>9. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. When we do, we'll update the date at the top of this page. Continued use of our site after changes constitutes acceptance of the updated policy.</p>
+      </section>
+
+      <section>
+        <h2>10. Contact</h2>
+        <p>If you have any questions about this privacy policy, please email us at <a href="mailto:hello@yourfriendlyseo.com">hello@yourfriendlyseo.com</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</body>
+</html>
+
+<style>
+  .privacy-page {
+    background: #F8FAFC;
+    padding: 60px 20px 80px;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    color: #0F172A;
+    margin-bottom: 8px;
+  }
+
+  .last-updated {
+    color: #64748B;
+    font-size: 0.9rem;
+    margin-bottom: 48px;
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    color: #0F172A;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  p {
+    color: #475569;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  ul {
+    color: #475569;
+    line-height: 1.75;
+    padding-left: 24px;
+    margin-bottom: 14px;
+  }
+
+  ul li {
+    margin-bottom: 6px;
+  }
+
+  a {
+    color: #D97706;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
