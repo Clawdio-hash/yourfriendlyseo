@@ -1,0 +1,380 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Your Migration Toolkit Access | YourFriendlySEO"
+      description="Download your Website Migration Toolkit files and book your 30-minute strategy call with Emil."
+    />
+  </head>
+  <body>
+    <Header />
+
+    <main class="access-page">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container">
+          <div class="checkmark">✓</div>
+          <h1>You're in — welcome to the toolkit.</h1>
+          <p class="subtitle">Everything is ready below. Bookmark this page for easy access.</p>
+        </div>
+      </section>
+
+      <!-- Deliverables -->
+      <section class="content">
+        <div class="container">
+
+          <h2 class="section-title">Your Toolkit Files</h2>
+          <p class="section-sub">All files are in Google Drive. Click each link to open and make your own copy (File → Make a copy).</p>
+
+          <div class="items-grid">
+
+            <div class="item-card">
+              <div class="item-icon">📋</div>
+              <div class="item-body">
+                <h3>Pre-Migration Audit Checklist</h3>
+                <p>50-point checklist to complete before launch day. Every item is a real failure mode from enterprise migrations.</p>
+                <a href="DRIVE_CHECKLIST_LINK" target="_blank" rel="noopener" class="download-btn">
+                  Open Checklist →
+                </a>
+              </div>
+            </div>
+
+            <div class="item-card">
+              <div class="item-icon">🗺️</div>
+              <div class="item-body">
+                <h3>URL Inventory Builder</h3>
+                <p>Google Sheets template for mapping old URLs to new, with priority scoring by traffic and link equity.</p>
+                <a href="DRIVE_INVENTORY_LINK" target="_blank" rel="noopener" class="download-btn">
+                  Open Spreadsheet →
+                </a>
+              </div>
+            </div>
+
+            <div class="item-card">
+              <div class="item-icon">🚀</div>
+              <div class="item-body">
+                <h3>Launch Day Runbook</h3>
+                <p>Hour-by-hour playbook with team roles, go/no-go criteria, timeline, and a full rollback decision tree.</p>
+                <a href="DRIVE_RUNBOOK_LINK" target="_blank" rel="noopener" class="download-btn">
+                  Open Runbook →
+                </a>
+              </div>
+            </div>
+
+            <div class="item-card">
+              <div class="item-icon">🔀</div>
+              <div class="item-body">
+                <h3>Redirect Map Generator</h3>
+                <p>Use our free Redirect Mapper tool with Apache, Nginx, and Cloudflare export formats.</p>
+                <a href="/tools/redirect-mapper" class="download-btn">
+                  Open Tool →
+                </a>
+              </div>
+            </div>
+
+            <div class="item-card">
+              <div class="item-icon">📊</div>
+              <div class="item-body">
+                <h3>Post-Launch Monitoring Dashboard</h3>
+                <p>Google Looker Studio template pre-configured to track organic traffic, index coverage, and ranking positions.</p>
+                <a href="DRIVE_DASHBOARD_LINK" target="_blank" rel="noopener" class="download-btn">
+                  Open Dashboard →
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bonus call -->
+          <div class="bonus-card">
+            <div class="bonus-badge">BONUS INCLUDED</div>
+            <div class="bonus-body">
+              <div class="bonus-icon">📞</div>
+              <div>
+                <h3>30-Minute Migration Review Call with Emil</h3>
+                <p>Use this call to review your redirect map, get platform-specific advice, and catch issues before they become expensive. The call is recorded so you can share it with your team.</p>
+                <a href="CALENDLY_LINK" target="_blank" rel="noopener" class="book-btn">
+                  Book Your 30-Minute Call →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- How to use -->
+          <div class="how-to">
+            <h2>How to Use This Toolkit</h2>
+            <ol>
+              <li><strong>Start with the Pre-Migration Audit Checklist.</strong> Complete every section before you touch a single URL. This is your baseline.</li>
+              <li><strong>Build your URL inventory.</strong> Use the spreadsheet template to map every old URL to its new destination with priority scores.</li>
+              <li><strong>Generate and test your redirects.</strong> Use the Redirect Mapper tool to export your redirect rules in the correct server format.</li>
+              <li><strong>Book your review call.</strong> Once your redirect map is ready, use your 30-minute call with Emil to review it before launch day.</li>
+              <li><strong>Follow the Launch Day Runbook.</strong> Assign team roles the night before and execute the hour-by-hour timeline on go-live day.</li>
+              <li><strong>Monitor with the dashboard.</strong> Set up the Looker Studio template before launch so you can spot issues within hours of going live.</li>
+            </ol>
+          </div>
+
+          <!-- Questions -->
+          <div class="questions">
+            <h3>Questions?</h3>
+            <p>Email Emil directly at <a href="mailto:emil@yourfriendlyseo.com">emil@yourfriendlyseo.com</a> — I respond to every message from toolkit customers.</p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .access-page {
+    background: #F8FAFC;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    color: white;
+    padding: 52px 20px 48px;
+    text-align: center;
+  }
+
+  .checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #10B981;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.2);
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.7rem; }
+  }
+
+  /* Content */
+  .content {
+    padding: 52px 20px 64px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    color: #0F172A;
+    margin-bottom: 6px;
+  }
+
+  .section-sub {
+    color: #64748B;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+  }
+
+  /* Item cards */
+  .items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .item-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #E2E8F0;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .item-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .item-body h3 {
+    font-size: 1.05rem;
+    color: #0F172A;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .item-body p {
+    color: #64748B;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .download-btn {
+    display: inline-block;
+    background: #0F172A;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .download-btn:hover {
+    background: #1E293B;
+    text-decoration: none;
+  }
+
+  /* Bonus card */
+  .bonus-card {
+    background: #FEF3C7;
+    border: 2px solid #F59E0B;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 40px;
+  }
+
+  .bonus-badge {
+    display: inline-block;
+    background: #F59E0B;
+    color: #0F172A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .bonus-body {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .bonus-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .bonus-body h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .bonus-body p {
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .book-btn {
+    display: inline-block;
+    background: #F59E0B;
+    color: #0F172A;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .book-btn:hover {
+    background: #D97706;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* How to use */
+  .how-to {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #E2E8F0;
+  }
+
+  .how-to h2 {
+    font-size: 1.3rem;
+    color: #0F172A;
+    margin-bottom: 18px;
+  }
+
+  .how-to ol {
+    padding-left: 20px;
+    color: #334155;
+  }
+
+  .how-to li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .how-to strong {
+    color: #0F172A;
+  }
+
+  /* Questions */
+  .questions {
+    background: #F1F5F9;
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+
+  .questions h3 {
+    font-size: 1rem;
+    color: #0F172A;
+    margin-bottom: 6px;
+  }
+
+  .questions p {
+    color: #64748B;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .questions a {
+    color: #0F172A;
+    font-weight: 600;
+  }
+</style>
