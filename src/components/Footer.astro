@@ -6,9 +6,8 @@ const today = new Date();
   <div class="footer-container">
     <div class="footer-content">
       <div class="footer-brand">
-        <div class="brand-logo">
-          <span class="brand-icon">🌱</span>
-          <span class="brand-name">{SITE_TITLE}</span>
+        <div class="brand-logo-wrap">
+          <img src="/logo-wordmark.jpg" alt={SITE_TITLE} class="brand-logo" />
         </div>
         <p class="brand-tagline">Practical SEO guides for small business owners.</p>
       </div>
@@ -74,21 +73,21 @@ const today = new Date();
     max-width: 300px;
   }
 
-  .brand-logo {
-    display: flex;
+  .brand-logo-wrap {
+    display: inline-flex;
     align-items: center;
-    gap: var(--space-3);
+    justify-content: center;
     margin-bottom: var(--space-4);
+    background-color: var(--color-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3) var(--space-4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
   }
 
-  .brand-icon {
-    font-size: var(--font-size-2xl);
-  }
-
-  .brand-name {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-white);
+  .brand-logo {
+    display: block;
+    width: min(100%, 320px);
+    height: auto;
   }
 
   .brand-tagline {
