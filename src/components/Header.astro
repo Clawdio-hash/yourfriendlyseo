@@ -5,9 +5,9 @@ import HeaderLink from './HeaderLink.astro';
 <header>
   <nav class="nav-container">
     <div class="nav-brand">
-      <a href="/" class="brand-link">
-        <span class="brand-icon">🌱</span>
-        <span class="brand-name">{SITE_TITLE}</span>
+      <a href="/" class="brand-link" aria-label={SITE_TITLE}>
+        <img src="/logo-wordmark.jpg" alt={SITE_TITLE} class="brand-wordmark" />
+        <img src="/logo-mark.png" alt={SITE_TITLE} class="brand-mark" />
       </a>
     </div>
     <div class="nav-links">
@@ -17,7 +17,7 @@ import HeaderLink from './HeaderLink.astro';
       <!-- Tools dropdown (desktop only) -->
       <div class="nav-dropdown">
         <a href="/resources/diy-seo-tools" class="dropdown-toggle">
-          Tools <span class="dropdown-caret">▾</span>
+          Tools <span class="dropdown-caret">â–¾</span>
         </a>
         <div class="dropdown-menu">
           <a href="/resources/diy-seo-tools" class="dropdown-item dropdown-item-all">
@@ -26,15 +26,15 @@ import HeaderLink from './HeaderLink.astro';
           </a>
           <div class="dropdown-divider"></div>
           <a href="/products/redirect-mapper" class="dropdown-item">
-            <span class="dropdown-item-icon">🔀</span>
+            <span class="dropdown-item-icon">ðŸ”€</span>
             <span class="dropdown-item-label">Redirect Mapper</span>
           </a>
           <a href="/products/internal-link-recommender" class="dropdown-item">
-            <span class="dropdown-item-icon">🔗</span>
+            <span class="dropdown-item-icon">ðŸ”—</span>
             <span class="dropdown-item-label">Internal Link Recommender</span>
           </a>
           <a href="/products/migration-toolkit" class="dropdown-item">
-            <span class="dropdown-item-icon">🚀</span>
+            <span class="dropdown-item-icon">ðŸš€</span>
             <span class="dropdown-item-label">Migration Toolkit <span class="dropdown-paid">$97</span></span>
           </a>
         </div>
@@ -124,16 +124,22 @@ import HeaderLink from './HeaderLink.astro';
   .brand-link {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
     text-decoration: none;
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-xl);
-    color: var(--color-primary);
     transition: opacity 0.2s ease;
   }
-  .brand-link:hover { opacity: 0.8; text-decoration: none; }
-  .brand-icon { font-size: var(--font-size-2xl); }
-  .brand-name { color: var(--color-primary); }
+  .brand-link:hover { opacity: 0.88; text-decoration: none; }
+  .brand-wordmark {
+    display: block;
+    height: 52px;
+    width: auto;
+    max-width: 290px;
+  }
+  .brand-mark {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+  }
 
   /* Navigation Links */
   .nav-links {
@@ -347,11 +353,14 @@ import HeaderLink from './HeaderLink.astro';
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-toggle { display: flex; }
     .mobile-menu { display: block; }
-    .brand-link { font-size: var(--font-size-lg); }
-    .brand-icon { font-size: var(--font-size-xl); }
+    .brand-wordmark {
+      height: 44px;
+      max-width: 220px;
+    }
   }
 
   @media (max-width: 480px) {
-    .brand-name { display: none; }
+    .brand-wordmark { display: none; }
+    .brand-mark { display: block; }
   }
 </style>
