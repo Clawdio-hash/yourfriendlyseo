@@ -6,8 +6,8 @@ import HeaderLink from './HeaderLink.astro';
   <nav class="nav-container">
     <div class="nav-brand">
       <a href="/" class="brand-link" aria-label={SITE_TITLE}>
-        <img src="/logo-wordmark.jpg" alt={SITE_TITLE} class="brand-wordmark" />
-        <img src="/logo-mark.png" alt={SITE_TITLE} class="brand-mark" />
+        <img src="/logo-mark.png" alt="" class="brand-mark" />
+        <img src="/logo-text.png" alt={SITE_TITLE} class="brand-text" />
       </a>
     </div>
     <div class="nav-links">
@@ -124,21 +124,23 @@ import HeaderLink from './HeaderLink.astro';
   .brand-link {
     display: flex;
     align-items: center;
+    gap: var(--space-3);
     text-decoration: none;
     transition: opacity 0.2s ease;
   }
   .brand-link:hover { opacity: 0.88; text-decoration: none; }
-  .brand-wordmark {
-    display: block;
-    height: 52px;
-    width: auto;
-    max-width: 290px;
-  }
   .brand-mark {
-    display: none;
-    width: 44px;
-    height: 44px;
+    display: block;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+  .brand-text {
+    display: block;
+    height: 34px;
+    width: auto;
+    max-width: 270px;
   }
 
   /* Navigation Links */
@@ -353,14 +355,17 @@ import HeaderLink from './HeaderLink.astro';
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-toggle { display: flex; }
     .mobile-menu { display: block; }
-    .brand-wordmark {
-      height: 44px;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+    }
+    .brand-text {
+      height: 28px;
       max-width: 220px;
     }
   }
 
   @media (max-width: 480px) {
-    .brand-wordmark { display: none; }
-    .brand-mark { display: block; }
+    .brand-text { display: none; }
   }
 </style>
