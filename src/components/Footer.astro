@@ -7,7 +7,10 @@ const today = new Date();
     <div class="footer-content">
       <div class="footer-brand">
         <div class="brand-logo-wrap">
-          <img src="/logo-wordmark.jpg" alt={SITE_TITLE} class="brand-logo" />
+          <div class="brand-logo-row">
+            <img src="/logo-mark.png" alt="" class="brand-mark" />
+            <img src="/logo-text.png" alt={SITE_TITLE} class="brand-logo" />
+          </div>
         </div>
         <p class="brand-tagline">Practical SEO guides for small business owners.</p>
       </div>
@@ -84,9 +87,22 @@ const today = new Date();
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
   }
 
+  .brand-logo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
   .brand-logo {
     display: block;
-    width: min(100%, 320px);
+    width: min(100%, 250px);
     height: auto;
   }
 
