@@ -5,18 +5,83 @@ import BeehiivEmbed from '../components/BeehiivEmbed.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import FallbackImage from '../assets/blog-placeholder-1.jpg';
+import { AUTHOR, SITE_TITLE, SITE_URL } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, author, tags, gradient } = Astro.props;
+const { title, description, pubDate, updatedDate, author, tags, gradient, heroImage } = Astro.props;
 
 // Default gradient if none specified
 const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
+const siteBase = Astro.site ?? new URL(SITE_URL);
+const canonicalUrl = new URL(Astro.url.pathname, siteBase).toString();
+const articleImage = heroImage ?? FallbackImage;
+const articleImageUrl = new URL(articleImage.src, siteBase).toString();
+const authorName = author || AUTHOR.name;
+const authorUrl = AUTHOR.linkedin;
+const authorImageUrl = new URL('/emil%20headshot.jpeg', siteBase).toString();
+const publisherLogoUrl = new URL('/favicon.svg', siteBase).toString();
+const isoPublished = pubDate.toISOString();
+const isoModified = (updatedDate ?? pubDate).toISOString();
+
+const articleSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	mainEntityOfPage: {
+		'@type': 'WebPage',
+		'@id': canonicalUrl,
+	},
+	headline: title,
+	description,
+	url: canonicalUrl,
+	datePublished: isoPublished,
+	dateModified: isoModified,
+	inLanguage: 'en-US',
+	image: [articleImageUrl],
+	author: {
+		'@type': 'Person',
+		name: authorName,
+		url: authorUrl,
+		image: authorImageUrl,
+		sameAs: [authorUrl],
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: SITE_TITLE,
+		url: SITE_URL,
+		logo: {
+			'@type': 'ImageObject',
+			url: publisherLogoUrl,
+		},
+	},
+	isPartOf: {
+		'@type': 'Blog',
+		name: `${SITE_TITLE} Blog`,
+		url: new URL('/blog', siteBase).toString(),
+	},
+	...(tags?.length
+		? {
+			keywords: tags.join(', '),
+			articleSection: tags[0],
+			about: tags.map((tag: string) => ({
+				'@type': 'Thing',
+				name: tag,
+			})),
+		}
+		: {}),
+};
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={articleImage} />
+		<meta property="og:type" content="article" />
+		<meta property="article:published_time" content={isoPublished} />
+		<meta property="article:modified_time" content={isoModified} />
+		<meta property="article:author" content={authorName} />
+		{tags?.map((tag: string) => <meta property="article:tag" content={tag} />)}
+		<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 	</head>
 
 	<body>
@@ -84,7 +149,7 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 						<div class="author-details">
 							<h3>About {author}</h3>
 							<p>
-								I've spent 10+ years helping businesses—from enterprise tech companies to premium e-commerce brands—rank higher on Google. I bring enterprise-level SEO strategy to small business owners at accessible prices. Based in Los Angeles.
+								I've spent 10+ years helping businessesâ€”from enterprise tech companies to premium e-commerce brandsâ€”rank higher on Google. I bring enterprise-level SEO strategy to small business owners at accessible prices. Based in Los Angeles.
 							</p>
 							<div class="author-links">
 								<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="author-link">
@@ -257,7 +322,7 @@ const heroGradient = gradient || 'from-blue-900 via-blue-800 to-emerald-700';
 	}
 	
 	.article-content :global(ul li::before) {
-		content: '✓';
+		content: 'âœ“';
 		position: absolute;
 		left: 0;
 		color: var(--color-accent);
