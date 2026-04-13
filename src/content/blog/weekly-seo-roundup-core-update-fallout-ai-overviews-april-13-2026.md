@@ -6,7 +6,7 @@ tags: ['SEO News', 'Google Updates', 'Weekly Roundup']
 author: 'Emil Mequita'
 ---
 
-Hereâ€™s your quick Monday SEO roundup for the past week. Google wrapped up its March core update, rolled out a new spam policy aimed at deceptive UX, and signs keep pointing toward deeper AI integration in search.
+HereÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s your quick Monday SEO roundup for the past week. Google wrapped up its March core update, rolled out a new spam policy aimed at deceptive UX, and signs keep pointing toward deeper AI integration in search.
 
 For small businesses and marketers, the theme is pretty clear: cleaner user experience, better measurement, and stronger content trust signals matter even more now.
 
@@ -25,11 +25,11 @@ If your site relies on aggressive popups, ad-heavy scripts, or third-party tools
 - Check whether any third-party code interferes with normal browser behavior
 - Remove anything that feels manipulative before Google forces the issue
 
-## 2. Googleâ€™s March 2026 broad core update finished rolling out
+## 2. GoogleÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s March 2026 broad core update finished rolling out
 
 **Source:** [Search Engine Roundtable](https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html)
 
-Googleâ€™s March 2026 broad core update finished rolling out on **April 8** after about 12 days. Early reporting suggests it was not as chaotic as some earlier core updates, but there was still meaningful movement for affected sites.
+GoogleÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s March 2026 broad core update finished rolling out on **April 8** after about 12 days. Early reporting suggests it was not as chaotic as some earlier core updates, but there was still meaningful movement for affected sites.
 
 **Why this matters:**
 
@@ -45,7 +45,7 @@ If your traffic or rankings shifted recently, this is the right time to compare 
 
 **Source:** [Search Engine Roundtable](https://www.seroundtable.com/google-search-console-ai-contribution-41153.html)
 
-Google appears to be testing an **AI contribution** reporting area in Search Console, potentially similar to Bingâ€™s growing AI visibility reporting.
+Google appears to be testing an **AI contribution** reporting area in Search Console, potentially similar to BingÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s growing AI visibility reporting.
 
 Details are still limited, but the signal is important. Google seems to be moving toward clearer AI-era measurement.
 
@@ -95,10 +95,10 @@ This is another sign that traditional search and conversational search are blend
 
 ## The bottom line
 
-This weekâ€™s signal is pretty consistent: Google keeps rewarding cleaner user experience, better trust signals, and more useful content while pushing search deeper into AI-assisted behavior.
+This weekÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s signal is pretty consistent: Google keeps rewarding cleaner user experience, better trust signals, and more useful content while pushing search deeper into AI-assisted behavior.
 
 If rankings moved after the core update, do not panic and start changing everything at once. Look for patterns. If AI search visibility feels fuzzy, improve the quality and structure of the content you already have before chasing shiny new tactics.
 
 And if your site still has conversion gaps, weak internal linking, or unclear priorities, that matters just as much as the algorithm headlines.
 
-If recent ranking swings, AI search changes, or reporting gaps have you wondering what to fix first, [book a consultation](https://www.yourfriendlyseo.com/consultation) and weâ€™ll turn the noise into a practical SEO action plan.
+If recent ranking swings, AI search changes, or reporting gaps have you wondering what to fix first, [book a consultation](https://www.yourfriendlyseo.com/consultation) and weÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ll turn the noise into a practical SEO action plan.
