@@ -6,8 +6,7 @@ import HeaderLink from './HeaderLink.astro';
   <nav class="nav-container">
     <div class="nav-brand">
       <a href="/" class="brand-link" aria-label={SITE_TITLE}>
-        <img src="/logo-mark.png" alt="" class="brand-mark" />
-        <img src="/logo-text.png" alt={SITE_TITLE} class="brand-text" />
+        <img src="/logo-transparent.png" alt={SITE_TITLE} class="brand-text" />
       </a>
     </div>
     <div class="nav-links">
@@ -129,18 +128,11 @@ import HeaderLink from './HeaderLink.astro';
     transition: opacity 0.2s ease;
   }
   .brand-link:hover { opacity: 0.88; text-decoration: none; }
-  .brand-mark {
-    display: block;
-    width: 42px;
-    height: 42px;
-    border-radius: var(--radius-md);
-    flex-shrink: 0;
-  }
   .brand-text {
     display: block;
-    height: 34px;
+    height: 44px;
     width: auto;
-    max-width: 270px;
+    max-width: 180px;
   }
 
   /* Navigation Links */
