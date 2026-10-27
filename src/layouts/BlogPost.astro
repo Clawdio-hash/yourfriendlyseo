@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import BeehiivEmbed from '../components/BeehiivEmbed.astro';
 import Footer from '../components/Footer.astro';
@@ -20,6 +21,19 @@ const articleImage = heroImage ?? FallbackImage;
 const articleImageUrl = new URL(articleImage.src, siteBase).toString();
 const authorName = author || AUTHOR.name;
 const authorUrl = AUTHOR.linkedin;
+
+// Related posts: rank other posts by shared tags, then recency.
+const currentSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop();
+const currentTags = tags ?? [];
+const relatedPosts = (await getCollection('blog'))
+	.filter((p) => p.id.replace(/\.mdx?$/, '') !== currentSlug)
+	.map((p) => ({
+		p,
+		shared: (p.data.tags ?? []).filter((t: string) => currentTags.includes(t)).length,
+	}))
+	.sort((a, b) => b.shared - a.shared || b.p.data.pubDate.valueOf() - a.p.data.pubDate.valueOf())
+	.slice(0, 3)
+	.map((x) => x.p);
 const authorImageUrl = new URL('/emil%20headshot.jpeg', siteBase).toString();
 const publisherLogoUrl = new URL('/logo-mark.png', siteBase).toString();
 const isoPublished = pubDate.toISOString();
@@ -128,42 +142,83 @@ const articleSchema = {
 				<slot />
 			</article>
 			
+			<!-- Free checklist CTA (on every post) -->
+			<aside class="post-checklist-cta">
+				<div class="post-checklist-inner">
+					<div>
+						<h3>Put this into action</h3>
+						<p>Grab the free DIY SEO checklist and work through every step at your own pace.</p>
+					</div>
+					<a href="/free-checklist" class="btn btn-primary" data-ga-event="free_checklist_signup" data-ga-label="blog_post">Get the Free SEO Checklist</a>
+				</div>
+			</aside>
+
+			<!-- Related posts + tools (on every post) -->
+			<aside class="post-related">
+				{relatedPosts.length > 0 && (
+					<div class="post-related-block">
+						<h3>Related guides</h3>
+						<ul class="post-related-list">
+							{relatedPosts.map((rp) => (
+								<li>
+									<a href={`/blog/${rp.id.replace(/\.mdx?$/, '')}/`}>{rp.data.title}</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+				<div class="post-related-block">
+					<h3>Topic hubs</h3>
+					<ul class="post-related-list">
+						<li><a href="/local-seo">Local SEO</a></li>
+						<li><a href="/technical-seo">Technical SEO</a></li>
+						<li><a href="/ai-search-visibility">AI Search Visibility (GEO)</a></li>
+					</ul>
+				</div>
+				<div class="post-related-block">
+					<h3>Tools &amp; next steps</h3>
+					<ul class="post-related-list">
+						<li><a href="/resources/diy-seo-tools">Free SEO tools</a></li>
+						<li><a href="/products/redirect-mapper">Redirect Mapper</a></li>
+						<li><a href="/products/internal-link-recommender">Internal Link Recommender</a></li>
+						<li><a href="/services">SEO services &amp; strategy sessions</a></li>
+					</ul>
+				</div>
+			</aside>
+
 			<!-- Newsletter Signup -->
 			<aside class="article-newsletter">
-				<BeehiivEmbed 
-					title="Enjoyed this? Get weekly SEO tips delivered to your inbox" 
-					description="Join 1,000+ small business owners learning SEO strategies that actually work."
+				<BeehiivEmbed
+					title="Enjoyed this? Get weekly SEO tips delivered to your inbox"
+					description="Get one actionable SEO tactic every week, built for small business owners. No fluff, just results."
 					variant="compact"
 				/>
 			</aside>
-			
-			<!-- Author Bio -->
-			{author && (
-				<aside class="author-bio">
-					<div class="author-bio-content">
-						<img 
-							src="/emil%20headshot.jpeg" 
-							alt="Emil Mequita" 
-							class="author-avatar"
-						/>
-						<div class="author-details">
-							<h3>About {author}</h3>
-							<p>
-								I've spent 10+ years helping businesses—from enterprise tech companies to premium e-commerce brands—rank higher on Google. I bring enterprise-level SEO strategy to small business owners at accessible prices. Based in Los Angeles.
-							</p>
-							<div class="author-links">
-								<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="author-link">
-									<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-									Connect on LinkedIn
-								</a>
-								<a href="/consultation" class="author-link">
-									Book a Strategy Session
-								</a>
-							</div>
+
+			<!-- Author byline (on every post) -->
+			<aside class="author-bio">
+				<div class="author-bio-content">
+					<img
+						src="/emil%20headshot.jpeg"
+						alt="Emil Mequita, SEO Strategist"
+						class="author-avatar"
+					/>
+					<div class="author-details">
+						<h3>{authorName}, SEO Strategist, 10+ years</h3>
+						<p>
+							I've spent 10+ years directing SEO for enterprise technology, healthcare, and e-commerce brands, and now I bring that same strategy to small business owners. Based in Los Angeles.
+						</p>
+						<div class="author-links">
+							<a href="/about" class="author-link">More about Emil</a>
+							<a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener" class="author-link">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+								Connect on LinkedIn
+							</a>
+							<a href="/consultation" class="author-link">Book a Strategy Session</a>
 						</div>
 					</div>
-				</aside>
-			)}
+				</div>
+			</aside>
 		</main>
 
 		<Footer />
@@ -381,6 +436,70 @@ const articleSchema = {
 		position: relative;
 	}
 	
+	/* Free checklist CTA */
+	.post-checklist-cta {
+		margin-top: var(--space-10);
+	}
+	.post-checklist-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-6);
+		flex-wrap: wrap;
+		padding: var(--space-8);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+		border-radius: var(--radius-xl);
+	}
+	.post-checklist-inner h3 {
+		color: var(--color-white);
+		font-size: var(--font-size-xl);
+		margin: 0 0 var(--space-2);
+	}
+	.post-checklist-inner p {
+		color: var(--color-gray-200);
+		margin: 0;
+	}
+	.post-checklist-inner .btn {
+		flex-shrink: 0;
+	}
+
+	/* Related posts + tools */
+	.post-related {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-8);
+		margin-top: var(--space-10);
+	}
+	.post-related-block h3 {
+		font-size: var(--font-size-lg);
+		color: var(--color-primary);
+		margin: 0 0 var(--space-4);
+		padding-bottom: var(--space-2);
+		border-bottom: 2px solid var(--color-accent);
+	}
+	.post-related-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.post-related-list li {
+		margin-bottom: var(--space-3);
+	}
+	.post-related-list a {
+		color: var(--color-accent-dark);
+		font-weight: var(--font-weight-medium);
+	}
+	@media (max-width: 640px) {
+		.post-related {
+			grid-template-columns: 1fr;
+			gap: var(--space-6);
+		}
+		.post-checklist-inner {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
 	/* Author Bio */
 	.author-bio {
 		margin-top: var(--space-12);

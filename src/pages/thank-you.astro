@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, SCHEDULING_URL } from '../consts';
 
 const product = Astro.url.searchParams.get('product') || 'consultation';
 const isConsultation = product === 'consultation';
@@ -38,9 +38,15 @@ const isBundle = product === 'bundle';
 								<div class="step-number">2</div>
 								<div class="step-content">
 									<h3>Schedule Your Session</h3>
-									<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
-									<a href="https://calendly.com/yourfriendlyseo/strategy-session" class="btn btn-primary btn-large" target="_blank">Schedule Your Session</a>
-									<p class="note">You'll receive a Zoom link after scheduling</p>
+									{SCHEDULING_URL ? (
+										<>
+											<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
+											<a href={SCHEDULING_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener">Schedule Your Session</a>
+											<p class="note">You'll receive a calendar invite with your Zoom link after scheduling</p>
+										</>
+									) : (
+										<p>I'll email you a link to schedule your session at a time that works for both of us, usually within a few hours. You'll receive a calendar invite with the Zoom link once you pick a time.</p>
+									)}
 								</div>
 							</div>
 							
@@ -106,6 +112,22 @@ const isBundle = product === 'bundle';
 		</main>
 		
 		<Footer />
+
+		<!-- Fire the completed-conversion event based on ?product= (set Stripe success URL / Beehiiv redirect to point here). -->
+		<script is:inline define:vars={{ product }}>
+			(function () {
+				var map = {
+					bundle: 'template_bundle_purchase',
+					consultation: 'session_booking',
+					newsletter: 'newsletter_subscribe',
+					checklist: 'free_checklist_signup',
+				};
+				var ev = map[product];
+				if (ev && typeof window.yfsTrack === 'function') {
+					window.yfsTrack(ev, { label: 'thank_you' });
+				}
+			})();
+		</script>
 	</body>
 </html>
 
