@@ -50,4 +50,4 @@ export const CHECKOUT_LINKS = {
 // Scheduling: paste your Calendly or Cal.com event link here once it exists.
 // While this is empty, the consultation page shows the Stripe checkout button
 // and a note that scheduling follows payment (no fake scheduler URL is used).
-export const SCHEDULING_URL = '';
+export const SCHEDULING_URL = 'https://calendly.com/emil-mequita-z-uw/1-on-1-seo-strategy-session';
