@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
+
+const pageDescription = "Get in touch with Emil Mequita about SEO services, strategy sessions, or a question. Send a message or email hello@yourfriendlyseo.com.";
+---
+
+<Layout title={`Contact | ${SITE_TITLE}`} description={pageDescription}>
+  <main class="contact-page">
+    <section class="hero">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p class="subtitle">Have a question about SEO, services, or working together? Send a message and I'll get back to you personally, usually within one business day.</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="form-card">
+            <!--
+              Netlify Forms. This requires the site to be deployed on Netlify.
+              See the project report for the Vercel note and alternatives.
+            -->
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              class="contact-form"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden-field">
+                <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+              </p>
+
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="email" />
+              </div>
+
+              <div class="field">
+                <label for="business_type">Business type</label>
+                <select id="business_type" name="business_type">
+                  <option value="">Select one</option>
+                  <option value="local_service">Local service business</option>
+                  <option value="retail_restaurant">Retail / Restaurant</option>
+                  <option value="professional_services">Professional services</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="saas">SaaS / Tech</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website" placeholder="https://" autocomplete="url" />
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" data-ga-event="contact_form_submit" data-ga-label="contact_page">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <aside class="contact-aside">
+            <h2>Prefer email?</h2>
+            <p>You can always reach me directly at:</p>
+            <p>
+              <a href={`mailto:${SOCIAL_LINKS.email}`} class="email-link">{SOCIAL_LINKS.email}</a>
+            </p>
+            <h2>Looking for something specific?</h2>
+            <ul class="aside-links">
+              <li><a href="/services">See SEO services</a></li>
+              <li><a href="/consultation">Book a 1-on-1 strategy session</a></li>
+              <li><a href="/free-checklist">Get the free SEO checklist</a></li>
+              <li><a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener">Connect on LinkedIn</a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .contact-page { background: #F8FAFC; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+  .hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    color: #fff;
+    padding: 48px 20px 44px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.5rem; margin-bottom: 14px; color: #fff; }
+  .hero .subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.85); max-width: 640px; margin: 0 auto; line-height: 1.6; }
+  @media (max-width: 768px) { .hero h1 { font-size: 1.9rem; } }
+
+  .content { padding: 52px 20px; }
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 40px; align-items: start; }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .form-card {
+    background: #fff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-weight: 600; color: #0F172A; margin-bottom: 6px; font-size: 0.95rem; }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+    color: #0F172A;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: #F59E0B;
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.2);
+  }
+  .field textarea { resize: vertical; }
+
+  .hidden-field { display: none; }
+
+  .submit-btn {
+    background: #F59E0B;
+    color: #0F172A;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .submit-btn:hover { background: #D97706; transform: translateY(-1px); }
+
+  .contact-aside {
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .contact-aside h2 { font-size: 1.15rem; color: #0F172A; margin: 0 0 10px; }
+  .contact-aside h2:not(:first-child) { margin-top: 24px; }
+  .contact-aside p { color: #475569; margin: 0 0 8px; }
+  .email-link { color: #D97706; font-weight: 600; word-break: break-all; }
+  .aside-links { list-style: none; padding: 0; margin: 0; }
+  .aside-links li { margin-bottom: 10px; }
+  .aside-links a { color: #334155; }
+</style>

@@ -6,15 +6,16 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  schema?: object | object[];
 }
 
-const { title, description = "SEO resources for small business owners" } = Astro.props;
+const { title, description = "SEO resources for small business owners", schema } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} schema={schema} />
   </head>
   <body>
     <Header />

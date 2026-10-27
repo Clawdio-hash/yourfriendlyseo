@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, SITE_URL } from '../consts';
+
+const pageDescription = "SEO services for small business owners: a one-time SEO audit, a 60-minute 1-on-1 strategy session, and monthly SEO consulting with Emil Mequita.";
+
+// Service schema. Only the Strategy Session has a fixed, published price ($197);
+// the audit and retainer are quoted per engagement, so no price is asserted.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Search Engine Optimization',
+  provider: {
+    '@type': 'ProfessionalService',
+    name: SITE_TITLE,
+    url: SITE_URL,
+  },
+  areaServed: 'United States',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'SEO Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'SEO Audit', description: 'One-time technical, on-page, local, and content audit with a prioritized action plan.' },
+      },
+      {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: '197',
+        itemOffered: { '@type': 'Service', name: '1-on-1 Strategy Session', description: '60-minute consultation with a custom 30-day action plan.' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'Monthly SEO Consulting', description: 'Ongoing retainer SEO consulting. Custom pricing.' },
+      },
+    ],
+  },
+};
+---
+
+<Layout title={`SEO Services | ${SITE_TITLE}`} description={pageDescription} schema={serviceSchema}>
+  <main class="services-page">
+    <section class="hero">
+      <div class="container">
+        <h1>SEO Services for Small Business Owners</h1>
+        <p class="subtitle">Enterprise-level SEO strategy, translated into something a small business can actually use. Pick the level of help that fits where you are.</p>
+      </div>
+    </section>
+
+    <section class="tiers">
+      <div class="container">
+        <div class="tier-grid">
+
+          <article class="tier">
+            <span class="tier-label">One-time</span>
+            <h2>SEO Audit</h2>
+            <p class="tier-price">Custom quote</p>
+            <p class="tier-desc">A fixed-scope deep dive into what is holding your site back, with a prioritized plan you can hand to anyone.</p>
+            <h3>What's included</h3>
+            <ul class="tier-list">
+              <li>Technical SEO findings (crawlability, speed, indexing)</li>
+              <li>On-page review of your key pages</li>
+              <li>Local SEO check (Google Business Profile, citations)</li>
+              <li>Content and keyword gap findings</li>
+              <li>A prioritized, plain-language action plan</li>
+            </ul>
+            <h3>Who it's for</h3>
+            <p class="tier-for">Owners who want a clear, expert diagnosis before investing time or money in SEO.</p>
+            <a href="/contact" class="tier-cta" data-ga-event="session_booking_click" data-ga-label="services_audit">Request your audit</a>
+          </article>
+
+          <article class="tier tier-featured">
+            <span class="tier-label">Most popular</span>
+            <h2>1-on-1 Strategy Session</h2>
+            <p class="tier-price">$197 <span>60 minutes</span></p>
+            <p class="tier-desc">A live working session where we review your site together and build your next 30 days of SEO.</p>
+            <h3>What's included</h3>
+            <ul class="tier-list">
+              <li>Live personalized SEO audit</li>
+              <li>Custom keyword strategy</li>
+              <li>Content roadmap</li>
+              <li>Prioritized 30-day action plan</li>
+              <li>Full session recording</li>
+            </ul>
+            <h3>Who it's for</h3>
+            <p class="tier-for">Owners who want direct, personalized answers and a plan they can start on this week.</p>
+            <a href="/consultation" class="tier-cta tier-cta-primary" data-ga-event="session_booking_click" data-ga-label="services_session">Book your session</a>
+          </article>
+
+          <article class="tier">
+            <span class="tier-label">Retainer</span>
+            <h2>Monthly SEO Consulting</h2>
+            <p class="tier-price">Custom pricing</p>
+            <p class="tier-desc">Ongoing strategic guidance for owners who want a trusted SEO partner in their corner each month.</p>
+            <h3>What's included</h3>
+            <ul class="tier-list">
+              <li>Monthly strategy and priorities</li>
+              <li>Ongoing technical and content guidance</li>
+              <li>Progress reviews against your goals</li>
+              <li>Direct access for questions</li>
+              <li>Scope tailored to your business</li>
+            </ul>
+            <h3>Who it's for</h3>
+            <p class="tier-for">Owners and teams who want consistent SEO direction without hiring a full agency.</p>
+            <a href="/contact" class="tier-cta" data-ga-event="session_booking_click" data-ga-label="services_retainer">Ask about a retainer</a>
+          </article>
+
+        </div>
+
+        <p class="services-note">
+          Prefer to do it yourself first? Start with the free <a href="/free-checklist">SEO checklist</a> or the <a href="/products/seo-audit-template-bundle">$27 SEO Audit Template Bundle</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .services-page { background: #F8FAFC; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  .hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #D97706 100%);
+    color: #fff;
+    padding: 56px 20px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.6rem; margin-bottom: 14px; color: #fff; line-height: 1.2; }
+  .hero .subtitle { font-size: 1.2rem; color: rgba(255,255,255,0.88); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+  @media (max-width: 768px) { .hero h1 { font-size: 1.9rem; } }
+
+  .tiers { padding: 56px 20px; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .tier-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+  .tier {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .tier-featured { border: 2px solid #F59E0B; box-shadow: 0 8px 28px rgba(245,158,11,0.18); }
+
+  .tier-label {
+    display: inline-block;
+    align-self: flex-start;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .tier h2 { font-size: 1.5rem; color: #0F172A; margin: 0 0 8px; }
+  .tier-price { font-size: 1.6rem; font-weight: 700; color: #0F172A; margin: 0 0 14px; }
+  .tier-price span { font-size: 0.9rem; font-weight: 500; color: #64748B; }
+  .tier-desc { color: #475569; line-height: 1.6; margin: 0 0 20px; }
+  .tier h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94A3B8; margin: 0 0 10px; }
+  .tier-list { list-style: none; padding: 0; margin: 0 0 20px; }
+  .tier-list li { position: relative; padding-left: 26px; margin-bottom: 10px; color: #334155; font-size: 0.95rem; line-height: 1.5; }
+  .tier-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 14px; height: 8px; border-left: 2px solid #F59E0B; border-bottom: 2px solid #F59E0B; transform: rotate(-45deg); }
+  .tier-for { color: #475569; font-size: 0.95rem; line-height: 1.5; margin: 0 0 24px; }
+
+  .tier-cta {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    background: #fff;
+    color: #0F172A;
+    border: 2px solid #F59E0B;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .tier-cta:hover { background: #FEF3C7; text-decoration: none; }
+  .tier-cta-primary { background: #F59E0B; color: #0F172A; }
+  .tier-cta-primary:hover { background: #D97706; }
+
+  .services-note { text-align: center; margin: 40px auto 0; color: #475569; max-width: 640px; }
+  .services-note a { color: #D97706; font-weight: 600; }
+</style>

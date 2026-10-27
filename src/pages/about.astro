@@ -2,16 +2,49 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_URL } from '../consts';
 
 const pageTitle = "About Emil Mequita";
-const pageDescription = "SEO strategist with 10+ years of experience helping businesses rank higher on Google. Enterprise expertise at small business prices.";
+const pageDescription = "Meet Emil Mequita, an SEO strategist with 10+ years of enterprise experience who helps small business owners rank higher on Google.";
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Emil Mequita',
+	jobTitle: 'SEO Strategist',
+	description: 'SEO strategist with 10+ years of experience across healthcare, e-commerce, industrial, and agency environments, helping businesses rank higher on Google.',
+	url: `${SITE_URL}/about`,
+	image: `${SITE_URL}/emil%20headshot.jpeg`,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Los Angeles',
+		addressRegion: 'CA',
+		addressCountry: 'US',
+	},
+	knowsAbout: ['Search Engine Optimization', 'Technical SEO', 'Local SEO', 'Content Strategy', 'AI Search Visibility'],
+	worksFor: { '@type': 'Organization', name: SITE_TITLE, url: SITE_URL },
+	sameAs: ['https://www.linkedin.com/in/emil-mequita/'],
+};
+
+const professionalServiceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: SITE_TITLE,
+	url: SITE_URL,
+	image: `${SITE_URL}/logo-mark.png`,
+	description: 'Small business SEO guidance, DIY SEO resources, and 1-on-1 strategy sessions from an SEO strategist with 10+ years of enterprise experience.',
+	email: 'hello@yourfriendlyseo.com',
+	areaServed: 'United States',
+	priceRange: '$$',
+	founder: { '@type': 'Person', name: 'Emil Mequita' },
+	sameAs: ['https://www.linkedin.com/in/emil-mequita/'],
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`${pageTitle} | ${SITE_TITLE}`} description={pageDescription} />
+		<BaseHead title={`${pageTitle} | ${SITE_TITLE}`} description={pageDescription} schema={[personSchema, professionalServiceSchema]} />
 	</head>
 	<body>
 		<Header />
@@ -41,10 +74,10 @@ const pageDescription = "SEO strategist with 10+ years of experience helping bus
 							I've spent the last decade helping businesses—from enterprise technology companies to premium e-commerce brands—rank higher on Google and attract more customers organically.
 						</p>
 						<p>
-							My journey started at a digital marketing agency where I cut my teeth on the fundamentals: keyword research, technical SEO, content strategy. Three years later, I moved into healthcare and pharmaceutical marketing, managing SEO for major brands across New York and Los Angeles. That's where I learned to drive real results: I increased keyword indexing by 50% and boosted organic traffic by an average of 30% for every client I touched.
+							My journey started at a digital marketing agency where I cut my teeth on the fundamentals: keyword research, technical SEO, content strategy. Three years later, I moved into healthcare and pharmaceutical marketing, managing SEO for major brands across New York and Los Angeles. In that in-house role, I increased keyword indexing by 50% and boosted organic traffic by an average of 30% across the brands I managed.
 						</p>
 						<p>
-							From there, I led organic growth for a premium e-commerce brand, building their entire SEO and content strategy from the ground up. Then I ran a client portfolio at a digital agency, where I helped businesses achieve 90% and 140% increases in organic traffic and revenue. Today, I'm directing SEO strategy for a global industrial technology company—but I haven't forgotten where I started.
+							From there, I led organic growth for a premium e-commerce brand, building their entire SEO and content strategy from the ground up. Then, in a previous agency role, I ran a client portfolio where I helped businesses achieve 90% and 140% increases in organic traffic and revenue. Today, I'm directing SEO strategy for a global industrial technology company, but I haven't forgotten where I started.
 						</p>
 						<p>
 							Here's what I've learned after 10+ years and working across healthcare, e-commerce, industrial, and agency environments: <strong>SEO doesn't have to be complicated or expensive.</strong>

@@ -10,11 +10,13 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	schema?: object | object[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, schema } = Astro.props;
+const schemaBlocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!-- Global Metadata -->
@@ -45,6 +47,11 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
+<!-- Structured data (JSON-LD) -->
+{schemaBlocks.map((block) => (
+	<script type="application/ld+json" set:html={JSON.stringify(block)} />
+))}
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
@@ -67,4 +74,24 @@ const { title, description, image = FallbackImage } = Astro.props;
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-5RYCLQ1XWM');
+</script>
+
+<!-- GA4 conversion-event tracking.
+     Any element with data-ga-event="name" fires that event when clicked.
+     Named events (see final report): free_checklist_signup, newsletter_subscribe,
+     template_bundle_purchase_click, session_booking_click, tool_use, contact_form_submit. -->
+<script is:inline>
+  (function () {
+    function track(name, params) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, params || {});
+      }
+    }
+    window.yfsTrack = track;
+    document.addEventListener('click', function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-ga-event]') : null;
+      if (!el) return;
+      track(el.getAttribute('data-ga-event'), { label: el.getAttribute('data-ga-label') || undefined });
+    });
+  })();
 </script>

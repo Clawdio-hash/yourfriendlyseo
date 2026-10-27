@@ -1,8 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { CHECKOUT_LINKS, SCHEDULING_URL } from '../consts';
+
+const pageDescription = "Book a 60-minute 1-on-1 SEO strategy session with Emil Mequita and walk away with a prioritized 30-day action plan for your business.";
+
+// FAQ schema is generated from the questions shown on this page.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What happens after I pay?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "After checkout you'll get a link to schedule your session at a time that works for both of us.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do we meet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "We'll meet over Zoom. I'll send you the link before our session.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What should I prepare?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Just have access to your website, Google Search Console, and Analytics. I'll guide you through everything else.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What if I need to reschedule?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "No problem, just give me 24 hours notice and we'll find a new time.",
+      },
+    },
+  ],
+};
 ---
 
-<Layout title="Book a 1-on-1 SEO Strategy Session with Emil | YourFriendlySEO">
+<Layout title="Book a 1-on-1 SEO Strategy Session with Emil | YourFriendlySEO" description={pageDescription} schema={faqSchema}>
   <main class="consultation-page">
 
     <section class="hero">
@@ -87,12 +130,27 @@ import Layout from '../layouts/Layout.astro';
                 <li>Understand how AI is changing SEO and how to adapt</li>
                 <li>Same strategies I use for enterprise brands, applied to your business</li>
               </ul>
-              <a href="https://buy.stripe.com/dRm14mdfs9wxgAf0x68ww02" class="cta-button" id="checkout-button">
-                Book Your Session - $197
-              </a>
-              <p class="guarantee">
-                Not sure if this is right for you? Reply to any of my emails and ask. No pressure.
-              </p>
+              {SCHEDULING_URL ? (
+                <div class="scheduler-slot">
+                  <iframe
+                    src={SCHEDULING_URL}
+                    class="scheduler-embed"
+                    title="Schedule your strategy session"
+                    frameborder="0"
+                    loading="lazy"
+                  ></iframe>
+                  <p class="guarantee">Pick a time above. You'll get a calendar invite with the Zoom link right after booking.</p>
+                </div>
+              ) : (
+                <div class="scheduler-slot">
+                  <a href={CHECKOUT_LINKS.strategySession} class="cta-button" id="checkout-button" data-ga-event="session_booking_click" data-ga-label="consultation">
+                    Book Your Session - $197
+                  </a>
+                  <p class="guarantee">
+                    Scheduling follows payment: after checkout you'll receive a link to pick a time that works for both of us. Not sure if this is right for you? Reply to any of my emails and ask. No pressure.
+                  </p>
+                </div>
+              )}
             </div>
 
             <div class="testimonial">
@@ -372,6 +430,18 @@ import Layout from '../layouts/Layout.astro';
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
     text-decoration: none;
+  }
+
+  .scheduler-slot {
+    margin-top: 4px;
+  }
+
+  .scheduler-embed {
+    width: 100%;
+    min-height: 630px;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    background: #fff;
   }
 
   .guarantee {

@@ -24,6 +24,7 @@ export const SOCIAL_LINKS = {
 // Navigation
 export const NAV_LINKS = [
 	{ label: 'Blog', href: '/blog' },
+	{ label: 'Services', href: '/services' },
 	{ label: 'Book a Call', href: '/consultation' },
 	{ label: 'About', href: '/about' },
 ];
@@ -31,7 +32,22 @@ export const NAV_LINKS = [
 // Author Info
 export const AUTHOR = {
 	name: 'Emil Mequita',
-	title: 'SEO Strategist & Consultant',
+	title: 'SEO Strategist',
+	experience: '10+ years',
+	location: 'Los Angeles',
 	linkedin: 'https://www.linkedin.com/in/emil-mequita/',
 	email: 'hello@yourfriendlyseo.com',
 };
+
+// Checkout links (Stripe). Do not change these without updating Stripe.
+export const CHECKOUT_LINKS = {
+	// $27 SEO Audit Template Bundle (canonical product page link)
+	templateBundle: 'https://buy.stripe.com/fZu14m5N07opcjZa7G8ww03',
+	// $197 60-minute Strategy Session
+	strategySession: 'https://buy.stripe.com/dRm14mdfs9wxgAf0x68ww02',
+};
+
+// Scheduling: paste your Calendly or Cal.com event link here once it exists.
+// While this is empty, the consultation page shows the Stripe checkout button
+// and a note that scheduling follows payment (no fake scheduler URL is used).
+export const SCHEDULING_URL = '';

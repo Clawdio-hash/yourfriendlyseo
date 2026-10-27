@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Post-purchase page, no need to index
+Disallow: /thank-you
+
+Sitemap: https://www.yourfriendlyseo.com/sitemap-index.xml
+Sitemap: https://www.yourfriendlyseo.com/sitemap.xml

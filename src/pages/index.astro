@@ -5,18 +5,62 @@ import BeehiivEmbed from '../components/BeehiivEmbed.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_URL } from '../consts';
 
-// Get the 2 most recent blog posts
-const posts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 2);
+// Feature evergreen guides here (never weekly news roundups).
+// These are the site's most useful always-relevant posts. If one is missing,
+// it is simply skipped; the "View All Guides" link still covers the rest.
+const EVERGREEN_SLUGS = [
+	'diy-seo-guide-for-small-business',
+	'how-to-conduct-seo-audit-small-business',
+	'google-merchant-center-seo-audit',
+];
+const allPosts = await getCollection('blog');
+const slugOf = (id: string) => id.replace(/\.mdx?$/, '');
+const posts = EVERGREEN_SLUGS
+	.map((slug) => allPosts.find((p) => slugOf(p.id) === slug))
+	.filter((p): p is (typeof allPosts)[number] => Boolean(p));
+
+const pageTitle = 'SEO That Actually Makes Sense for Small Business Owners | YourFriendlySEO';
+const pageDescription = 'Practical, enterprise-grade SEO guidance for small business owners from strategist Emil Mequita, with a free SEO checklist to start today.';
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Emil Mequita',
+	jobTitle: 'SEO Strategist',
+	description: 'SEO strategist with 10+ years of experience helping businesses rank higher on Google.',
+	url: `${SITE_URL}/about`,
+	image: `${SITE_URL}/emil%20headshot.jpeg`,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Los Angeles',
+		addressRegion: 'CA',
+		addressCountry: 'US',
+	},
+	worksFor: { '@type': 'Organization', name: SITE_TITLE, url: SITE_URL },
+	sameAs: ['https://www.linkedin.com/in/emil-mequita/'],
+};
+
+const professionalServiceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: SITE_TITLE,
+	url: SITE_URL,
+	image: `${SITE_URL}/logo-mark.png`,
+	description: 'Small business SEO guidance, DIY SEO resources, and 1-on-1 strategy sessions from an SEO strategist with 10+ years of enterprise experience.',
+	email: 'hello@yourfriendlyseo.com',
+	areaServed: 'United States',
+	priceRange: '$$',
+	founder: { '@type': 'Person', name: 'Emil Mequita' },
+	sameAs: ['https://www.linkedin.com/in/emil-mequita/'],
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={pageTitle} description={pageDescription} schema={[personSchema, professionalServiceSchema]} />
 	</head>
 	<body>
 		<Header />
@@ -24,33 +68,36 @@ const posts = (await getCollection('blog'))
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="hero-content">
-				<h1 class="hero-headline">
-					SEO That Actually Makes Sense for Small Business Owners
-				</h1>
-				<p class="hero-subheadline">
-					I've spent 10+ years delivering enterprise-level SEO results for global brands. Now I'm sharing those same strategies with small business owners—no agency fees, no jargon, just results.
-				</p>
-				<div class="hero-ctas">
-					<a href="/blog" class="btn btn-primary btn-large">
-						Start Learning Free
-					</a>
-					<a href="/free-checklist" class="btn btn-outline btn-large">
-						Get the SEO Checklist
-					</a>
+				<div class="hero-intro">
+						<img src="/emil%20headshot.jpeg" alt="Emil Mequita, SEO Strategist" class="hero-photo" />
+						<p class="hero-kicker">Hi, I'm Emil, your friendly SEO strategist in Los Angeles.</p>
+					</div>
+					<h1 class="hero-headline">
+						SEO That Actually Makes Sense for Small Business Owners
+					</h1>
+					<p class="hero-subheadline">
+						I've spent 10+ years delivering enterprise-level SEO results for global brands. Now I'm sharing those same strategies with small business owners: no agency fees, no jargon, just results.
+					</p>
+					<div class="hero-ctas">
+						<a href="/free-checklist" class="btn btn-primary btn-large" data-ga-event="free_checklist_signup" data-ga-label="home_hero">
+							Get the Free SEO Checklist
+						</a>
+					</div>
+					<p class="hero-secondary">or <a href="/blog">browse the free SEO guides</a></p>
 				</div>
-			</div>
-		</section>
-		
-		<!-- Social Proof Bar -->
-		<section class="social-proof">
-			<div class="social-proof-content">
-				<p class="social-proof-text">
-					<span class="social-proof-badge">✓</span> Trusted by 1,000+ small business owners
-				</p>
-			</div>
-		</section>
-		
-		<!-- Featured Blog Posts -->
+			</section>
+
+			<!-- Testimonial (real client quote, as published on /consultation) -->
+			<section class="social-proof">
+				<div class="social-proof-content">
+					<blockquote class="hero-testimonial">
+						<p class="hero-testimonial-quote">"Emil is a dedicated and caring professional. He added a lot of value to our account and guided our SEO efforts, which helped our organization achieve growth in traffic and keyword ranking."</p>
+						<cite class="hero-testimonial-cite">Piera Palazzolo</cite>
+					</blockquote>
+				</div>
+			</section>
+
+			<!-- Featured Blog Posts -->
 		<section class="featured-posts">
 			<div class="container">
 				<div class="section-header">
@@ -116,7 +163,7 @@ const posts = (await getCollection('blog'))
 								<span class="product-price">$27</span>
 								<span class="product-price-label">One-time payment</span>
 							</div>
-							<a href="https://buy.stripe.com/aFa7sK8Zc4cd4Rxa7G8ww01" class="btn btn-accent btn-large">
+							<a href="https://buy.stripe.com/aFa7sK8Zc4cd4Rxa7G8ww01" class="btn btn-accent btn-large" data-ga-event="template_bundle_purchase_click" data-ga-label="home_showcase">
 								Get Templates Now →
 							</a>
 						</div>
@@ -150,7 +197,7 @@ const posts = (await getCollection('blog'))
 							<span class="price-amount">$197</span>
 							<span class="price-label">60-minute session</span>
 						</div>
-						<a href="/consultation" class="btn btn-accent btn-large btn-full">
+						<a href="/consultation" class="btn btn-accent btn-large btn-full" data-ga-event="session_booking_click" data-ga-label="home_consultation">
 							Book Your Session
 						</a>
 						<p class="consultation-guarantee">100% satisfaction guarantee</p>
@@ -164,7 +211,7 @@ const posts = (await getCollection('blog'))
 			<div class="container">
 				<BeehiivEmbed 
 					title="📥 Get Weekly SEO Tips That Actually Work" 
-					description="Join 1,000+ small business owners getting actionable SEO strategies and free resources delivered to their inbox every week. No fluff, just results."
+					description="Get one actionable SEO tactic every week, built for small business owners. Free resources, no fluff, just results."
 				/>
 			</div>
 		</section>
@@ -653,5 +700,55 @@ const posts = (await getCollection('blog'))
 		.product-cta .btn {
 			width: 100%;
 		}
+	}
+
+	/* Hero intro + testimonial */
+	.hero-intro {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-3);
+		margin-bottom: var(--space-6);
+	}
+	.hero-photo {
+		width: 96px;
+		height: 96px;
+		border-radius: var(--radius-full);
+		object-fit: cover;
+		border: 3px solid var(--color-accent);
+		box-shadow: var(--shadow-lg);
+	}
+	.hero-kicker {
+		color: var(--color-accent-light);
+		font-weight: var(--font-weight-semibold);
+		font-size: var(--font-size-lg);
+		margin: 0;
+	}
+	.hero-secondary {
+		margin: var(--space-5) 0 0;
+		color: var(--color-gray-300);
+		font-size: var(--font-size-base);
+	}
+	.hero-secondary a {
+		color: var(--color-white);
+		text-decoration: underline;
+	}
+	.hero-testimonial {
+		max-width: 760px;
+		margin: 0 auto;
+		border: 0;
+		padding: 0;
+	}
+	.hero-testimonial-quote {
+		font-size: var(--font-size-lg);
+		font-style: italic;
+		color: var(--color-gray-700);
+		line-height: var(--line-height-relaxed);
+		margin: 0 0 var(--space-3);
+	}
+	.hero-testimonial-cite {
+		font-style: normal;
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-gray-600);
 	}
 </style>

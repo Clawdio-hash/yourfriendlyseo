@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+	title: string;
+	description: string;
+	intro: string;
+	audience: string;
+	supportingSlugs: string[];
+	coverageTags?: string[];
+	extraLinks?: { href: string; label: string }[];
+}
+
+const {
+	title,
+	description,
+	intro,
+	audience,
+	supportingSlugs,
+	coverageTags = [],
+	extraLinks = [],
+} = Astro.props;
+
+const all = await getCollection('blog');
+const slugOf = (id: string) => id.replace(/\.mdx?$/, '');
+
+const supporting = supportingSlugs
+	.map((s) => all.find((p) => slugOf(p.id) === s))
+	.filter((p): p is (typeof all)[number] => Boolean(p));
+
+const coverage = coverageTags.length
+	? all
+			.filter(
+				(p) =>
+					!supportingSlugs.includes(slugOf(p.id)) &&
+					(p.data.tags ?? []).some((t: string) => coverageTags.includes(t)),
+			)
+			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+			.slice(0, 5)
+	: [];
+---
+
+<Layout title={`${title} | YourFriendlySEO`} description={description}>
+	<main class="pillar-page">
+		<section class="pillar-hero">
+			<div class="container">
+				<h1>{title}</h1>
+				<p class="pillar-intro">{intro}</p>
+				<p class="pillar-audience"><strong>Who this is for:</strong> {audience}</p>
+			</div>
+		</section>
+
+		<section class="pillar-body">
+			<div class="container">
+				{supporting.length > 0 && (
+					<div class="pillar-block">
+						<h2>Start with these guides</h2>
+						<div class="guide-grid">
+							{supporting.map((p) => (
+								<a class="guide-card" href={`/blog/${slugOf(p.id)}/`}>
+									<h3>{p.data.title}</h3>
+									<p>{p.data.description}</p>
+									<span class="guide-link">Read guide &rarr;</span>
+								</a>
+							))}
+						</div>
+					</div>
+				)}
+
+				{coverage.length > 0 && (
+					<div class="pillar-block">
+						<h2>Recent coverage from the weekly roundup</h2>
+						<p class="block-note">These are news roundups, not evergreen guides, but they track how this topic is changing.</p>
+						<ul class="coverage-list">
+							{coverage.map((p) => (
+								<li><a href={`/blog/${slugOf(p.id)}/`}>{p.data.title}</a></li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				{extraLinks.length > 0 && (
+					<div class="pillar-block">
+						<h2>Related resources</h2>
+						<ul class="coverage-list">
+							{extraLinks.map((l) => (
+								<li><a href={l.href}>{l.label}</a></li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				<div class="pillar-cta">
+					<h2>Ready to put this into practice?</h2>
+					<p>Grab the free DIY SEO checklist and work through every step, at your own pace.</p>
+					<a href="/free-checklist" class="cta" data-ga-event="free_checklist_signup" data-ga-label="pillar">Get the Free SEO Checklist</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.pillar-page { background: #F8FAFC; }
+	.container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+	.pillar-hero {
+		background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #D97706 100%);
+		color: #fff;
+		padding: 56px 20px;
+	}
+	.pillar-hero h1 { font-size: 2.6rem; margin: 0 0 16px; color: #fff; line-height: 1.2; }
+	.pillar-intro { font-size: 1.2rem; color: rgba(255,255,255,0.9); line-height: 1.65; margin: 0 0 16px; max-width: 760px; }
+	.pillar-audience { font-size: 1rem; color: rgba(255,255,255,0.8); margin: 0; }
+	.pillar-audience strong { color: #FCD34D; }
+	@media (max-width: 768px) { .pillar-hero h1 { font-size: 2rem; } }
+
+	.pillar-body { padding: 48px 20px; }
+	.pillar-block { margin-bottom: 44px; }
+	.pillar-block h2 { font-size: 1.6rem; color: #0F172A; margin: 0 0 8px; }
+	.block-note { color: #64748B; font-size: 0.95rem; margin: 0 0 18px; }
+
+	.guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 16px; }
+	.guide-card {
+		display: block;
+		background: #fff;
+		border: 1px solid #E2E8F0;
+		border-radius: 12px;
+		padding: 24px;
+		text-decoration: none;
+		transition: all 0.2s;
+	}
+	.guide-card:hover { border-color: #F59E0B; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-3px); text-decoration: none; }
+	.guide-card h3 { color: #0F172A; font-size: 1.15rem; margin: 0 0 10px; }
+	.guide-card p { color: #64748B; font-size: 0.95rem; line-height: 1.55; margin: 0 0 14px; }
+	.guide-link { color: #D97706; font-weight: 600; font-size: 0.9rem; }
+
+	.coverage-list { list-style: none; padding: 0; margin: 0; }
+	.coverage-list li { margin-bottom: 12px; padding-left: 18px; position: relative; }
+	.coverage-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: #F59E0B; }
+	.coverage-list a { color: #334155; font-weight: 500; }
+
+	.pillar-cta {
+		background: #fff;
+		border: 1px solid #E2E8F0;
+		border-radius: 14px;
+		padding: 36px;
+		text-align: center;
+		box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+	}
+	.pillar-cta h2 { color: #0F172A; margin: 0 0 10px; }
+	.pillar-cta p { color: #475569; margin: 0 0 22px; }
+	.cta {
+		display: inline-block;
+		background: #F59E0B;
+		color: #0F172A;
+		padding: 15px 32px;
+		border-radius: 8px;
+		font-weight: 700;
+		text-decoration: none;
+		transition: background 0.2s;
+	}
+	.cta:hover { background: #D97706; text-decoration: none; }
+</style>
