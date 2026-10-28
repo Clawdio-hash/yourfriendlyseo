@@ -3,12 +3,17 @@ interface Props {
 	title?: string;
 	description?: string;
 	variant?: 'default' | 'compact';
+	formId?: string;
 }
 
-const { 
+// Default form is the weekly newsletter. Pass formId to use a different
+// Beehiiv form (e.g. the free-checklist signup, which redirects to
+// /thank-you?product=checklist instead of ?product=newsletter).
+const {
 	title = "Get Weekly SEO Tips",
 	description = "Get one actionable SEO tactic every week, built for small business owners. No fluff, just results.",
-	variant = 'default'
+	variant = 'default',
+	formId = 'ec7e5c30-ae0a-4e2f-afb7-4956edb47c72'
 } = Astro.props;
 ---
 
@@ -18,7 +23,7 @@ const {
 		<p class="beehiiv-description">{description}</p>
 	</div>
 	<div class="beehiiv-embed-wrapper">
-		<script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="ec7e5c30-ae0a-4e2f-afb7-4956edb47c72"></script>
+		<script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form={formId}></script>
 	</div>
 </div>
 

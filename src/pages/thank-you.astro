@@ -4,118 +4,201 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE, SCHEDULING_URL } from '../consts';
 
-const product = Astro.url.searchParams.get('product') || 'consultation';
-const isConsultation = product === 'consultation';
-const isBundle = product === 'bundle';
+// This page is served statically, so the ?product= value is not known at
+// build time. All variant blocks are rendered (hidden) and the correct one
+// is shown client-side based on the live URL, which also drives the GA event.
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Thank You | ${SITE_TITLE}`} description="Thank you for your purchase!" />
+		<BaseHead title={`Thank You | ${SITE_TITLE}`} description="Thank you!" />
 	</head>
 	<body>
 		<Header />
-		
+
 		<main class="thank-you-page">
 			<div class="container">
 				<div class="thank-you-content">
 					<div class="success-icon">✅</div>
-					<h1>Thank You for Your Purchase!</h1>
-					<p class="subtitle">Your payment was successful. Here's what happens next:</p>
-					
-					{isConsultation && (
-						<div class="next-steps">
-							<div class="step">
-								<div class="step-number">1</div>
-								<div class="step-content">
-									<h3>Check Your Email</h3>
-									<p>You'll receive a confirmation email with your receipt within the next few minutes.</p>
-								</div>
-							</div>
-							
-							<div class="step">
-								<div class="step-number">2</div>
-								<div class="step-content">
-									<h3>Schedule Your Session</h3>
-									{SCHEDULING_URL ? (
-										<>
-											<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
-											<a href={SCHEDULING_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener">Schedule Your Session</a>
-											<p class="note">You'll receive a calendar invite with your Zoom link after scheduling</p>
-										</>
-									) : (
-										<p>I'll email you a link to schedule your session at a time that works for both of us, usually within a few hours. You'll receive a calendar invite with the Zoom link once you pick a time.</p>
-									)}
-								</div>
-							</div>
-							
-							<div class="step">
-								<div class="step-number">3</div>
-								<div class="step-content">
-									<h3>Prepare for the Call</h3>
-									<p>Have your website URL ready and any specific questions you want answered. I'll do the rest!</p>
-								</div>
+					<h1 id="ty-heading">Thank You!</h1>
+					<p class="subtitle" id="ty-subtitle">Here's what happens next:</p>
+
+					<!-- Free checklist signup -->
+					<div class="next-steps" data-product="checklist" hidden>
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>Download Your Checklist</h3>
+								<p>Grab the complete DIY SEO checklist as a PDF. It is yours to keep and work through at your own pace.</p>
+								<a href="/downloads/free-diy-seo-checklist.pdf" class="btn btn-primary btn-large" target="_blank" rel="noopener" download>Download the Checklist (PDF)</a>
+								<p class="note">A copy is also on its way to your inbox</p>
 							</div>
 						</div>
-					)}
-					
-					{isBundle && (
-						<div class="next-steps">
-							<div class="step">
-								<div class="step-number">1</div>
-								<div class="step-content">
-									<h3>Check Your Email</h3>
-									<p>You'll receive an email with your download link within the next few minutes. Check spam if you don't see it!</p>
-								</div>
-							</div>
-							
-							<div class="step">
-								<div class="step-number">2</div>
-								<div class="step-content">
-									<h3>Access Your Templates</h3>
-									<p>Click the Google Drive link in your email to access all 5 templates plus the PDF guide.</p>
-									<a href="https://drive.google.com/drive/folders/yourfriendlyseo-audit-bundle" class="btn btn-primary btn-large" target="_blank">Access Templates</a>
-									<p class="note">Make a copy of each template to your own Google Drive</p>
-								</div>
-							</div>
-							
-							<div class="step">
-								<div class="step-number">3</div>
-								<div class="step-content">
-									<h3>Start Your Audit</h3>
-									<p>Read the PDF guide first, then work through each template. Most people complete their audit in 2-4 hours.</p>
-								</div>
+
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>Work Through It Step by Step</h3>
+								<p>Start with the 90-day action plan, then move through the technical, on-page, and local SEO tasks in order.</p>
 							</div>
 						</div>
-					)}
-					
+
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h3>Want Help Applying It?</h3>
+								<p>If you would rather have a custom plan built for your business, book a 1-on-1 strategy session.</p>
+								<a href="/consultation" class="btn btn-outline">Book a Strategy Session</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Newsletter signup -->
+					<div class="next-steps" data-product="newsletter" hidden>
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>Check Your Inbox</h3>
+								<p>You're on the list. Look out for your first email, and add hello@yourfriendlyseo.com to your contacts so it doesn't land in spam.</p>
+							</div>
+						</div>
+
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>Start With the Free Checklist</h3>
+								<p>While you wait for the next issue, grab the free DIY SEO checklist and start improving your site today.</p>
+								<a href="/free-checklist" class="btn btn-outline">Get the Free Checklist</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Strategy session purchase -->
+					<div class="next-steps" data-product="consultation" hidden>
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>Check Your Email</h3>
+								<p>You'll receive a confirmation email with your receipt within the next few minutes.</p>
+							</div>
+						</div>
+
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>Schedule Your Session</h3>
+								{SCHEDULING_URL ? (
+									<>
+										<p>Click the button below to pick a time that works for you. Sessions are available Monday-Friday, 9am-5pm PST.</p>
+										<a href={SCHEDULING_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener">Schedule Your Session</a>
+										<p class="note">You'll receive a calendar invite with your Zoom link after scheduling</p>
+									</>
+								) : (
+									<p>I'll email you a link to schedule your session at a time that works for both of us, usually within a few hours. You'll receive a calendar invite with the Zoom link once you pick a time.</p>
+								)}
+							</div>
+						</div>
+
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h3>Prepare for the Call</h3>
+								<p>Have your website URL ready and any specific questions you want answered. I'll do the rest!</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Template bundle purchase -->
+					<div class="next-steps" data-product="bundle" hidden>
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h3>Check Your Email</h3>
+								<p>You'll receive an email with your download link within the next few minutes. Check spam if you don't see it!</p>
+							</div>
+						</div>
+
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h3>Access Your Templates</h3>
+								<p>Click the Google Drive link in your email to access all 5 templates plus the PDF guide.</p>
+								<a href="https://drive.google.com/drive/folders/yourfriendlyseo-audit-bundle" class="btn btn-primary btn-large" target="_blank">Access Templates</a>
+								<p class="note">Make a copy of each template to your own Google Drive</p>
+							</div>
+						</div>
+
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h3>Start Your Audit</h3>
+								<p>Read the PDF guide first, then work through each template. Most people complete their audit in 2-4 hours.</p>
+							</div>
+						</div>
+					</div>
+
 					<div class="cta-section">
 						<h2>While You Wait...</h2>
 						<p>Check out our free SEO resources to start making improvements today.</p>
 						<div class="cta-buttons">
 							<a href="/blog" class="btn btn-secondary">Browse Free Guides</a>
-							{isBundle && (
-								<a href="/consultation" class="btn btn-outline">Book a Strategy Session</a>
-							)}
-							{isConsultation && (
-								<a href="/products/seo-audit-template-bundle" class="btn btn-outline">Get the Template Bundle</a>
-							)}
+							<a href="/consultation" class="btn btn-outline" data-product-cta="bundle" hidden>Book a Strategy Session</a>
+							<a href="/products/seo-audit-template-bundle" class="btn btn-outline" data-product-cta="consultation" hidden>Get the Template Bundle</a>
 						</div>
 					</div>
-					
+
 					<div class="contact-section">
 						<p>Questions? Email me at <a href="mailto:hello@yourfriendlyseo.com">hello@yourfriendlyseo.com</a> or connect on <a href="https://www.linkedin.com/in/emil-mequita/" target="_blank" rel="noopener">LinkedIn</a>.</p>
 					</div>
 				</div>
 			</div>
 		</main>
-		
+
 		<Footer />
 
-		<!-- Fire the completed-conversion event based on ?product= (set Stripe success URL / Beehiiv redirect to point here). -->
-		<script is:inline define:vars={{ product }}>
+		<!-- Show the right variant and fire the matching conversion event from the LIVE ?product= value. -->
+		<script is:inline>
 			(function () {
+				var valid = { consultation: 1, bundle: 1, checklist: 1, newsletter: 1 };
+				var params = new URLSearchParams(window.location.search);
+				var product = params.get('product');
+				if (!product || !valid[product]) product = 'consultation';
+
+				var copy = {
+					checklist: {
+						heading: 'Your Free SEO Checklist Is Ready!',
+						subtitle: "Download it below, and check your inbox for a copy plus weekly SEO tips.",
+					},
+					newsletter: {
+						heading: "You're Subscribed!",
+						subtitle: 'Thanks for joining. Weekly SEO tips are on their way to your inbox.',
+					},
+					consultation: {
+						heading: 'Thank You for Your Purchase!',
+						subtitle: "Your payment was successful. Here's what happens next:",
+					},
+					bundle: {
+						heading: 'Thank You for Your Purchase!',
+						subtitle: "Your payment was successful. Here's what happens next:",
+					},
+				};
+
+				var c = copy[product];
+				var h = document.getElementById('ty-heading');
+				var s = document.getElementById('ty-subtitle');
+				if (h && c) h.textContent = c.heading;
+				if (s && c) s.textContent = c.subtitle;
+
+				var blocks = document.querySelectorAll('[data-product]');
+				for (var i = 0; i < blocks.length; i++) {
+					blocks[i].hidden = blocks[i].getAttribute('data-product') !== product;
+				}
+				var ctas = document.querySelectorAll('[data-product-cta]');
+				for (var j = 0; j < ctas.length; j++) {
+					ctas[j].hidden = ctas[j].getAttribute('data-product-cta') !== product;
+				}
+
 				var map = {
 					bundle: 'template_bundle_purchase',
 					consultation: 'session_booking',
@@ -139,35 +222,35 @@ const isBundle = product === 'bundle';
 		justify-content: center;
 		padding: var(--space-16) var(--space-4);
 	}
-	
+
 	.thank-you-content {
 		max-width: 700px;
 		margin: 0 auto;
 		text-align: center;
 	}
-	
+
 	.success-icon {
 		font-size: 80px;
 		margin-bottom: var(--space-6);
 	}
-	
+
 	.thank-you-content h1 {
 		font-size: var(--font-size-4xl);
 		color: var(--color-primary);
 		margin-bottom: var(--space-4);
 	}
-	
+
 	.subtitle {
 		font-size: var(--font-size-xl);
 		color: var(--color-gray-600);
 		margin-bottom: var(--space-12);
 	}
-	
+
 	.next-steps {
 		text-align: left;
 		margin-bottom: var(--space-16);
 	}
-	
+
 	.step {
 		display: flex;
 		gap: var(--space-6);
@@ -177,7 +260,7 @@ const isBundle = product === 'bundle';
 		border-radius: var(--radius-xl);
 		border: 2px solid var(--color-gray-200);
 	}
-	
+
 	.step-number {
 		flex-shrink: 0;
 		width: 50px;
@@ -191,84 +274,84 @@ const isBundle = product === 'bundle';
 		font-weight: var(--font-weight-bold);
 		border-radius: var(--radius-full);
 	}
-	
+
 	.step-content h3 {
 		font-size: var(--font-size-xl);
 		color: var(--color-primary);
 		margin-bottom: var(--space-3);
 	}
-	
+
 	.step-content p {
 		color: var(--color-gray-700);
 		line-height: var(--line-height-relaxed);
 		margin-bottom: var(--space-4);
 	}
-	
+
 	.step-content p:last-child {
 		margin-bottom: 0;
 	}
-	
+
 	.step-content .note {
 		font-size: var(--font-size-sm);
 		color: var(--color-gray-500);
 		font-style: italic;
 		margin-top: var(--space-3);
 	}
-	
+
 	.cta-section {
 		padding: var(--space-10);
 		background-color: var(--color-gray-50);
 		border-radius: var(--radius-xl);
 		margin-bottom: var(--space-12);
 	}
-	
+
 	.cta-section h2 {
 		font-size: var(--font-size-2xl);
 		color: var(--color-primary);
 		margin-bottom: var(--space-4);
 	}
-	
+
 	.cta-section p {
 		color: var(--color-gray-600);
 		margin-bottom: var(--space-6);
 	}
-	
+
 	.cta-buttons {
 		display: flex;
 		gap: var(--space-4);
 		justify-content: center;
 		flex-wrap: wrap;
 	}
-	
+
 	.contact-section {
 		padding-top: var(--space-8);
 		border-top: 1px solid var(--color-gray-200);
 	}
-	
+
 	.contact-section p {
 		color: var(--color-gray-600);
 		margin: 0;
 	}
-	
+
 	.contact-section a {
 		color: var(--color-accent-dark);
 		font-weight: var(--font-weight-semibold);
 	}
-	
+
 	@media (max-width: 640px) {
 		.thank-you-content h1 {
 			font-size: var(--font-size-3xl);
 		}
-		
+
 		.step {
 			flex-direction: column;
 			text-align: center;
 		}
-		
+
 		.step-number {
 			margin: 0 auto;
 		}
-		
+
 		.cta-buttons {
 			flex-direction: column;
 		}
